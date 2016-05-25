@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -84,15 +84,31 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Android Toolbar####前言：
+
+如果你还不知道Marterial Design你就真的out了。Toolbar是MD中不可回避的。Toolbar是Actionbar的升级版，和Actionbar相比，Toolbar最明显的变化是自由，方便定制。
+
+Toolbar简单使用
+样式设置style有两个地方需要调整，一个在 res/values/styles.xml， 另一个在 /res/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Toolbar">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/Toolbar总结/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="Android Toolbar####前言：
+
+如果你还不知道Marterial Design你就真的out了。Toolbar是MD中不可回避的。Toolbar是Actionbar的升级版，和Actionbar相比，Toolbar最明显的变化是自由，方便定制。
+
+Toolbar简单使用
+样式设置style有两个地方需要调整，一个在 res/values/styles.xml， 另一个在 /res/">
+<meta property="og:updated_time" content="2016-05-25T11:27:59.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Android Toolbar">
+<meta name="twitter:description" content="Android Toolbar####前言：
+
+如果你还不知道Marterial Design你就真的out了。Toolbar是MD中不可回避的。Toolbar是Actionbar的升级版，和Actionbar相比，Toolbar最明显的变化是自由，方便定制。
+
+Toolbar简单使用
+样式设置style有两个地方需要调整，一个在 res/values/styles.xml， 另一个在 /res/">
 
 
 
@@ -110,7 +126,7 @@
   };
 </script>
 
-  <title> 一个很严肃的人 </title>
+  <title> Android Toolbar | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,9 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,9 +224,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -232,138 +246,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/05/25/搭建一个优秀的Android应用/" itemprop="url">
-                  搭建一个优秀的Android应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T18:53:43+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="搭建一个优秀的Android应用"><a href="#搭建一个优秀的Android应用" class="headerlink" title="搭建一个优秀的Android应用"></a>搭建一个优秀的Android应用</h1><p>####前言：</p>
-<blockquote>
-<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
-</blockquote>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>MVP是不可回避的，Android本身也遵循MVP结构，这里我想谈谈我在开发过程中常用的结构，整体上设置功能的通常根据功能模块划分。</p>
-<ul>
-<li>base —- 自定义的父类，如BaseActivity, 自定义接口，BaseApplication等。</li>
-<li>global —- 全局字段相关的类GlobalConstants，格式转化FormFactory</li>
-<li>date —- 数据请求</li>
-<li>utils——工具类集合</li>
-<li>widget——各个可复用View集合</li>
-<li>功能模块</li>
-</ul>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ul>
-<li>先在color.xml中写好需要的颜色：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;color name=&quot;Orange&quot;&gt;#ff5722&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple&quot;&gt;#673AB7&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple900&quot;&gt;#311B92&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;White&quot;&gt;#fff&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray&quot;&gt;#888888&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray100&quot;&gt;#dddddd&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray600&quot;&gt;#999999&lt;/color&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意color.xml是配色表。应该是描述颜色而不是对字体颜色，背景颜色等的定义。这样能防止相近的颜色重复定义。而导致界面颜色不统一。</p>
-<ul>
-<li>在style.xml里定义主题：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme.Base&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">    &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/DeepPurple&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/DeepPurple900&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/Orange&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>在res目录下，创建一个values-v21目录，再创建一个style.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:statusBarColor&quot;&gt;?colorPrimaryDark&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="依赖库与SDK"><a href="#依赖库与SDK" class="headerlink" title="依赖库与SDK"></a>依赖库与SDK</h2><ul>
-<li><a href="https://github.com/Jude95/RollViewPager" target="_blank" rel="external">RollViewPager</a>—-自动轮播使用方便的ViewPager</li>
-<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a>—-View注解库和配套插件<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">android-butterknife-zelezny</a></li>
-<li>Bmob —- 第三方后台，极大的提升了开发效率。</li>
-<li>Mob —- 第三方短信</li>
-<li>友盟 —- 数据统计,推送，意见反馈，自动更新，第三方分享及登录,社区</li>
-<li>科大讯飞 —- 语音的领导者</li>
-</ul>
-<h2 id="制定开发规范"><a href="#制定开发规范" class="headerlink" title="制定开发规范"></a>制定开发规范</h2><p>所有Activity继承BaseActivity<br>所有包含Fragment的Activity集成BaseFragmentActivity，BaseFragmentActivity也是集成aseActivity<br>所有Fragment继承BaseFragment<br>这样利于生命周期管理。也可以方便的全局修改。</p>
-<p>全局变量命名:以m开头。例mAdapter使用时按一个m全都出来了</p>
-<p>drawable文件下命名<br>selector_bg_1<br>shape_bg_corner_1</p>
-<p>id命名，例<br>btn_send<br>tv_name<br>list_persons<br>et_password<br>然后用butterknife的插件生成变量会自动将下划线变成驼峰命名</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/Toolbar总结/" itemprop="url">
-                  Android Toolbar
-                </a>
+                Android Toolbar
               
             
           </h1>
@@ -403,9 +286,7 @@
       
 
       
-        
-          
-            <h1 id="Android-Toolbar"><a href="#Android-Toolbar" class="headerlink" title="Android Toolbar"></a>Android Toolbar</h1><p>####前言：</p>
+        <h1 id="Android-Toolbar"><a href="#Android-Toolbar" class="headerlink" title="Android Toolbar"></a>Android Toolbar</h1><p>####前言：</p>
 <blockquote>
 <p>如果你还不知道Marterial Design你就真的out了。Toolbar是MD中不可回避的。Toolbar是Actionbar的升级版，和Actionbar相比，Toolbar最明显的变化是自由，方便定制。</p>
 </blockquote>
@@ -425,144 +306,62 @@
 </li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/关于/" itemprop="url">
-                  关于
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T18:06:52+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p><strong>将来的你，一定会感激现在拼命努力的自己</strong></p>
-</blockquote>
-<p>[TOC]</p>
-<p>##关于我</p>
-<ul>
-<li>这是我的第一篇博客，准程序猿一名。最近几年都会从事Android开发。爱编程，爱电影，爱生活。</li>
-</ul>
-<p>##为什么要搭建个人博客</p>
-<ul>
-<li><p>纪录：忘记过去，就是背叛未来，我想在这里记录一些自己所见所闻。每天的思考会让我们明白很多，然而当我们再回过头去思考我们曾经的想法时，会发现我们的成长，这里有泪水，有欢笑，有忧愁。但是我们要感谢过去，使他们让我们不断的成长。</p>
-</li>
-<li><p>分享：曾经我也看过许许多多的博客，却学不会搭建属于自己的博客。然而我的心里却埋下了要搭建自己的个人博客的种子，终于有一天在看了很多人的博客后，我决定开始搭建我的个人博客。这正是博客分享价值的意义所在，我受了别人博客的影响而决定搭建博客，我希望在这里也能把分享价值传递下去，哪怕只是一篇文章的一个知识点。</p>
-</li>
-</ul>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/25/关于/" rel="next" title="关于">
+                <i class="fa fa-chevron-left"></i> 关于
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/25/搭建一个优秀的Android应用/" rel="prev" title="搭建一个优秀的Android应用">
+                搭建一个优秀的Android应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -570,6 +369,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -589,8 +392,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -633,6 +445,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Toolbar"><span class="nav-number">1.</span> <span class="nav-text">Android Toolbar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Toolbar简单使用"><span class="nav-number">1.1.</span> <span class="nav-text">Toolbar简单使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -729,6 +552,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
