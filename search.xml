@@ -4,21 +4,57 @@
   
     
     <entry>
-      <title><![CDATA[关于]]></title>
-      <url>http://yoursite.com/2016/06/02/about/</url>
+      <title><![CDATA[Hexo使用心得]]></title>
+      <url>http://yoursite.com/2016/06/02/Hexo%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</url>
       <content type="html"><![CDATA[<blockquote>
-<p><strong>将来的你，一定会感激现在拼命努力的自己</strong></p>
+<p>这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。</p>
 </blockquote>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li>这是我的第一篇博客，准程序猿一名。最近几年都会从事Android开发。爱编程，爱电影，爱生活。</li>
-</ul>
-<h2 id="为什么要搭建个人博客"><a href="#为什么要搭建个人博客" class="headerlink" title="为什么要搭建个人博客"></a>为什么要搭建个人博客</h2><ul>
-<li><p>纪录：忘记过去，就是背叛未来，我想在这里记录一些自己所见所闻。每天的思考会让我们明白很多，然而当我们再回过头去思考我们曾经的想法时，会发现我们的成长，这里有泪水，有欢笑，有忧愁。但是我们要感谢过去，使他们让我们不断的成长。</p>
 <a id="more"></a>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ul>
+<li><p>创建文章<br><code>$ hexo n &quot;Hexo使用心得&quot;</code><br>文章子在根节点下\source_posts下,且文件名是“Hexo使用心得”<br><img src="/uploads/hexo_syxd_1.png" alt=""></p>
 </li>
-<li><p>分享：曾经我也看过许许多多的博客，却学不会搭建属于自己的博客。然而我的心里却埋下了要搭建自己的个人博客的种子，终于有一天在看了很多人的博客后，我决定开始搭建我的个人博客。这正是博客分享价值的意义所在，我受了别人博客的影响而决定搭建博客，我希望在这里也能把分享价值传递下去，哪怕只是一篇文章的一个知识点。</p>
+<li><p>创建页面<br><code>$ hexo n page &quot;about&quot;</code><br>新页面在根节点下\source\新页面下，且文件名是“index”,<br><img src="/uploads/hexo_syxd_3.png" alt=""></p>
+</li>
+<li><p>存放图片<br>放在主题下的sources下<br><img src="/uploads/hexo_syxd_2.png" alt=""><br>这里的uploads文件夹是自己创建的，方便统一管理图片</p>
+</li>
+<li><p>使用图片<br>/uploads/图片名 即可</p>
 </li>
 </ul>
+<ul>
+<li><p>为文章如何设置「阅读全文」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 &lt;!-- more --&gt;这种方式也可以让 Hexo 中的插件更好的识别。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭页面或文章的评论功能<br>在常见页面的是的标签（tags）下添加<br><code>comments: false</code></p>
+</li>
+</ul>
+<h2 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h2><ul>
+<li><p>常用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用复合命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g #生成加部署</span><br><span class="line">hexo s -g #预览加部署</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Hexo安装过程"><a href="#Hexo安装过程" class="headerlink" title="Hexo安装过程"></a>Hexo安装过程</h2><ul>
+<li><p>1 打开git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2 部署Hexo<br>在我的电脑中建立一个名字叫「Hexo」的文件夹，然后在此文件夹中右键打开Git Bash。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 Hexo随后会自动在目标文件夹建立网站所需要的所有文件。现在我们已经搭建起本地的hexo博客了，执行以下命令(在Hexo项目的根目录下)，然后到浏览器输入localhost:4000看看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 更新主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/cnfeat/cnfeat.git themes/jacman</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5 启用cnfeat的主题<br>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。同时请设置stylus属性中的compress值为true。</p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>有关头像陪著，等等其他的问题请参考下面的资料<br><a href="http://theme-next.iissnan.com/getting-started.html#avatar-setting" target="_blank" rel="external">Next主题使用说明书</a><br><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客–简明Github Pages与Hexo教程</a></p>
 ]]></content>
     </entry>
     

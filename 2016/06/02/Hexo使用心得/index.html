@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -84,15 +84,20 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo使用心得">
+<meta property="og:url" content="http://yoursite.com/2016/06/02/Hexo使用心得/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。">
+<meta property="og:image" content="http://yoursite.com/uploads/hexo_syxd_1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/hexo_syxd_3.png">
+<meta property="og:image" content="http://yoursite.com/uploads/hexo_syxd_2.png">
+<meta property="og:updated_time" content="2016-06-02T08:12:57.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Hexo使用心得">
+<meta name="twitter:description" content="这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。">
+<meta name="twitter:image" content="http://yoursite.com/uploads/hexo_syxd_1.png">
 
 
 
@@ -110,7 +115,7 @@
   };
 </script>
 
-  <title> 一个很严肃的人 </title>
+  <title> Hexo使用心得 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,9 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -262,9 +265,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -284,10 +287,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/02/Hexo使用心得/" itemprop="url">
-                  Hexo使用心得
-                </a>
+                Hexo使用心得
               
             
           </h1>
@@ -334,44 +334,113 @@
       
 
       
-        
-          <blockquote>
+        <blockquote>
 <p>这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。</p>
 </blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/Hexo使用心得/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<a id="more"></a>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ul>
+<li><p>创建文章<br><code>$ hexo n &quot;Hexo使用心得&quot;</code><br>文章子在根节点下\source_posts下,且文件名是“Hexo使用心得”<br><img src="/uploads/hexo_syxd_1.png" alt=""></p>
+</li>
+<li><p>创建页面<br><code>$ hexo n page &quot;about&quot;</code><br>新页面在根节点下\source\新页面下，且文件名是“index”,<br><img src="/uploads/hexo_syxd_3.png" alt=""></p>
+</li>
+<li><p>存放图片<br>放在主题下的sources下<br><img src="/uploads/hexo_syxd_2.png" alt=""><br>这里的uploads文件夹是自己创建的，方便统一管理图片</p>
+</li>
+<li><p>使用图片<br>/uploads/图片名 即可</p>
+</li>
+</ul>
+<ul>
+<li><p>为文章如何设置「阅读全文」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 &lt;!-- more --&gt;这种方式也可以让 Hexo 中的插件更好的识别。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭页面或文章的评论功能<br>在常见页面的是的标签（tags）下添加<br><code>comments: false</code></p>
+</li>
+</ul>
+<h2 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h2><ul>
+<li><p>常用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用复合命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g #生成加部署</span><br><span class="line">hexo s -g #预览加部署</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Hexo安装过程"><a href="#Hexo安装过程" class="headerlink" title="Hexo安装过程"></a>Hexo安装过程</h2><ul>
+<li><p>1 打开git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2 部署Hexo<br>在我的电脑中建立一个名字叫「Hexo」的文件夹，然后在此文件夹中右键打开Git Bash。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 Hexo随后会自动在目标文件夹建立网站所需要的所有文件。现在我们已经搭建起本地的hexo博客了，执行以下命令(在Hexo项目的根目录下)，然后到浏览器输入localhost:4000看看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 更新主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/cnfeat/cnfeat.git themes/jacman</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5 启用cnfeat的主题<br>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。同时请设置stylus属性中的compress值为true。</p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>有关头像陪著，等等其他的问题请参考下面的资料<br><a href="http://theme-next.iissnan.com/getting-started.html#avatar-setting" target="_blank" rel="external">Next主题使用说明书</a><br><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客–简明Github Pages与Hexo教程</a></p>
+
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+        </div>
       
 
       
+
       
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/02/Hexo使用心得/"
+     data-title="Hexo使用心得"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/02/Hexo使用心得/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -379,6 +448,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/02/Hexo使用心得/"
+           data-title="Hexo使用心得" data-url="http://yoursite.com/2016/06/02/Hexo使用心得/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -398,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -471,6 +557,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#心得"><span class="nav-number">1.</span> <span class="nav-text">心得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo命令"><span class="nav-number">2.</span> <span class="nav-text">hexo命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo安装过程"><span class="nav-number">3.</span> <span class="nav-text">Hexo安装过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -567,6 +664,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
