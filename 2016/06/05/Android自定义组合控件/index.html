@@ -1,60 +1,339 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android自定义组合控件">
+<meta property="og:url" content="http://yoursite.com/2016/06/05/Android自定义组合控件/index.html">
+<meta property="og:site_name" content="一个很严肃的人">
+<meta property="og:description" content="项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦">
+<meta property="og:image" content="http://yoursite.com/uploads/zdizhkj2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/zdizhkj1.jpg">
+<meta property="og:updated_time" content="2016-06-05T03:34:26.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android自定义组合控件">
+<meta name="twitter:description" content="项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦">
+<meta name="twitter:image" content="http://yoursite.com/uploads/zdizhkj2.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android自定义组合控件 | 一个很严肃的人 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=56604233";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
   
   
     
-    <entry>
-      <title><![CDATA[搭建一个优秀的Android项目]]></title>
-      <url>http://yoursite.com/2016/06/05/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84Android%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
-</blockquote>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>MVP是不可回避的，Android本身也遵循MVP结构，这里我想谈谈我在开发过程中常用的结构。</p>
-<ul>
-<li>base —- 自定义的父类，如BaseActivity, 自定义接口，BaseApplication等。</li>
-<li>global —- 全局字段相关的类GlobalConstants，格式转化FormFactory</li>
-<li>date —- 数据请求</li>
-<li>utils —-工具类集合</li>
-<li>widgets —- 各个可复用View集合</li>
-</ul>
-<p>你会发现没有UI，我一般是将UI根据功能模块划分例如用户模块</p>
-<ul>
-<li>Account<br>&emsp;activity<br>&emsp;fragment<br>&emsp;…</li>
-</ul>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ul>
-<li>先在color.xml中写好需要的颜色：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;color name=&quot;Orange&quot;&gt;#ff5722&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple&quot;&gt;#673AB7&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple900&quot;&gt;#311B92&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;White&quot;&gt;#fff&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray&quot;&gt;#888888&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray100&quot;&gt;#dddddd&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray600&quot;&gt;#999999&lt;/color&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意color.xml是配色表。应该是描述颜色而不是对字体颜色，背景颜色等的定义。这样能防止相近的颜色重复定义。而导致界面颜色不统一。</p>
-<ul>
-<li>在style.xml里定义主题：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme.Base&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">    &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/DeepPurple&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/DeepPurple900&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/Orange&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>在res目录下，创建一个values-v21目录，再创建一个style.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:statusBarColor&quot;&gt;?colorPrimaryDark&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="依赖库与SDK"><a href="#依赖库与SDK" class="headerlink" title="依赖库与SDK"></a>依赖库与SDK</h2><ul>
-<li>android-async-http —- 网络请求库</li>
-<li>Android-Universal-Image-Loader 异步图片加载库</li>
-<li>Volley —- 2013年Google I/O大会上推出了一个新的网络通信框架(上面两个综合体)</li>
-<li><a href="https://github.com/Jude95/RollViewPager" target="_blank" rel="external">RollViewPager</a>—-自动轮播使用方便的ViewPager</li>
-<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a>—-View注解库和配套插件<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">android-butterknife-zelezny</a></li>
-<li>Bmob —- 第三方后台，极大的提升了开发效率。</li>
-<li>Mob —- 第三方短信</li>
-<li>友盟 —- 数据统计,推送，意见反馈，自动更新，第三方分享及登录,社区</li>
-<li>科大讯飞 —- 语音的领导者</li>
-</ul>
-<h2 id="制定开发规范"><a href="#制定开发规范" class="headerlink" title="制定开发规范"></a>制定开发规范</h2><p>所有Activity继承BaseActivity<br>所有包含Fragment的Activity集成BaseFragmentActivity，BaseFragmentActivity也是集成aseActivity<br>所有Fragment继承BaseFragment<br>这样利于生命周期管理。也可以方便的全局修改。</p>
-<p>全局变量命名:以m开头。例mAdapter使用时按一个m全都出来了</p>
-<p>drawable文件下命名<br>selector_bg_1<br>shape_bg_corner_1</p>
-<p>id命名，然后用butterknife的插件生成变量会自动将下划线变成驼峰命名<br>btn_send<br>tv_name<br>list_persons<br>et_password</p>
-<p>layout布局文件命名<br>view_xxx  自定义布局<br>activity_xxx<br>include_xxx</p>
-<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>这几篇文章在我的学习过程中提供了很大帮助<br><a href="http://www.jianshu.com/p/d9e4ddd1c530" target="_blank" rel="external">一个优秀的Android应用从建项目开始</a><br><a href="http://android.jobbole.com/82375/" target="_blank" rel="external">从零开始搭建架构实施Android项目</a></p>
-]]></content>
-    </entry>
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个很严肃的人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-    <entry>
-      <title><![CDATA[Android自定义组合控件]]></title>
-      <url>http://yoursite.com/2016/06/05/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6/</url>
-      <content type="html"><![CDATA[<blockquote>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android自定义组合控件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T10:35:25+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/05/Android自定义组合控件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/Android自定义组合控件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
 <p>项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦</p>
 </blockquote>
 <a id="more"></a>
@@ -64,64 +343,480 @@
 <h4 id="自定义一个view继承自你需要的布局"><a href="#自定义一个view继承自你需要的布局" class="headerlink" title="自定义一个view继承自你需要的布局"></a>自定义一个view继承自你需要的布局</h4><p>根据需求自定义一些API方法<br>MyEditText.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">public class MyEditText extends RelativeLayout &#123;</span><br><span class="line"></span><br><span class="line">    public EditText etTitle;</span><br><span class="line">    TextView tvTitle;</span><br><span class="line"></span><br><span class="line">    private String mTopHint;//正文(顶部)提示语</span><br><span class="line">    private String mBottomHint;//底部提示语</span><br><span class="line"></span><br><span class="line">    public String getmTopText() &#123;</span><br><span class="line">        return etTitle.getText().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setmTopText(String mTopText) &#123;</span><br><span class="line">        etTitle.setText(mTopText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String mTopText;//文字</span><br><span class="line">    private int mColorText;//Text文字颜色</span><br><span class="line">    private int mColorHint;//Hint文字颜色</span><br><span class="line">    private Boolean mShowRight;//是否显示向右箭头</span><br><span class="line">    private int inputType;</span><br><span class="line">    private View vArrow;//箭头</span><br><span class="line"></span><br><span class="line">    public MyEditText(Context context) &#123;</span><br><span class="line">        super(context);</span><br><span class="line">        init(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public MyEditText(Context context, AttributeSet attrs) &#123;</span><br><span class="line">        super(context, attrs);</span><br><span class="line">        init(context);</span><br><span class="line">        initAttrs(context, attrs);</span><br><span class="line">        initDate();</span><br><span class="line">        initListener();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public MyEditText(Context context, AttributeSet attrs, int defStyleAttr) &#123;</span><br><span class="line">        super(context, attrs, defStyleAttr);</span><br><span class="line">        init(context);</span><br><span class="line">        initAttrs(context, attrs);</span><br><span class="line">        initDate();</span><br><span class="line">        initListener();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void init(Context context) &#123;</span><br><span class="line">        //加载视图的布局</span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.view_my_edittext, this);</span><br><span class="line">        etTitle = (EditText) findViewById(R.id.et_title);</span><br><span class="line">        tvTitle = (TextView) findViewById(R.id.tv_title);</span><br><span class="line">        vArrow = findViewById(R.id.v_arrow);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initAttrs(Context context, AttributeSet attrs) &#123;</span><br><span class="line">        //加载自定义的属性</span><br><span class="line">        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.xgg_attr);</span><br><span class="line">        mTopHint = a.getString(R.styleable.xgg_attr_mTopHint);</span><br><span class="line">        mTopText = a.getString(R.styleable.xgg_attr_mTopText);</span><br><span class="line">        mBottomHint = a.getString(R.styleable.xgg_attr_mBottomHint);</span><br><span class="line">        mColorText = a.getColor(R.styleable.xgg_attr_mColorText, 0);</span><br><span class="line">        mColorHint = a.getColor(R.styleable.xgg_attr_mColorHint, 0);</span><br><span class="line">        mShowRight = a.getBoolean(R.styleable.xgg_attr_mShowRight, true);</span><br><span class="line">        //加载系统已经定义的属性</span><br><span class="line">        inputType = a.getInt(R.styleable.xgg_attr_android_inputType, InputType.TYPE_TEXT_VARIATION_PASSWORD);</span><br><span class="line">        //回收资源，这一句必须调用</span><br><span class="line">        a.recycle();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initDate() &#123;</span><br><span class="line">        etTitle.setTextColor(mColorText);</span><br><span class="line">        etTitle.setInputType(inputType);</span><br><span class="line">        tvTitle.setText(mBottomHint);</span><br><span class="line">        tvTitle.setTextColor(mColorHint);</span><br><span class="line">        if (!mShowRight) &#123;</span><br><span class="line">            etTitle.setText(mTopText);</span><br><span class="line">            etTitle.setFocusable(false);</span><br><span class="line">            etTitle.setClickable(false);</span><br><span class="line">            tvTitle.setVisibility(View.VISIBLE);</span><br><span class="line">            vArrow.setVisibility(View.GONE);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            etTitle.setHint(mTopHint);</span><br><span class="line">            etTitle.setHintTextColor(mColorHint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	//对点击事件的处理</span><br><span class="line">    private void initListener() &#123;</span><br><span class="line">        etTitle.setOnFocusChangeListener(new OnFocusChangeListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onFocusChange(View v, boolean hasFocus) &#123;</span><br><span class="line">                if (hasFocus) &#123;</span><br><span class="line">                    tvTitle.setVisibility(View.VISIBLE);</span><br><span class="line">                    etTitle.setHintTextColor(getResources().getColor(R.color.transparent));</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    if (TextUtils.isEmpty(etTitle.getText())) &#123;</span><br><span class="line">                        tvTitle.setVisibility(View.GONE);</span><br><span class="line">                        etTitle.setHintTextColor(mColorHint);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //对外提供的接口</span><br><span class="line">    public void setTextChangedListener(MyTextChangedListener listener) &#123;</span><br><span class="line">        mListener = listener;</span><br><span class="line">        etTitle.addTextChangedListener(new TextWatcher() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void beforeTextChanged(CharSequence s, int start, int count, int after) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void afterTextChanged(Editable s) &#123;</span><br><span class="line">                mListener.afterTextChanged(MyEditText.this);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    MyTextChangedListener mListener;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="在布局文件中使用该自定义组合控件"><a href="#在布局文件中使用该自定义组合控件" class="headerlink" title="在布局文件中使用该自定义组合控件"></a>在布局文件中使用该自定义组合控件</h4><p>别忘记声明自定义命名空间<br>xmlns:shun=”<a href="http://schemas.android.com/apk/res/包名" target="_blank" rel="external">http://schemas.android.com/apk/res/包名</a>“<br>或者<br>xmlns:shun=”<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="external">http://schemas.android.com/apk/res-auto</a>“</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:xgg=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:background=&quot;@color/bg&quot;</span><br><span class="line">    android:focusable=&quot;true&quot;</span><br><span class="line">    android:focusableInTouchMode=&quot;true&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.xgg.xiangguagua.widget.MyEditText</span><br><span class="line">        android:id=&quot;@+id/met_title&quot;</span><br><span class="line">        style=&quot;@style/release_met&quot;</span><br><span class="line">        xgg:mBottomHint=&quot;商品标题&quot;</span><br><span class="line">        xgg:mColorHint=&quot;@color/text_2&quot;</span><br><span class="line">        xgg:mColorText=&quot;@color/text_1&quot;</span><br><span class="line">        xgg:mTopHint=&quot;请输入活动标题&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-    </entry>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/Hexo使用心得/" rel="next" title="Hexo使用心得">
+                <i class="fa fa-chevron-left"></i> Hexo使用心得
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/05/搭建一个优秀的Android项目/" rel="prev" title="搭建一个优秀的Android项目">
+                搭建一个优秀的Android项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/05/Android自定义组合控件/"
+     data-title="Android自定义组合控件"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/05/Android自定义组合控件/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-    <entry>
-      <title><![CDATA[Hexo使用心得]]></title>
-      <url>http://yoursite.com/2016/06/02/Hexo%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ul>
-<li><p>创建文章<br><code>$ hexo n &quot;Hexo使用心得&quot;</code><br>文章子在根节点下\source_posts下,且文件名是“Hexo使用心得”<br><img src="/uploads/hexo_syxd_1.png" alt=""></p>
-</li>
-<li><p>创建页面<br><code>$ hexo n page &quot;about&quot;</code><br>新页面在根节点下\source\新页面下，且文件名是“index”,<br><img src="/uploads/hexo_syxd_3.png" alt=""></p>
-</li>
-<li><p>存放图片<br>放在主题下的sources下<br><img src="/uploads/hexo_syxd_2.png" alt=""><br>这里的uploads文件夹是自己创建的，方便统一管理图片</p>
-</li>
-<li><p>使用图片<br>/uploads/图片名 即可</p>
-</li>
-</ul>
-<ul>
-<li><p>为文章如何设置「阅读全文」</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 &lt;!-- more --&gt;这种方式也可以让 Hexo 中的插件更好的识别。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭页面或文章的评论功能<br>在常见页面的是的标签（tags）下添加<br><code>comments: false</code></p>
-</li>
-</ul>
-<h2 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h2><ul>
-<li><p>常用命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #将.deploy目录部署到GitHub</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常用复合命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g #生成加部署</span><br><span class="line">hexo s -g #预览加部署</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>简写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Hexo安装过程"><a href="#Hexo安装过程" class="headerlink" title="Hexo安装过程"></a>Hexo安装过程</h2><ul>
-<li><p>1 打开git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2 部署Hexo<br>在我的电脑中建立一个名字叫「Hexo」的文件夹，然后在此文件夹中右键打开Git Bash。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3 Hexo随后会自动在目标文件夹建立网站所需要的所有文件。现在我们已经搭建起本地的hexo博客了，执行以下命令(在Hexo项目的根目录下)，然后到浏览器输入localhost:4000看看。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4 更新主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/cnfeat/cnfeat.git themes/jacman</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>5 启用cnfeat的主题<br>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。同时请设置stylus属性中的compress值为true。</p>
-</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>有关头像陪著，等等其他的问题请参考下面的资料<br><a href="http://theme-next.iissnan.com/getting-started.html#avatar-setting" target="_blank" rel="external">Next主题使用说明书</a><br><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客–简明Github Pages与Hexo教程</a></p>
-]]></content>
-    </entry>
+      <div class="ds-thread" data-thread-key="2016/06/05/Android自定义组合控件/"
+           data-title="Android自定义组合控件" data-url="http://yoursite.com/2016/06/05/Android自定义组合控件/">
+      </div>
     
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="一个很严肃的人" />
+          <p class="site-author-name" itemprop="name">一个很严肃的人</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shun99" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1691948645" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/chang-shun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个XML布局文件"><span class="nav-number">1.</span> <span class="nav-text">定义一个XML布局文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在src-values-attrs-xml中定义属性"><span class="nav-number">2.</span> <span class="nav-text">在src/values/attrs.xml中定义属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义一个view继承自你需要的布局"><span class="nav-number">3.</span> <span class="nav-text">自定义一个view继承自你需要的布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在布局文件中使用该自定义组合控件"><span class="nav-number">4.</span> <span class="nav-text">在布局文件中使用该自定义组合控件</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个很严肃的人</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
   
   
-</search>
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shun99"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
