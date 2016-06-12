@@ -84,24 +84,21 @@
 
 
 
-<meta name="description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
-
-MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
+<meta name="description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于MVP的一点事">
 <meta property="og:url" content="http://yoursite.com/2016/06/12/关于MVP的一点事/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
-
-MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
+<meta property="og:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。">
 <meta property="og:image" content="http://yoursite.com/uploads/gymvp1.png">
 <meta property="og:image" content="http://yoursite.com/uploads/gymvp2.png">
-<meta property="og:updated_time" content="2016-06-12T08:23:31.416Z">
+<meta property="og:image" content="http://yoursite.com/uploads/gymvp1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/gymvp2.png">
+<meta property="og:image" content="http://yoursite.com/uploads/gymvp3.png">
+<meta property="og:updated_time" content="2016-06-12T12:02:09.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于MVP的一点事">
-<meta name="twitter:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
-
-MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
+<meta name="twitter:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。">
 <meta name="twitter:image" content="http://yoursite.com/uploads/gymvp1.png">
 
 
@@ -188,16 +185,6 @@ MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得�
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -342,6 +329,39 @@ MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得�
         <blockquote>
 <p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
 </blockquote>
+<a id="more"></a>
+<h2 id="mvp项目结构"><a href="#mvp项目结构" class="headerlink" title="mvp项目结构"></a>mvp项目结构</h2><p>如果项目比较大，根基功能模块划分mvp模式。</p>
+<ul>
+<li>app – 各Application Activity Fragment Presenter等的顶级父类</li>
+<li>config – API,常量表等</li>
+<li>utils– 各个可复用View集合</li>
+<li>widget – 各个可复用View集合</li>
+<li><p>module——将界面层以功能模块分配包:</p>
+<ul>
+<li><p>login</p>
+<ul>
+<li>model<ul>
+<li>Iuser</li>
+<li>UserModel</li>
+</ul>
+</li>
+<li>presenter<ul>
+<li>ILoginPresenter</li>
+<li>LoginPresenterCompl</li>
+</ul>
+</li>
+<li>view<ul>
+<li>ILoginView</li>
+<li>LoginActivity</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>main</p>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h2><p>MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太友好，耦合度大高了。把Activity的View和Controller抽离出来就变成了View和Presenter，这就是MVP模式。（摘抄）<br>MVC模式的结构分为三部分，实体层的Model，视图层的View，以及控制层的Controller<br><img src="/uploads/gymvp1.png" alt=""></p>
 <ul>
 <li><p>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</p>
@@ -378,7 +398,90 @@ MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得�
 </li>
 </ul>
 <p>通过上面的介绍，MVP的主要特点就是把Activity里的许多逻辑都抽离到View和Presenter接口中去，并由具体的实现类来完成。这种写法多了许多IView和IPresenter的接口，在某种程度上加大了开发的工作量，刚开始使用MVP的小伙伴可能会觉得这种写法比较别扭，而且难以记住。其实一开始想太多也没有什么卵用，只要在具体项目中多写几次，就能熟悉MVP模式的写法，理解TA的意图，以及享受其带来的好处。</p>
-<h4 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h4><p><a href="https://github.com/shun99/android-mvp-pattern" target="_blank" rel="external">github案例</a></p>
+<h4 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h4><p>[git—<br>title: 关于MVP的一点事<br>date: 2016-06-12 15:45:02</p>
+<h2 id="tags-Android"><a href="#tags-Android" class="headerlink" title="tags: Android"></a>tags: Android</h2><blockquote>
+<p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
+</blockquote>
+<h2 id="mvp项目结构-1"><a href="#mvp项目结构-1" class="headerlink" title="mvp项目结构"></a>mvp项目结构</h2><p>如果项目比较大，根基功能模块划分mvp模式。</p>
+<ul>
+<li>app – 各Application Activity Fragment Presenter等的顶级父类</li>
+<li>config – API,常量表等</li>
+<li>utils– 各个可复用View集合</li>
+<li>widget – 各个可复用View集合</li>
+<li><p>module——将界面层以功能模块分配包:</p>
+<ul>
+<li><p>login</p>
+<ul>
+<li>model<ul>
+<li>Iuser</li>
+<li>UserModel</li>
+</ul>
+</li>
+<li>presenter<ul>
+<li>ILoginPresenter</li>
+<li>LoginPresenterCompl</li>
+</ul>
+</li>
+<li>view<ul>
+<li>ILoginView</li>
+<li>LoginActivity</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>main</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="MVC模式-1"><a href="#MVC模式-1" class="headerlink" title="MVC模式"></a>MVC模式</h2><p>MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太友好，耦合度大高了。把Activity的View和Controller抽离出来就变成了View和Presenter，这就是MVP模式。（摘抄）<br>MVC模式的结构分为三部分，实体层的Model，视图层的View，以及控制层的Controller<br><img src="/uploads/gymvp1.png" alt=""></p>
+<ul>
+<li><p>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</p>
+</li>
+<li><p>而Model层就是JavaBean实体类，用于保存实例数据</p>
+</li>
+<li><p>Controller控制器用于更新UI界面和数据实例</p>
+</li>
+</ul>
+<h2 id="MVP-1"><a href="#MVP-1" class="headerlink" title="MVP"></a>MVP</h2><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>在Android项目中，Activity和Fragment占据了大部分的开发工作。如果有一种设计模式（或者说代码结构）专门是为优化Activity和Fragment的代码而产生的，你说这种模式重要不？这就是MVP设计模式。</p>
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成Presenter接口，Model类还是原来的Model。</p>
+</blockquote>
+<p>这就是MVP模式，现在这样的话，Activity的工作的简单了，只用来响应生命周期，其他工作都丢到Presenter中去完成。从上图可以看出，Presenter是Model和View之间的桥梁，为了让结构变得更加简单，View并不能直接对Model进行操作，这也是MVP与MVC最大的不同之处。</p>
+<h4 id="MVP模式的作用-1"><a href="#MVP模式的作用-1" class="headerlink" title="MVP模式的作用"></a>MVP模式的作用</h4><ul>
+<li><p>分离了视图逻辑和业务逻辑，降低了耦合</p>
+</li>
+<li><p>Activity只处理生命周期的任务，代码变得更加简洁</p>
+</li>
+<li><p>视图逻辑和业务逻辑分别抽象到了View和Presenter的接口中去，提高代码的可阅读性</p>
+</li>
+<li><p>Presenter被抽象成接口，可以有多种具体的实现，所以方便进行单元测试</p>
+</li>
+<li><p>把业务逻辑抽到Presenter中去，避免后台线程引用着Activity导致Activity的资源无法被系统回收从而引起内存泄露和OOM</p>
+</li>
+</ul>
+<h4 id="MVP模式的使用-1"><a href="#MVP模式的使用-1" class="headerlink" title="MVP模式的使用"></a>MVP模式的使用</h4><p><img src="/uploads/gymvp2.png" alt=""><br>上面一张简单的MVP模式的UML图，从图中可以看出，使用MVP，至少需要经历以下步骤：</p>
+<ul>
+<li><p>创建IPresenter接口，把所有业务逻辑的接口都放在这里，并创建它的实现PresenterCompl（在这里可以方便地查看业务功能，由于接口可以有多种实现所以也方便写单元测试）</p>
+</li>
+<li><p>创建IView接口，把所有视图逻辑的接口都放在这里，其实现类是当前的Activity/Fragment由UML图可以看出，Activity里包含了一个IPresenter，而PresenterCompl里又包含了一个IView并且依赖了Model。Activity里只保留对IPresenter的调用，其它工作全部留到PresenterCompl中实现</p>
+</li>
+<li><p>Model并不是必须有的，但是一定会有View和Presenter</p>
+</li>
+</ul>
+<p>通过上面的介绍，MVP的主要特点就是把Activity里的许多逻辑都抽离到View和Presenter接口中去，并由具体的实现类来完成。这种写法多了许多IView和IPresenter的接口，在某种程度上加大了开发的工作量，刚开始使用MVP的小伙伴可能会觉得这种写法比较别扭，而且难以记住。其实一开始想太多也没有什么卵用，只要在具体项目中多写几次，就能熟悉MVP模式的写法，理解TA的意图，以及享受其带来的好处。</p>
+<h4 id="MVP案例-1"><a href="#MVP案例-1" class="headerlink" title="MVP案例"></a>MVP案例</h4><p><img src="/uploads/gymvp3.png" alt=""><br>项目结构看起来像是这个样子的，MVP的分层还是很清晰的。我的习惯是先按模块分Package，在模块下面再去创建model、view、presenter的子Package，当然也可以用model、view、presenter作为顶级的Package，然后把所有的模块的model、view、presenter类都到这三个顶级Package中，就好像有人喜欢把项目里所有的Activity、Fragment、Adapter都放在一起一样。</p>
+<h6 id="首先来看看LoginActivity"><a href="#首先来看看LoginActivity" class="headerlink" title="首先来看看LoginActivity"></a>首先来看看LoginActivity</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class LoginActivity extends ActionBarActivity implements ILoginView, View.OnClickListener &#123;</span><br><span class="line"></span><br><span class="line">    private EditText editUser;</span><br><span class="line">    private EditText editPass;</span><br><span class="line">    private Button   btnLogin;</span><br><span class="line">    private Button   btnClear;</span><br><span class="line">    ILoginPresenter loginPresenter;</span><br><span class="line">    private ProgressBar progressBar;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        //find view</span><br><span class="line">        editUser = (EditText) this.findViewById(R.id.et_login_username);</span><br><span class="line">        editPass = (EditText) this.findViewById(R.id.et_login_password);</span><br><span class="line">        btnLogin = (Button) this.findViewById(R.id.btn_login_login);</span><br><span class="line">        btnClear = (Button) this.findViewById(R.id.btn_login_clear);</span><br><span class="line">        progressBar = (ProgressBar) this.findViewById(R.id.progress_login);</span><br><span class="line"></span><br><span class="line">        //set listener</span><br><span class="line">        btnLogin.setOnClickListener(this);</span><br><span class="line">        btnClear.setOnClickListener(this);</span><br><span class="line"></span><br><span class="line">        //init</span><br><span class="line">        loginPresenter = new LoginPresenterCompl(this);</span><br><span class="line">        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        switch (v.getId())&#123;</span><br><span class="line">            case R.id.btn_login_clear:</span><br><span class="line">                loginPresenter.clear();</span><br><span class="line">                break;</span><br><span class="line">            case R.id.btn_login_login:</span><br><span class="line">                loginPresenter.setProgressBarVisiblity(View.VISIBLE);</span><br><span class="line">                btnLogin.setEnabled(false);</span><br><span class="line">                btnClear.setEnabled(false);</span><br><span class="line">                loginPresenter.doLogin(editUser.getText().toString(), editPass.getText().toString());</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClearText() &#123;</span><br><span class="line">        editUser.setText(&quot;&quot;);</span><br><span class="line">        editPass.setText(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onLoginResult(Boolean result, int code) &#123;</span><br><span class="line">        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);</span><br><span class="line">        btnLogin.setEnabled(true);</span><br><span class="line">        btnClear.setEnabled(true);</span><br><span class="line">        if (result)&#123;</span><br><span class="line">            Toast.makeText(this,&quot;Login Success&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">            startActivity(new Intent(this, HomeActivity.class));</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            Toast.makeText(this,&quot;Login Fail, code = &quot; + code,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onSetProgressBarVisibility(int visibility) &#123;</span><br><span class="line">        progressBar.setVisibility(visibility);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码可以看出LoginActivity只做了findView以及setListener的工作，而且包含了一个ILoginPresenter，所有业务逻辑都是通过调用ILoginPresenter的具体接口来完成。所以LoginActivity的代码看起来很舒爽，甚至有点愉♂悦呢 (/ω＼*)。视力不错的你可能还看到了ILoginView接口的实现，如果不懂为什么要这样写的话，可以先往下看，这里只要记住LoginActivity实现了ILoginView接口。</p>
+<h6 id="再来看看ILoginPresenter"><a href="#再来看看ILoginPresenter" class="headerlink" title="再来看看ILoginPresenter"></a>再来看看ILoginPresenter</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ILoginPresenter &#123;</span><br><span class="line">    void clear();</span><br><span class="line">    void doLogin(String name, String passwd);</span><br><span class="line">    void setProgressBarVisiblity(int visiblity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class LoginPresenterCompl implements ILoginPresenter &#123;</span><br><span class="line">    ILoginView iLoginView;</span><br><span class="line">    IUser user;</span><br><span class="line">    Handler    handler;</span><br><span class="line"></span><br><span class="line">    public LoginPresenterCompl(ILoginView iLoginView) &#123;</span><br><span class="line">        this.iLoginView = iLoginView;</span><br><span class="line">        initUser();</span><br><span class="line">        handler = new Handler(Looper.getMainLooper());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void clear() &#123;</span><br><span class="line">        iLoginView.onClearText();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void doLogin(String name, String passwd) &#123;</span><br><span class="line">        Boolean isLoginSuccess = true;</span><br><span class="line">        final int code = user.checkUserValidity(name,passwd);</span><br><span class="line">        if (code!=0) isLoginSuccess = false;</span><br><span class="line">        final Boolean result = isLoginSuccess;</span><br><span class="line">        handler.postDelayed(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                iLoginView.onLoginResult(result, code);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setProgressBarVisiblity(int visiblity)&#123;</span><br><span class="line">        iLoginView.onSetProgressBarVisibility(visiblity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initUser()&#123;</span><br><span class="line">        user = new UserModel(&quot;mvp&quot;,&quot;mvp&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码可以看出，LoginPresenterCompl保留了ILoginView的引用，因此在LoginPresenterCompl里就可以直接进行UI操作了，而不用在Activity里完成。这里使用了ILoginView引用，而不是直接使用Activity，这样一来，如果在别的Activity里也需要用到相同的业务逻辑，就可以直接复用LoginPresenterCompl类了（一个Activity可以包含一个以上的Presenter，总之，需要什么业务就new什么样的Presenter，是不是很灵活，这也是MVP的核心思想</p>
+<blockquote>
+<p>通过IVIew和IPresenter，把Activity的UI Logic和Business Logic分离开来，Activity just does its basic job! 至于Model嘛，还是原来MVC里的Model。</p>
+</blockquote>
+<h6 id="再来看看ILoginView，"><a href="#再来看看ILoginView，" class="headerlink" title="再来看看ILoginView，"></a>再来看看ILoginView，</h6><p>至于ILoginView的实现类呢，翻到上面看看LoginActivity吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ILoginView &#123;</span><br><span class="line">    public void onClearText();</span><br><span class="line">    public void onLoginResult(Boolean result, int code);</span><br><span class="line">    public void onSetProgressBarVisibility(int visibility);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##参考资料<br><a href="https://segmentfault.com/a/1190000003927200" target="_blank" rel="external">Android MVP模式 简单易懂的介绍方式</a><br><a href="https://github.com/shun99/android-mvp-pattern" target="_blank" rel="external">用MVP架构开发Android应用](http://www.kymjs.com/code/2015/11/09/01)hub案例</a></p>
 <p>##参考资料<br><a href="https://segmentfault.com/a/1190000003927200" target="_blank" rel="external">Android MVP模式 简单易懂的介绍方式</a><br><a href="http://www.kymjs.com/code/2015/11/09/01" target="_blank" rel="external">用MVP架构开发Android应用</a></p>
 
       
@@ -575,7 +678,7 @@ MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC模式"><span class="nav-number">1.</span> <span class="nav-text">MVC模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-number">2.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的作用"><span class="nav-number">2.0.2.</span> <span class="nav-text">MVP模式的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的使用"><span class="nav-number">2.0.3.</span> <span class="nav-text">MVP模式的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP案例"><span class="nav-number">2.0.4.</span> <span class="nav-text">MVP案例</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mvp项目结构"><span class="nav-number">1.</span> <span class="nav-text">mvp项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC模式"><span class="nav-number">2.</span> <span class="nav-text">MVC模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-number">3.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">3.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的作用"><span class="nav-number">3.0.2.</span> <span class="nav-text">MVP模式的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的使用"><span class="nav-number">3.0.3.</span> <span class="nav-text">MVP模式的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP案例"><span class="nav-number">3.0.4.</span> <span class="nav-text">MVP案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Android"><span class="nav-number">4.</span> <span class="nav-text">tags: Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mvp项目结构-1"><span class="nav-number">5.</span> <span class="nav-text">mvp项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC模式-1"><span class="nav-number">6.</span> <span class="nav-text">MVC模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP-1"><span class="nav-number">7.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">7.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的作用-1"><span class="nav-number">7.0.2.</span> <span class="nav-text">MVP模式的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的使用-1"><span class="nav-number">7.0.3.</span> <span class="nav-text">MVP模式的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP案例-1"><span class="nav-number">7.0.4.</span> <span class="nav-text">MVP案例</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#首先来看看LoginActivity"><span class="nav-number">7.0.4.0.1.</span> <span class="nav-text">首先来看看LoginActivity</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#再来看看ILoginPresenter"><span class="nav-number">7.0.4.0.2.</span> <span class="nav-text">再来看看ILoginPresenter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#再来看看ILoginView，"><span class="nav-number">7.0.4.0.3.</span> <span class="nav-text">再来看看ILoginView，</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
