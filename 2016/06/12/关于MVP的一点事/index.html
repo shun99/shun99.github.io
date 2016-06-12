@@ -84,16 +84,25 @@
 
 
 
-<meta name="description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
+<meta name="description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
+
+MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建一个优秀的Android项目">
-<meta property="og:url" content="http://yoursite.com/2016/06/05/搭建一个优秀的Android项目/index.html">
+<meta property="og:title" content="关于MVP的一点事">
+<meta property="og:url" content="http://yoursite.com/2016/06/12/关于MVP的一点事/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
-<meta property="og:updated_time" content="2016-06-05T04:03:27.813Z">
+<meta property="og:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
+
+MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
+<meta property="og:image" content="http://yoursite.com/uploads/gymvp1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/gymvp2.png">
+<meta property="og:updated_time" content="2016-06-12T08:23:31.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建一个优秀的Android项目">
-<meta name="twitter:description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
+<meta name="twitter:title" content="关于MVP的一点事">
+<meta name="twitter:description" content="Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。
+
+MVC模式MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太">
+<meta name="twitter:image" content="http://yoursite.com/uploads/gymvp1.png">
 
 
 
@@ -111,7 +120,7 @@
   };
 </script>
 
-  <title> 搭建一个优秀的Android项目 | 一个很严肃的人 </title>
+  <title> 关于MVP的一点事 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -283,7 +292,7 @@
             
             
               
-                搭建一个优秀的Android项目
+                关于MVP的一点事
               
             
           </h1>
@@ -295,8 +304,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T11:37:13+08:00" content="2016-06-05">
-              2016-06-05
+            <time itemprop="dateCreated" datetime="2016-06-12T15:45:02+08:00" content="2016-06-12">
+              2016-06-12
             </time>
           </span>
 
@@ -306,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/05/搭建一个优秀的Android项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/搭建一个优秀的Android项目/" itemprop="commentsCount"></span>
+                <a href="/2016/06/12/关于MVP的一点事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/12/关于MVP的一点事/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,48 +340,46 @@
 
       
         <blockquote>
-<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
+<p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
 </blockquote>
-<a id="more"></a>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>MVP是不可回避的，Android本身也遵循MVP结构，这里我想谈谈我在开发过程中常用的结构。</p>
+<h2 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h2><p>MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太友好，耦合度大高了。把Activity的View和Controller抽离出来就变成了View和Presenter，这就是MVP模式。（摘抄）<br>MVC模式的结构分为三部分，实体层的Model，视图层的View，以及控制层的Controller<br><img src="/uploads/gymvp1.png" alt=""></p>
 <ul>
-<li>base —- 自定义的父类，如BaseActivity, 自定义接口，BaseApplication等。</li>
-<li>global —- 全局字段相关的类GlobalConstants，格式转化FormFactory</li>
-<li>date —- 数据请求</li>
-<li>utils —-工具类集合</li>
-<li>widgets —- 各个可复用View集合</li>
-</ul>
-<p>你会发现没有UI，我一般是将UI根据功能模块划分例如用户模块</p>
-<ul>
-<li>Account<br>&emsp;activity<br>&emsp;fragment<br>&emsp;…</li>
-</ul>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ul>
-<li>先在color.xml中写好需要的颜色：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;color name=&quot;Orange&quot;&gt;#ff5722&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple&quot;&gt;#673AB7&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple900&quot;&gt;#311B92&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;White&quot;&gt;#fff&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray&quot;&gt;#888888&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray100&quot;&gt;#dddddd&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray600&quot;&gt;#999999&lt;/color&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+<li><p>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</p>
+</li>
+<li><p>而Model层就是JavaBean实体类，用于保存实例数据</p>
+</li>
+<li><p>Controller控制器用于更新UI界面和数据实例</p>
 </li>
 </ul>
-<p>注意color.xml是配色表。应该是描述颜色而不是对字体颜色，背景颜色等的定义。这样能防止相近的颜色重复定义。而导致界面颜色不统一。</p>
-<ul>
-<li>在style.xml里定义主题：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme.Base&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">    &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/DeepPurple&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/DeepPurple900&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/Orange&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在Android项目中，Activity和Fragment占据了大部分的开发工作。如果有一种设计模式（或者说代码结构）专门是为优化Activity和Fragment的代码而产生的，你说这种模式重要不？这就是MVP设计模式。</p>
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成Presenter接口，Model类还是原来的Model。</p>
+</blockquote>
+<p>这就是MVP模式，现在这样的话，Activity的工作的简单了，只用来响应生命周期，其他工作都丢到Presenter中去完成。从上图可以看出，Presenter是Model和View之间的桥梁，为了让结构变得更加简单，View并不能直接对Model进行操作，这也是MVP与MVC最大的不同之处。</p>
+<h4 id="MVP模式的作用"><a href="#MVP模式的作用" class="headerlink" title="MVP模式的作用"></a>MVP模式的作用</h4><ul>
+<li><p>分离了视图逻辑和业务逻辑，降低了耦合</p>
+</li>
+<li><p>Activity只处理生命周期的任务，代码变得更加简洁</p>
+</li>
+<li><p>视图逻辑和业务逻辑分别抽象到了View和Presenter的接口中去，提高代码的可阅读性</p>
+</li>
+<li><p>Presenter被抽象成接口，可以有多种具体的实现，所以方便进行单元测试</p>
+</li>
+<li><p>把业务逻辑抽到Presenter中去，避免后台线程引用着Activity导致Activity的资源无法被系统回收从而引起内存泄露和OOM</p>
 </li>
 </ul>
-<p>在res目录下，创建一个values-v21目录，再创建一个style.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:statusBarColor&quot;&gt;?colorPrimaryDark&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="依赖库与SDK"><a href="#依赖库与SDK" class="headerlink" title="依赖库与SDK"></a>依赖库与SDK</h2><ul>
-<li>android-async-http —- 网络请求库</li>
-<li>Android-Universal-Image-Loader 异步图片加载库</li>
-<li>Volley —- 2013年Google I/O大会上推出了一个新的网络通信框架(上面两个综合体)</li>
-<li><a href="https://github.com/Jude95/RollViewPager" target="_blank" rel="external">RollViewPager</a>—-自动轮播使用方便的ViewPager</li>
-<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a>—-View注解库和配套插件<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">android-butterknife-zelezny</a></li>
-<li>Bmob —- 第三方后台，极大的提升了开发效率。</li>
-<li>Mob —- 第三方短信</li>
-<li>友盟 —- 数据统计,推送，意见反馈，自动更新，第三方分享及登录,社区</li>
-<li>科大讯飞 —- 语音的领导者</li>
+<h4 id="MVP模式的使用"><a href="#MVP模式的使用" class="headerlink" title="MVP模式的使用"></a>MVP模式的使用</h4><p><img src="/uploads/gymvp2.png" alt=""><br>上面一张简单的MVP模式的UML图，从图中可以看出，使用MVP，至少需要经历以下步骤：</p>
+<ul>
+<li><p>创建IPresenter接口，把所有业务逻辑的接口都放在这里，并创建它的实现PresenterCompl（在这里可以方便地查看业务功能，由于接口可以有多种实现所以也方便写单元测试）</p>
+</li>
+<li><p>创建IView接口，把所有视图逻辑的接口都放在这里，其实现类是当前的Activity/Fragment由UML图可以看出，Activity里包含了一个IPresenter，而PresenterCompl里又包含了一个IView并且依赖了Model。Activity里只保留对IPresenter的调用，其它工作全部留到PresenterCompl中实现</p>
+</li>
+<li><p>Model并不是必须有的，但是一定会有View和Presenter</p>
+</li>
 </ul>
-<h2 id="制定开发规范"><a href="#制定开发规范" class="headerlink" title="制定开发规范"></a>制定开发规范</h2><p>所有Activity继承BaseActivity<br>所有包含Fragment的Activity集成BaseFragmentActivity，BaseFragmentActivity也是集成aseActivity<br>所有Fragment继承BaseFragment<br>这样利于生命周期管理。也可以方便的全局修改。</p>
-<p>全局变量命名:以m开头。例mAdapter使用时按一个m全都出来了</p>
-<p>drawable文件下命名<br>selector_bg_1<br>shape_bg_corner_1</p>
-<p>id命名，然后用butterknife的插件生成变量会自动将下划线变成驼峰命名<br>btn_send<br>tv_name<br>list_persons<br>et_password</p>
-<p>layout布局文件命名<br>view_xxx  自定义布局<br>activity_xxx<br>include_xxx</p>
-<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>这几篇文章在我的学习过程中提供了很大帮助<br><a href="http://www.jianshu.com/p/d9e4ddd1c530" target="_blank" rel="external">一个优秀的Android应用从建项目开始</a><br><a href="http://android.jobbole.com/82375/" target="_blank" rel="external">从零开始搭建架构实施Android项目</a></p>
+<p>通过上面的介绍，MVP的主要特点就是把Activity里的许多逻辑都抽离到View和Presenter接口中去，并由具体的实现类来完成。这种写法多了许多IView和IPresenter的接口，在某种程度上加大了开发的工作量，刚开始使用MVP的小伙伴可能会觉得这种写法比较别扭，而且难以记住。其实一开始想太多也没有什么卵用，只要在具体项目中多写几次，就能熟悉MVP模式的写法，理解TA的意图，以及享受其带来的好处。</p>
+<h4 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h4><p><a href="https://github.com/shun99/android-mvp-pattern" target="_blank" rel="external">github案例</a></p>
+<p>##参考资料<br><a href="https://segmentfault.com/a/1190000003927200" target="_blank" rel="external">Android MVP模式 简单易懂的介绍方式</a><br><a href="http://www.kymjs.com/code/2015/11/09/01" target="_blank" rel="external">用MVP架构开发Android应用</a></p>
 
       
     </div>
@@ -403,17 +410,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/05/Android自定义组合控件/" rel="next" title="Android自定义组合控件">
-                <i class="fa fa-chevron-left"></i> Android自定义组合控件
+              <a href="/2016/06/06/Android网络请求/" rel="next" title="Android网络请求">
+                <i class="fa fa-chevron-left"></i> Android网络请求
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/06/Android网络请求/" rel="prev" title="Android网络请求">
-                Android网络请求 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -428,10 +431,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/05/搭建一个优秀的Android项目/"
-     data-title="搭建一个优秀的Android项目"
+        <div class="ds-share flat" data-thread-key="2016/06/12/关于MVP的一点事/"
+     data-title="关于MVP的一点事"
      data-content=""
-     data-url="http://yoursite.com/2016/06/05/搭建一个优秀的Android项目/">
+     data-url="http://yoursite.com/2016/06/12/关于MVP的一点事/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -458,8 +461,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/05/搭建一个优秀的Android项目/"
-           data-title="搭建一个优秀的Android项目" data-url="http://yoursite.com/2016/06/05/搭建一个优秀的Android项目/">
+      <div class="ds-thread" data-thread-key="2016/06/12/关于MVP的一点事/"
+           data-title="关于MVP的一点事" data-url="http://yoursite.com/2016/06/12/关于MVP的一点事/">
       </div>
     
   </div>
@@ -572,7 +575,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主题"><span class="nav-number">2.</span> <span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖库与SDK"><span class="nav-number">3.</span> <span class="nav-text">依赖库与SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制定开发规范"><span class="nav-number">4.</span> <span class="nav-text">制定开发规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">5.</span> <span class="nav-text">感谢</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC模式"><span class="nav-number">1.</span> <span class="nav-text">MVC模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-number">2.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的作用"><span class="nav-number">2.0.2.</span> <span class="nav-text">MVP模式的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP模式的使用"><span class="nav-number">2.0.3.</span> <span class="nav-text">MVP模式的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVP案例"><span class="nav-number">2.0.4.</span> <span class="nav-text">MVP案例</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

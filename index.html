@@ -285,6 +285,147 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/12/关于MVP的一点事/" itemprop="url">
+                  关于MVP的一点事
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-12T15:45:02+08:00" content="2016-06-12">
+              2016-06-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/12/关于MVP的一点事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/12/关于MVP的一点事/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
+</blockquote>
+<h2 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h2><p>MVP模式是MVC模式在Android上的一种变体，要介绍MVP就得先介绍MVC。在MVC模式中，Activity应该是属于View这一层。而实质上，它既承担了View，同时也包含一些Controller的东西在里面。这对于开发与维护来说不太友好，耦合度大高了。把Activity的View和Controller抽离出来就变成了View和Presenter，这就是MVP模式。（摘抄）<br>MVC模式的结构分为三部分，实体层的Model，视图层的View，以及控制层的Controller<br><img src="/uploads/gymvp1.png" alt=""></p>
+<ul>
+<li><p>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</p>
+</li>
+<li><p>而Model层就是JavaBean实体类，用于保存实例数据</p>
+</li>
+<li><p>Controller控制器用于更新UI界面和数据实例</p>
+</li>
+</ul>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在Android项目中，Activity和Fragment占据了大部分的开发工作。如果有一种设计模式（或者说代码结构）专门是为优化Activity和Fragment的代码而产生的，你说这种模式重要不？这就是MVP设计模式。</p>
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成Presenter接口，Model类还是原来的Model。</p>
+</blockquote>
+<p>这就是MVP模式，现在这样的话，Activity的工作的简单了，只用来响应生命周期，其他工作都丢到Presenter中去完成。从上图可以看出，Presenter是Model和View之间的桥梁，为了让结构变得更加简单，View并不能直接对Model进行操作，这也是MVP与MVC最大的不同之处。</p>
+<h4 id="MVP模式的作用"><a href="#MVP模式的作用" class="headerlink" title="MVP模式的作用"></a>MVP模式的作用</h4><ul>
+<li><p>分离了视图逻辑和业务逻辑，降低了耦合</p>
+</li>
+<li><p>Activity只处理生命周期的任务，代码变得更加简洁</p>
+</li>
+<li><p>视图逻辑和业务逻辑分别抽象到了View和Presenter的接口中去，提高代码的可阅读性</p>
+</li>
+<li><p>Presenter被抽象成接口，可以有多种具体的实现，所以方便进行单元测试</p>
+</li>
+<li><p>把业务逻辑抽到Presenter中去，避免后台线程引用着Activity导致Activity的资源无法被系统回收从而引起内存泄露和OOM</p>
+</li>
+</ul>
+<h4 id="MVP模式的使用"><a href="#MVP模式的使用" class="headerlink" title="MVP模式的使用"></a>MVP模式的使用</h4><p><img src="/uploads/gymvp2.png" alt=""><br>上面一张简单的MVP模式的UML图，从图中可以看出，使用MVP，至少需要经历以下步骤：</p>
+<ul>
+<li><p>创建IPresenter接口，把所有业务逻辑的接口都放在这里，并创建它的实现PresenterCompl（在这里可以方便地查看业务功能，由于接口可以有多种实现所以也方便写单元测试）</p>
+</li>
+<li><p>创建IView接口，把所有视图逻辑的接口都放在这里，其实现类是当前的Activity/Fragment由UML图可以看出，Activity里包含了一个IPresenter，而PresenterCompl里又包含了一个IView并且依赖了Model。Activity里只保留对IPresenter的调用，其它工作全部留到PresenterCompl中实现</p>
+</li>
+<li><p>Model并不是必须有的，但是一定会有View和Presenter</p>
+</li>
+</ul>
+<p>通过上面的介绍，MVP的主要特点就是把Activity里的许多逻辑都抽离到View和Presenter接口中去，并由具体的实现类来完成。这种写法多了许多IView和IPresenter的接口，在某种程度上加大了开发的工作量，刚开始使用MVP的小伙伴可能会觉得这种写法比较别扭，而且难以记住。其实一开始想太多也没有什么卵用，只要在具体项目中多写几次，就能熟悉MVP模式的写法，理解TA的意图，以及享受其带来的好处。</p>
+<h4 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h4><p><a href="https://github.com/shun99/android-mvp-pattern" target="_blank" rel="external">github案例</a></p>
+<p>##参考资料<br><a href="https://segmentfault.com/a/1190000003927200" target="_blank" rel="external">Android MVP模式 简单易懂的介绍方式</a><br><a href="http://www.kymjs.com/code/2015/11/09/01" target="_blank" rel="external">用MVP架构开发Android应用</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/06/Android网络请求/" itemprop="url">
                   Android网络请求
                 </a>
@@ -336,7 +477,7 @@
       
         
           <blockquote>
-<p>安卓开放中网络请求是无法避免。不管你是加载图片，请求API数据还是从因特网上获得一个字节，你都是在使用网络。</p>
+<p>安卓开发中网络请求是无法避免。不管你是加载图片，请求API数据还是从因特网上获得一个字节，你都是在使用网络。</p>
 </blockquote>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/06/Android网络请求/#more" rel="contents">
@@ -725,7 +866,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
