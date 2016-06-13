@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,Utils," />
 
 
 
@@ -84,15 +84,43 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="这里总结了一些我在项目开发中常用到的一些工具类。
+
+屏幕相关的辅助类
+获得屏幕高度
+获得屏幕宽度
+获得状态栏的高度
+获取当前屏幕截图，包含状态栏
+获取当前屏幕截图，不包含状态栏
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用工具类">
+<meta property="og:url" content="http://yoursite.com/2016/06/13/常用工具类/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="这里总结了一些我在项目开发中常用到的一些工具类。
+
+屏幕相关的辅助类
+获得屏幕高度
+获得屏幕宽度
+获得状态栏的高度
+获取当前屏幕截图，包含状态栏
+获取当前屏幕截图，不包含状态栏
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
+<meta property="og:updated_time" content="2016-06-13T13:29:01.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="常用工具类">
+<meta name="twitter:description" content="这里总结了一些我在项目开发中常用到的一些工具类。
+
+屏幕相关的辅助类
+获得屏幕高度
+获得屏幕宽度
+获得状态栏的高度
+获取当前屏幕截图，包含状态栏
+获取当前屏幕截图，不包含状态栏
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
 
 
 
@@ -110,7 +138,7 @@
   };
 </script>
 
-  <title> 一个很严肃的人 </title>
+  <title> 常用工具类 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,9 +168,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,9 +278,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -274,10 +300,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/13/常用工具类/" itemprop="url">
-                  常用工具类
-                </a>
+                常用工具类
               
             
           </h1>
@@ -324,9 +347,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>这里总结了一些我在项目开发中常用到的一些工具类。</p>
 </blockquote>
 <h2 id="屏幕相关的辅助类"><a href="#屏幕相关的辅助类" class="headerlink" title="屏幕相关的辅助类"></a>屏幕相关的辅助类</h2><ul>
@@ -381,771 +402,79 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">import android.text.TextUtils;</span><br><span class="line">import android.util.Log;</span><br><span class="line"></span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">	public static final int VERBOSE = 1;</span><br><span class="line">	public static final int DEBUG = 2;</span><br><span class="line">	public static final int INFO = 3;</span><br><span class="line">	public static final int WARN = 4;</span><br><span class="line">	public static final int ERROR = 5;</span><br><span class="line">	public static final int NOTHING = 6;</span><br><span class="line">	public static final int LEVEL = VERBOSE;</span><br><span class="line">	public static final String SEPARATOR = &quot;,&quot;;</span><br><span class="line"></span><br><span class="line">	public static void v(String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= VERBOSE) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			String tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			Log.v(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void v(String tag, String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= VERBOSE) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			if (TextUtils.isEmpty(tag)) &#123;</span><br><span class="line">				tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			&#125;</span><br><span class="line">			Log.v(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void d(String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= DEBUG) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			String tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			Log.d(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void d(String tag, String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= DEBUG) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			if (TextUtils.isEmpty(tag)) &#123;</span><br><span class="line">				tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			&#125;</span><br><span class="line">			Log.d(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void i(String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= INFO) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			String tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			Log.i(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void i(String tag, String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= INFO) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			if (TextUtils.isEmpty(tag)) &#123;</span><br><span class="line">				tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			&#125;</span><br><span class="line">			Log.i(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void w(String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= WARN) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			String tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			Log.w(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void w(String tag, String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= WARN) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			if (TextUtils.isEmpty(tag)) &#123;</span><br><span class="line">				tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			&#125;</span><br><span class="line">			Log.w(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void e(String tag, String message) &#123;</span><br><span class="line">		if (LEVEL &lt;= ERROR) &#123;</span><br><span class="line">			StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];</span><br><span class="line">			if (TextUtils.isEmpty(tag)) &#123;</span><br><span class="line">				tag = getDefaultTag(stackTraceElement);</span><br><span class="line">			&#125;</span><br><span class="line">			Log.e(tag, getLogInfo(stackTraceElement) + message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 获取默认的TAG名称. </span><br><span class="line">	 * 比如在MainActivity.java中调用了日志输出. </span><br><span class="line">	 * 则TAG为MainActivity</span><br><span class="line">	 */</span><br><span class="line">	public static String getDefaultTag(StackTraceElement stackTraceElement) &#123;</span><br><span class="line">		String fileName = stackTraceElement.getFileName();</span><br><span class="line">		String stringArray[] = fileName.split(&quot;\\.&quot;);</span><br><span class="line">		String tag = stringArray[0];</span><br><span class="line">		return tag;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 输出日志所包含的信息</span><br><span class="line">	 */</span><br><span class="line">	public static String getLogInfo(StackTraceElement stackTraceElement) &#123;</span><br><span class="line">		StringBuilder logInfoStringBuilder = new StringBuilder();</span><br><span class="line">		// 获取线程名</span><br><span class="line">		String threadName = Thread.currentThread().getName();</span><br><span class="line">		// 获取线程ID</span><br><span class="line">		long threadID = Thread.currentThread().getId();</span><br><span class="line">		// 获取文件名.即xxx.java</span><br><span class="line">		String fileName = stackTraceElement.getFileName();</span><br><span class="line">		// 获取类名.即包名+类名</span><br><span class="line">		String className = stackTraceElement.getClassName();</span><br><span class="line">		// 获取方法名称</span><br><span class="line">		String methodName = stackTraceElement.getMethodName();</span><br><span class="line">		// 获取生日输出行数</span><br><span class="line">		int lineNumber = stackTraceElement.getLineNumber();</span><br><span class="line"></span><br><span class="line">		logInfoStringBuilder.append(&quot;[ &quot;);</span><br><span class="line">		logInfoStringBuilder.append(&quot;threadID=&quot; + threadID).append(SEPARATOR);</span><br><span class="line">		logInfoStringBuilder.append(&quot;threadName=&quot; + threadName).append(SEPARATOR);</span><br><span class="line">		logInfoStringBuilder.append(&quot;fileName=&quot; + fileName).append(SEPARATOR);</span><br><span class="line">		logInfoStringBuilder.append(&quot;className=&quot; + className).append(SEPARATOR);</span><br><span class="line">		logInfoStringBuilder.append(&quot;methodName=&quot; + methodName).append(SEPARATOR);</span><br><span class="line">		logInfoStringBuilder.append(&quot;lineNumber=&quot; + lineNumber);</span><br><span class="line">		logInfoStringBuilder.append(&quot; ] &quot;);</span><br><span class="line">		return logInfoStringBuilder.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/13/加密/" itemprop="url">
-                  加密
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-13T19:26:26+08:00" content="2016-06-13">
-              2016-06-13
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/13/加密/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/加密/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Utils/" rel="tag">#Utils</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>加密可以保证数的安全性</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/13/加密/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/13/加密/" rel="next" title="加密">
+                <i class="fa fa-chevron-left"></i> 加密
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/13/图片的三级缓存/" itemprop="url">
-                  图片的三级缓存
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-13T19:00:05+08:00" content="2016-06-13">
-              2016-06-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/13/图片的三级缓存/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/图片的三级缓存/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>三级缓存策略，使用网络、本地、内存三级缓存图片，一方面来减少不必要的网络交互，避免浪费流量，另一方面内存缓存速度最快 &gt; 本地缓存 &gt; 网络缓存,使用三级缓存提高加载速度。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/13/图片的三级缓存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2016/06/13/常用工具类/"
+     data-title="常用工具类"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/13/常用工具类/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/12/关于MVP的一点事/" itemprop="url">
-                  关于MVP的一点事
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-12T15:45:02+08:00" content="2016-06-12">
-              2016-06-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/12/关于MVP的一点事/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/12/关于MVP的一点事/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/12/关于MVP的一点事/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/06/Android网络请求/" itemprop="url">
-                  Android网络请求
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-06T12:36:38+08:00" content="2016-06-06">
-              2016-06-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/06/Android网络请求/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/Android网络请求/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>安卓开发中网络请求是无法避免。不管你是加载图片，请求API数据还是从因特网上获得一个字节，你都是在使用网络。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/06/Android网络请求/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/05/搭建一个优秀的Android项目/" itemprop="url">
-                  搭建一个优秀的Android项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T11:37:13+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/05/搭建一个优秀的Android项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/搭建一个优秀的Android项目/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/05/搭建一个优秀的Android项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/05/Android自定义组合控件/" itemprop="url">
-                  Android自定义组合控件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T10:35:25+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/05/Android自定义组合控件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/Android自定义组合控件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/05/Android自定义组合控件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/Hexo使用心得/" itemprop="url">
-                  Hexo使用心得
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T15:25:27+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/Hexo使用心得/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Hexo使用心得/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/Hexo使用心得/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1153,6 +482,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/13/常用工具类/"
+           data-title="常用工具类" data-url="http://yoursite.com/2016/06/13/常用工具类/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1172,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -1227,6 +573,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕相关的辅助类"><span class="nav-number">1.</span> <span class="nav-text">屏幕相关的辅助类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App辅助类"><span class="nav-number">2.</span> <span class="nav-text">App辅助类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ToastUtils"><span class="nav-number">3.</span> <span class="nav-text">ToastUtils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SharedPreferences工具类"><span class="nav-number">4.</span> <span class="nav-text">SharedPreferences工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位转换类-DensityUtils"><span class="nav-number">5.</span> <span class="nav-text">单位转换类 DensityUtils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SD卡相关的辅助类"><span class="nav-number">6.</span> <span class="nav-text">SD卡相关的辅助类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LogUtils日志打印类"><span class="nav-number">7.</span> <span class="nav-text">LogUtils日志打印类</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1323,6 +680,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
