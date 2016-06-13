@@ -1,0 +1,829 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Utils," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="三级缓存策略，使用网络、本地、内存三级缓存图片，一方面来减少不必要的网络交互，避免浪费流量，另一方面内存缓存速度最快 &amp;gt; 本地缓存 &amp;gt; 网络缓存,使用三级缓存提高加载速度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片的三级缓存">
+<meta property="og:url" content="http://yoursite.com/2016/06/13/图片的三级缓存/index.html">
+<meta property="og:site_name" content="一个很严肃的人">
+<meta property="og:description" content="三级缓存策略，使用网络、本地、内存三级缓存图片，一方面来减少不必要的网络交互，避免浪费流量，另一方面内存缓存速度最快 &amp;gt; 本地缓存 &amp;gt; 网络缓存,使用三级缓存提高加载速度。">
+<meta property="og:updated_time" content="2016-06-13T11:22:02.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片的三级缓存">
+<meta name="twitter:description" content="三级缓存策略，使用网络、本地、内存三级缓存图片，一方面来减少不必要的网络交互，避免浪费流量，另一方面内存缓存速度最快 &amp;gt; 本地缓存 &amp;gt; 网络缓存,使用三级缓存提高加载速度。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 图片的三级缓存 | 一个很严肃的人 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=56604233";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个很严肃的人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                图片的三级缓存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-13T19:00:05+08:00" content="2016-06-13">
+              2016-06-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/13/图片的三级缓存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/图片的三级缓存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>三级缓存策略，使用网络、本地、内存三级缓存图片，一方面来减少不必要的网络交互，避免浪费流量，另一方面内存缓存速度最快 &gt; 本地缓存 &gt; 网络缓存,使用三级缓存提高加载速度。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首次加载图片时，首次请求某张图片时，通过网络交互获取图片，并将图片保存至本地SD卡和内存中。只好再次访问图片是，优先访问内存中的图片缓存，若内存中没有，则加载本地SD卡中的图片。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h4 id="自定义的图片缓存工具类（MyBitmapUtils）"><a href="#自定义的图片缓存工具类（MyBitmapUtils）" class="headerlink" title="自定义的图片缓存工具类（MyBitmapUtils）"></a>自定义的图片缓存工具类（MyBitmapUtils）</h4><ul>
+<li><p>通过new MyBitmapUtils().display(ImageView ivPic, String url) 提供给外部方法进行图片缓存的接口</p>
+</li>
+<li><p>参数含义：ivPic 用于显示图片的ImageView，url 获取图片的网络地址</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 自定义的BitmapUtils,实现三级缓存</span><br><span class="line">   */</span><br><span class="line">  public class MyBitmapUtils &#123;</span><br><span class="line"></span><br><span class="line">      private NetCacheUtils mNetCacheUtils;</span><br><span class="line">      private LocalCacheUtils mLocalCacheUtils;</span><br><span class="line">      private MemoryCacheUtils mMemoryCacheUtils;</span><br><span class="line"></span><br><span class="line">      public MyBitmapUtils()&#123;</span><br><span class="line">          mMemoryCacheUtils=new MemoryCacheUtils();</span><br><span class="line">          mLocalCacheUtils=new LocalCacheUtils();</span><br><span class="line">          mNetCacheUtils=new NetCacheUtils(mLocalCacheUtils,mMemoryCacheUtils);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      public void disPlay(ImageView ivPic, String url) &#123;</span><br><span class="line">          ivPic.setImageResource(R.mipmap.pic_item_list_default);</span><br><span class="line">          Bitmap bitmap;</span><br><span class="line">          //内存缓存</span><br><span class="line">          bitmap=mMemoryCacheUtils.getBitmapFromMemory(url);</span><br><span class="line">          if (bitmap!=null)&#123;</span><br><span class="line">              ivPic.setImageBitmap(bitmap);</span><br><span class="line">              System.out.println(&quot;从内存获取图片啦.....&quot;);</span><br><span class="line">              return;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          //本地缓存</span><br><span class="line">          bitmap = mLocalCacheUtils.getBitmapFromLocal(url);</span><br><span class="line">          if(bitmap !=null)&#123;</span><br><span class="line">              ivPic.setImageBitmap(bitmap);</span><br><span class="line">              System.out.println(&quot;从本地获取图片啦.....&quot;);</span><br><span class="line">              //从本地获取图片后,保存至内存中</span><br><span class="line">              mMemoryCacheUtils.setBitmapToMemory(url,bitmap);</span><br><span class="line">              return;</span><br><span class="line">          &#125;</span><br><span class="line">          //网络缓存</span><br><span class="line">          mNetCacheUtils.getBitmapFromNet(ivPic,url);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="网络缓存（NetCacheUtils）"><a href="#网络缓存（NetCacheUtils）" class="headerlink" title="网络缓存（NetCacheUtils）"></a>网络缓存（NetCacheUtils）</h4><ul>
+<li><p>为了避免内存溢出的问题，我们可以在获取网络图片后。对其进行图片压缩</p>
+</li>
+<li><p>此处网络请求中用到的是AsyncTask+HttpURLConnection来进行异步数据的加载。</p>
+</li>
+<li><p>实际使用中可更换为第三方框架加载图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 三级缓存之网络缓存</span><br><span class="line">   */</span><br><span class="line">  public class NetCacheUtils &#123;</span><br><span class="line"></span><br><span class="line">      private LocalCacheUtils mLocalCacheUtils;</span><br><span class="line">      private MemoryCacheUtils mMemoryCacheUtils;</span><br><span class="line"></span><br><span class="line">      public NetCacheUtils(LocalCacheUtils localCacheUtils, MemoryCacheUtils memoryCacheUtils) &#123;</span><br><span class="line">          mLocalCacheUtils = localCacheUtils;</span><br><span class="line">          mMemoryCacheUtils = memoryCacheUtils;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 从网络下载图片</span><br><span class="line">       * @param ivPic 显示图片的imageview</span><br><span class="line">       * @param url   下载图片的网络地址</span><br><span class="line">       */</span><br><span class="line">      public void getBitmapFromNet(ImageView ivPic, String url) &#123;</span><br><span class="line">          new BitmapTask().execute(ivPic, url);//启动AsyncTask</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * AsyncTask就是对handler和线程池的封装</span><br><span class="line">       * 第一个泛型:参数类型</span><br><span class="line">       * 第二个泛型:更新进度的泛型</span><br><span class="line">       * 第三个泛型:onPostExecute的返回结果</span><br><span class="line">       */</span><br><span class="line">      class BitmapTask extends AsyncTask&lt;Object, Void, Bitmap&gt; &#123;</span><br><span class="line"></span><br><span class="line">          private ImageView ivPic;</span><br><span class="line">          private String url;</span><br><span class="line"></span><br><span class="line">          /**</span><br><span class="line">           * 后台耗时操作,存在于子线程中</span><br><span class="line">           * @param params</span><br><span class="line">           * @return</span><br><span class="line">           */</span><br><span class="line">          @Override</span><br><span class="line">          protected Bitmap doInBackground(Object[] params) &#123;</span><br><span class="line">              ivPic = (ImageView) params[0];</span><br><span class="line">              url = (String) params[1];</span><br><span class="line"></span><br><span class="line">              return downLoadBitmap(url);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          /**</span><br><span class="line">           * 更新进度,在主线程中</span><br><span class="line">           * @param values</span><br><span class="line">           */</span><br><span class="line">          @Override</span><br><span class="line">          protected void onProgressUpdate(Void[] values) &#123;</span><br><span class="line">              super.onProgressUpdate(values);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          /**</span><br><span class="line">           * 耗时方法结束后执行该方法,主线程中</span><br><span class="line">           * @param result</span><br><span class="line">           */</span><br><span class="line">          @Override</span><br><span class="line">          protected void onPostExecute(Bitmap result) &#123;</span><br><span class="line">              if (result != null) &#123;</span><br><span class="line">                  ivPic.setImageBitmap(result);</span><br><span class="line">                  System.out.println(&quot;从网络缓存图片啦.....&quot;);</span><br><span class="line"></span><br><span class="line">                  //从网络获取图片后,保存至本地缓存</span><br><span class="line">                  mLocalCacheUtils.setBitmapToLocal(url, result);</span><br><span class="line">                  //保存至内存中</span><br><span class="line">                  mMemoryCacheUtils.setBitmapToMemory(url, result);</span><br><span class="line"></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 网络下载图片</span><br><span class="line">       * @param url</span><br><span class="line">       * @return</span><br><span class="line">       */</span><br><span class="line">      private Bitmap downLoadBitmap(String url) &#123;</span><br><span class="line">          HttpURLConnection conn = null;</span><br><span class="line">          try &#123;</span><br><span class="line">              conn = (HttpURLConnection) new URL(url).openConnection();</span><br><span class="line">              conn.setConnectTimeout(5000);</span><br><span class="line">              conn.setReadTimeout(5000);</span><br><span class="line">              conn.setRequestMethod(&quot;GET&quot;);</span><br><span class="line"></span><br><span class="line">              int responseCode = conn.getResponseCode();</span><br><span class="line">              if (responseCode == 200) &#123;</span><br><span class="line">                  //图片压缩</span><br><span class="line">                  BitmapFactory.Options options = new BitmapFactory.Options();</span><br><span class="line">                  options.inSampleSize=2;//宽高压缩为原来的1/2</span><br><span class="line">                  options.inPreferredConfig=Bitmap.Config.ARGB_4444;</span><br><span class="line">                  Bitmap bitmap = BitmapFactory.decodeStream(conn.getInputStream(),null,options);</span><br><span class="line">                  return bitmap;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125; catch (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125; finally &#123;</span><br><span class="line">              conn.disconnect();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          return null;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="本地缓存（LocalCacheUtils）"><a href="#本地缓存（LocalCacheUtils）" class="headerlink" title="本地缓存（LocalCacheUtils）"></a>本地缓存（LocalCacheUtils）</h4><ul>
+<li><p>在初次通过网络获取图片后，我们可以在本地SD卡中将图片保存起来</p>
+</li>
+<li><p>可以使用MD5加密图片的网络地址，来作为图片的名称保存</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 三级缓存之本地缓存</span><br><span class="line">   */</span><br><span class="line">  public class LocalCacheUtils &#123;</span><br><span class="line"></span><br><span class="line">      private static final String CACHE_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/WerbNews&quot;;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 从本地读取图片</span><br><span class="line">       * @param url</span><br><span class="line">       */</span><br><span class="line">      public Bitmap getBitmapFromLocal(String url)&#123;</span><br><span class="line">          String fileName = null;//把图片的url当做文件名,并进行MD5加密</span><br><span class="line">          try &#123;</span><br><span class="line">              fileName = MD5Encoder.encode(url);</span><br><span class="line">              File file=new File(CACHE_PATH,fileName);</span><br><span class="line"></span><br><span class="line">              Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));</span><br><span class="line"></span><br><span class="line">              return bitmap;</span><br><span class="line">          &#125; catch (Exception e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          return null;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 从网络获取图片后,保存至本地缓存</span><br><span class="line">       * @param url</span><br><span class="line">       * @param bitmap</span><br><span class="line">       */</span><br><span class="line">      public void setBitmapToLocal(String url,Bitmap bitmap)&#123;</span><br><span class="line">          try &#123;</span><br><span class="line">              String fileName = MD5Encoder.encode(url);//把图片的url当做文件名,并进行MD5加密</span><br><span class="line">              File file=new File(CACHE_PATH,fileName);</span><br><span class="line"></span><br><span class="line">              //通过得到文件的父文件,判断父文件是否存在</span><br><span class="line">              File parentFile = file.getParentFile();</span><br><span class="line">              if (!parentFile.exists())&#123;</span><br><span class="line">                  parentFile.mkdirs();</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">              //把图片保存至本地</span><br><span class="line">              bitmap.compress(Bitmap.CompressFormat.JPEG,100,new FileOutputStream(file));</span><br><span class="line">          &#125; catch (Exception e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="内存缓存（MemoryCacheUtils）"><a href="#内存缓存（MemoryCacheUtils）" class="headerlink" title="内存缓存（MemoryCacheUtils）"></a>内存缓存（MemoryCacheUtils）</h4><ul>
+<li><p>进行内存缓存，就一定要注意一个问题，那就是内存溢出（OutOfMemory）</p>
+</li>
+<li><p>为什么会造成内存溢出？</p>
+<ul>
+<li>Android 虚拟机默认分配给每个App 16M的内存空间，真机会比16M大，但任会出现内存溢出的情况</li>
+<li>Android 系统在加载图片时是解析每一个像素的信息，再把每一个像素全部保存至内存中</li>
+<li>图片大小 = 图片的总像素 * 每个像素占用的大小<blockquote>
+<p>单色图：每个像素占用1/8个字节，16色图：每个像素占用1/2个字节，256色图：每个像素占用1个字节，24位图：每个像素占用3个字节（常见的rgb构成的图片）</p>
+</blockquote>
+</li>
+<li>例如一张1920x1080的JPG图片，在Android 系统中是以ARGB格式解析的，即一个像素需占用4个字节，图片的大小=1920x1080x4=7M</li>
+</ul>
+</li>
+<li><p>实现方法：</p>
+<ul>
+<li>通过 HashMap<string,bitmap>键值对的方式保存图片，key为地址，value为图片对象，但因是强引用对象，很容易造成内存溢出，可以尝试SoftReference软引用对象</string,bitmap></li>
+<li>通过 HashMap<string, softreference<bitmap="">&gt;SoftReference 为软引用对象（GC垃圾回收会自动回收软引用对象），但在Android2.3+后，系统会优先考虑回收弱引用对象，官方提出使用LruCache</string,></li>
+<li>通过 LruCache<string,bitmap> least recentlly use 最少最近使用算法<br>会将内存控制在一定的大小内, 超出最大值时会自动回收, 这个最大值开发者自己定.</string,bitmap></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 三级缓存之内存缓存</span><br><span class="line">   */</span><br><span class="line">  public class MemoryCacheUtils &#123;</span><br><span class="line"></span><br><span class="line">      // private HashMap&lt;String,Bitmap&gt; mMemoryCache=new HashMap&lt;&gt;();//1.因为强引用,容易造成内存溢出，所以考虑使用下面弱引用的方法</span><br><span class="line">      // private HashMap&lt;String, SoftReference&lt;Bitmap&gt;&gt; mMemoryCache = new HashMap&lt;&gt;();//2.因为在Android2.3+后,系统会优先考虑回收弱引用对象,官方提出使用LruCache</span><br><span class="line">      private LruCache&lt;String,Bitmap&gt; mMemoryCache;</span><br><span class="line"></span><br><span class="line">      public MemoryCacheUtils()&#123;</span><br><span class="line">          long maxMemory = Runtime.getRuntime().maxMemory()/8;//得到手机最大允许内存的1/8,即超过指定内存,则开始回收</span><br><span class="line">          //需要传入允许的内存最大值,虚拟机默认内存16M,真机不一定相同</span><br><span class="line">          mMemoryCache=new LruCache&lt;String,Bitmap&gt;((int) maxMemory)&#123;</span><br><span class="line">              //用于计算每个条目的大小</span><br><span class="line">              @Override</span><br><span class="line">              protected int sizeOf(String key, Bitmap value) &#123;</span><br><span class="line">                  int byteCount = value.getByteCount();</span><br><span class="line">                  return byteCount;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 从内存中读图片</span><br><span class="line">       * @param url</span><br><span class="line">       */</span><br><span class="line">      public Bitmap getBitmapFromMemory(String url) &#123;</span><br><span class="line">          //Bitmap bitmap = mMemoryCache.get(url);//1.强引用方法</span><br><span class="line">          /*2.弱引用方法</span><br><span class="line">          SoftReference&lt;Bitmap&gt; bitmapSoftReference = mMemoryCache.get(url);</span><br><span class="line">          if (bitmapSoftReference != null) &#123;</span><br><span class="line">              Bitmap bitmap = bitmapSoftReference.get();</span><br><span class="line">              return bitmap;</span><br><span class="line">          &#125;</span><br><span class="line">          */</span><br><span class="line">          Bitmap bitmap = mMemoryCache.get(url);</span><br><span class="line">          return bitmap;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      /**</span><br><span class="line">       * 往内存中写图片</span><br><span class="line">       * @param url</span><br><span class="line">       * @param bitmap</span><br><span class="line">       */</span><br><span class="line">      public void setBitmapToMemory(String url, Bitmap bitmap) &#123;</span><br><span class="line">          //mMemoryCache.put(url, bitmap);//1.强引用方法</span><br><span class="line">          /*2.弱引用方法</span><br><span class="line">          mMemoryCache.put(url, new SoftReference&lt;&gt;(bitmap));</span><br><span class="line">          */</span><br><span class="line">          mMemoryCache.put(url,bitmap);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Utils/" rel="tag">#Utils</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/12/关于MVP的一点事/" rel="next" title="关于MVP的一点事">
+                <i class="fa fa-chevron-left"></i> 关于MVP的一点事
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/13/图片的三级缓存/"
+     data-title="图片的三级缓存"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/13/图片的三级缓存/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/13/图片的三级缓存/"
+           data-title="图片的三级缓存" data-url="http://yoursite.com/2016/06/13/图片的三级缓存/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="一个很严肃的人" />
+          <p class="site-author-name" itemprop="name">一个很严肃的人</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shun99" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义的图片缓存工具类（MyBitmapUtils）"><span class="nav-number">2.0.1.</span> <span class="nav-text">自定义的图片缓存工具类（MyBitmapUtils）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络缓存（NetCacheUtils）"><span class="nav-number">2.0.2.</span> <span class="nav-text">网络缓存（NetCacheUtils）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地缓存（LocalCacheUtils）"><span class="nav-number">2.0.3.</span> <span class="nav-text">本地缓存（LocalCacheUtils）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存缓存（MemoryCacheUtils）"><span class="nav-number">2.0.4.</span> <span class="nav-text">内存缓存（MemoryCacheUtils）</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个很严肃的人</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shun99"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
