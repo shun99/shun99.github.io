@@ -4,6 +4,137 @@
   
     
     <entry>
+      <title><![CDATA[Android开发缓存文件，下载文件]]></title>
+      <url>http://yoursite.com/2016/08/08/Android%E5%BC%80%E5%8F%91%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>开发中缓存，下载是避免不了的，优秀，负责的码农一定会统一设置缓存，下载路径，便于管理，例如清除缓存。Android手机里面，缓存的位置分为两类，一类是Internal Storage，即内部存储，另外一类是External Storage，即外部存储。比较老的手机，有一个手机内部存储，还有一个SD卡存储，就是分别对应这两种存储位置，因为以前的SD卡是可以扩展的，即可拆卸的，所以可以用是否可拆卸作为内外存储的分类标准。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在Android手机里面，缓存的位置分为两类，一类是Internal Storage，即内部存储，另外一类是External Storage，即外部存储。</p>
+<p>比较老的手机，有一个手机内部存储，还有一个SD卡存储，就是分别对应这两种存储位置，因为以前的SD卡是可以扩展的，即可拆卸的，所以可以用是否可拆卸作为内外存储的分类标准。</p>
+<p>但是现在最新的设备，比如小米、锤子、华为等，都取消了可拆卸的SD卡，直接与机身焊接在一起，分为16G、32G版本，所以现在内外存储的分类不再以是否可拆卸作为标准，而是以下面的几方面作为新的标准：</p>
+<p><strong>内部存储</strong></p>
+<ul>
+<li>总是可用的</li>
+<li>这里的文件默认是只能被你的app所访问的。</li>
+<li>当用户卸载你的app的时候，系统会把internal里面的相关文件都清除干净。</li>
+<li>Internal是在你想确保不被用户与其他app所访问的最佳存储区域。</li>
+</ul>
+<p><strong>外部存储</strong></p>
+<ul>
+<li>并不总是可用的，因为用户可以选择把这部分作为USB存储模式，这样就不可以访问了。</li>
+<li>是大家都可以访问的，因此保存到这里的文件是失去访问控制权限的。</li>
+<li>当用户卸载你的app时，系统仅仅会删除external根目录（getExternalFilesDir()）下的相关文件。</li>
+<li>External是在你不需要严格的访问权限并且你希望这些文件能够被其他app所共享或者是允许用户通过电脑访问时的最佳存储区域。</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>来自</th>
+<th>内部外部存储</th>
+<th>路径</th>
+<th>私有</th>
+<th>自动删除</th>
+<th>清除缓存</th>
+<th>用户卸载</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getFileDir</td>
+<td>Context</td>
+<td>内部存储</td>
+<td>/data/data/pacgage_name/files</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>getCacheDir</td>
+<td>-</td>
+<td>内部存储</td>
+<td>/data/data/package_name/cache</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>getExternalFilesDir</td>
+<td>-</td>
+<td>外部存储</td>
+<td>/sdcard/Android/date/package_name/files</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>getExternalCacheDir</td>
+<td>-</td>
+<td>外部存储</td>
+<td>/sdcard/Android/date/package_name/cache</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>getExternalStorageDirectory</td>
+<td>Environment</td>
+<td>外部存储</td>
+<td>SD卡根路径</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>getExternalStoragePublicDirectory</td>
+<td>Environment</td>
+<td>外部存储</td>
+<td>SD卡根路径+(指定位置)</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>清除数据、清除缓存，卸载的区别</p>
+<ul>
+<li>清除数据主要是清除用户配置，比如SharedPreferences、数据库等等，这些数据都是在程序运行过程中保存的用户配置信息，清除数据后，下次进入程序就和第一次进入程序时一样</li>
+<li>缓存是程序运行时的临时存储空间，它可以存放从网络下载的临时图片，从用户的角度出发清除缓存对用户并没有太大的影响，但是清除缓存后用户再次使用该APP时，由于本地缓存已经被清理，所有的数据需要重新从网络上获取。为了在清除缓存的时候能够正常清除与应用相关的缓存，请将缓存文件存放在getCacheDir()或者 getExternalCacheDir()路径下。</li>
+<li>当你的应用在被用户卸载后，SDCard/Android/data/你的应用的包名/ 这个目录下的所有文件都会被删除，不会留下垃圾信息</li>
+</ul>
+</blockquote>
+<p>感谢 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1208/3759.html" target="_blank" rel="external">缓存文件可以放在哪里？它们各自的特点是什么？</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android开发一些不错的资料]]></title>
+      <url>http://yoursite.com/2016/08/08/Android%E5%BC%80%E5%8F%91%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E8%B5%84%E6%96%99/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>最近查资料发现了很多不错的网站，习惯性的放在浏览器的书签中，可是慢慢当收集的较多时，想对每个网站做点介绍方便以后查看，杯具了。。。。所以还是建个页面吧，也方便分享。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="开源框架"><a href="#开源框架" class="headerlink" title="开源框架"></a>开源框架</h2><h3 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h3><ul>
+<li><a href="http://mrfu.me/2016/02/27/Glide_Getting_Started/" target="_blank" rel="external">Glide大全</a> 这几乎搜集了关于Glide的所有用法，而且目录特别清晰。</li>
+<li><a href="http://www.jianshu.com/p/96cb9272c843/comments/2466097" target="_blank" rel="external">Glide使用记录与疑惑</a> 补充个<strong>自定义缓存目录</strong></li>
+</ul>
+<h2 id="工具类库"><a href="#工具类库" class="headerlink" title="工具类库"></a>工具类库</h2><ul>
+<li><a href="https://github.com/litesuits/android-common" target="_blank" rel="external">android-common</a></li>
+<li><a href="https://github.com/knightliao/common-utils" target="_blank" rel="external">common-utils</a>介绍说来自百度</li>
+<li><a href="http://www.jianshu.com/p/3e3612c174bc" target="_blank" rel="external">android常用工具类库整理</a>dongjunkun总结的</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[常用工具类]]></title>
       <url>http://yoursite.com/2016/06/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
       <content type="html"><![CDATA[<blockquote>
