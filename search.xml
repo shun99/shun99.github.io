@@ -617,10 +617,15 @@
 <li><p>3 Hexo随后会自动在目标文件夹建立网站所需要的所有文件。现在我们已经搭建起本地的hexo博客了，执行以下命令(在Hexo项目的根目录下)，然后到浏览器输入localhost:4000看看。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>4 更新主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/cnfeat/cnfeat.git themes/jacman</span><br></pre></td></tr></table></figure>
+<li><p>4 将本地文件部署到 GitHub<br>修改 Hexo 中的 config.yml配置文件，找到deploy 标签。注意：冒号后面要加上一个空格，否则会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/shun99/shun99.github.io.git #是固定格式，不能随意更改</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>5 启用cnfeat的主题<br>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。同时请设置stylus属性中的compress值为true。</p>
+</ul>
+<p>将其 deploy 到仓库中<br>打开 Git Shell 进入创建的文件夹，依次输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>如果出现下图错误，不要着急：<br><img src="/uploads/hexosyxd1.png" alt=""><br>将deploy 的 type 改成 git，然后再在 Git Shell 中运行以下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>再重新来一遍：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>5 域名，文章链接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修改Hexo目录下的config.yml配置文件</span><br><span class="line">url: http://xxx #你的博客网址</span><br><span class="line">root: /    #博客跟目录，如果你的博客在网址的二级目录下，在这里填上</span><br><span class="line">permalink: /blog/:title.html #:year/:month/:day/:title/ 原来跟着年月日，建议缩短为一个 blog目录加标题，以后取文章标题的时候不要重复就可以。</span><br><span class="line">permalink_defaults: #可以不填</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>有关头像陪著，等等其他的问题请参考下面的资料<br><a href="http://theme-next.iissnan.com/getting-started.html#avatar-setting" target="_blank" rel="external">Next主题使用说明书</a><br><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客–简明Github Pages与Hexo教程</a></p>
