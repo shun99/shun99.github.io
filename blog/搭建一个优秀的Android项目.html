@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,Utils," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="加密可以保证数的安全性">
+<meta name="description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="加密">
-<meta property="og:url" content="http://yoursite.com/2016/06/13/加密/index.html">
+<meta property="og:title" content="搭建一个优秀的Android项目">
+<meta property="og:url" content="http://shun99.github.io/blog/搭建一个优秀的Android项目.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="加密可以保证数的安全性">
-<meta property="og:updated_time" content="2016-06-13T11:28:54.870Z">
+<meta property="og:description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
+<meta property="og:updated_time" content="2016-06-05T04:03:27.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="加密">
-<meta name="twitter:description" content="加密可以保证数的安全性">
+<meta name="twitter:title" content="搭建一个优秀的Android项目">
+<meta name="twitter:description" content="很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title> 加密 | 一个很严肃的人 </title>
+  <title> 搭建一个优秀的Android项目 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +274,7 @@
             
             
               
-                加密
+                搭建一个优秀的Android项目
               
             
           </h1>
@@ -286,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-13T19:26:26+08:00" content="2016-06-13">
-              2016-06-13
+            <time itemprop="dateCreated" datetime="2016-06-05T11:37:13+08:00" content="2016-06-05">
+              2016-06-05
             </time>
           </span>
 
@@ -297,8 +297,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/13/加密/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/加密/" itemprop="commentsCount"></span>
+                <a href="/blog/搭建一个优秀的Android项目.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/搭建一个优秀的Android项目.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,10 +322,49 @@
 
       
         <blockquote>
-<p>加密可以保证数的安全性</p>
+<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line">public class MD5Encoder &#123;</span><br><span class="line"></span><br><span class="line">	public static String encode(String string) throws Exception &#123;</span><br><span class="line">		byte[] hash = MessageDigest.getInstance(&quot;MD5&quot;).digest(</span><br><span class="line">				string.getBytes(&quot;UTF-8&quot;));</span><br><span class="line">		StringBuilder hex = new StringBuilder(hash.length * 2);</span><br><span class="line">		for (byte b : hash) &#123;</span><br><span class="line">			if ((b &amp; 0xFF) &lt; 0x10) &#123;</span><br><span class="line">				hex.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			hex.append(Integer.toHexString(b &amp; 0xFF));</span><br><span class="line">		&#125;</span><br><span class="line">		return hex.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>MVP是不可回避的，Android本身也遵循MVP结构，这里我想谈谈我在开发过程中常用的结构。</p>
+<ul>
+<li>base —- 自定义的父类，如BaseActivity, 自定义接口，BaseApplication等。</li>
+<li>global —- 全局字段相关的类GlobalConstants，格式转化FormFactory</li>
+<li>date —- 数据请求</li>
+<li>utils —-工具类集合</li>
+<li>widgets —- 各个可复用View集合</li>
+</ul>
+<p>你会发现没有UI，我一般是将UI根据功能模块划分例如用户模块</p>
+<ul>
+<li>Account<br>&emsp;activity<br>&emsp;fragment<br>&emsp;…</li>
+</ul>
+<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ul>
+<li>先在color.xml中写好需要的颜色：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;color name=&quot;Orange&quot;&gt;#ff5722&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple&quot;&gt;#673AB7&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;DeepPurple900&quot;&gt;#311B92&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;White&quot;&gt;#fff&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray&quot;&gt;#888888&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray100&quot;&gt;#dddddd&lt;/color&gt;</span><br><span class="line">    &lt;color name=&quot;Gray600&quot;&gt;#999999&lt;/color&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意color.xml是配色表。应该是描述颜色而不是对字体颜色，背景颜色等的定义。这样能防止相近的颜色重复定义。而导致界面颜色不统一。</p>
+<ul>
+<li>在style.xml里定义主题：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme.Base&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">    &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/DeepPurple&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/DeepPurple900&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/Orange&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在res目录下，创建一个values-v21目录，再创建一个style.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;AppTheme.Base&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:statusBarColor&quot;&gt;?colorPrimaryDark&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="依赖库与SDK"><a href="#依赖库与SDK" class="headerlink" title="依赖库与SDK"></a>依赖库与SDK</h2><ul>
+<li>android-async-http —- 网络请求库</li>
+<li>Android-Universal-Image-Loader 异步图片加载库</li>
+<li>Volley —- 2013年Google I/O大会上推出了一个新的网络通信框架(上面两个综合体)</li>
+<li><a href="https://github.com/Jude95/RollViewPager" target="_blank" rel="external">RollViewPager</a>—-自动轮播使用方便的ViewPager</li>
+<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a>—-View注解库和配套插件<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">android-butterknife-zelezny</a></li>
+<li>Bmob —- 第三方后台，极大的提升了开发效率。</li>
+<li>Mob —- 第三方短信</li>
+<li>友盟 —- 数据统计,推送，意见反馈，自动更新，第三方分享及登录,社区</li>
+<li>科大讯飞 —- 语音的领导者</li>
+</ul>
+<h2 id="制定开发规范"><a href="#制定开发规范" class="headerlink" title="制定开发规范"></a>制定开发规范</h2><p>所有Activity继承BaseActivity<br>所有包含Fragment的Activity集成BaseFragmentActivity，BaseFragmentActivity也是集成aseActivity<br>所有Fragment继承BaseFragment<br>这样利于生命周期管理。也可以方便的全局修改。</p>
+<p>全局变量命名:以m开头。例mAdapter使用时按一个m全都出来了</p>
+<p>drawable文件下命名<br>selector_bg_1<br>shape_bg_corner_1</p>
+<p>id命名，然后用butterknife的插件生成变量会自动将下划线变成驼峰命名<br>btn_send<br>tv_name<br>list_persons<br>et_password</p>
+<p>layout布局文件命名<br>view_xxx  自定义布局<br>activity_xxx<br>include_xxx</p>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>这几篇文章在我的学习过程中提供了很大帮助<br><a href="http://www.jianshu.com/p/d9e4ddd1c530" target="_blank" rel="external">一个优秀的Android应用从建项目开始</a><br><a href="http://android.jobbole.com/82375/" target="_blank" rel="external">从零开始搭建架构实施Android项目</a></p>
+
       
     </div>
 
@@ -348,8 +387,6 @@
           
             <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/Utils/" rel="tag">#Utils</a>
-          
         </div>
       
 
@@ -357,16 +394,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/13/图片的三级缓存/" rel="next" title="图片的三级缓存">
-                <i class="fa fa-chevron-left"></i> 图片的三级缓存
+              <a href="/blog/Android自定义组合控件.html" rel="next" title="Android自定义组合控件">
+                <i class="fa fa-chevron-left"></i> Android自定义组合控件
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/13/常用工具类/" rel="prev" title="常用工具类">
-                常用工具类 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Android网络请求.html" rel="prev" title="Android网络请求">
+                Android网络请求 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,10 +419,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/13/加密/"
-     data-title="加密"
+        <div class="ds-share flat" data-thread-key="/blog/搭建一个优秀的Android项目.html"
+     data-title="搭建一个优秀的Android项目"
      data-content=""
-     data-url="http://yoursite.com/2016/06/13/加密/">
+     data-url="http://shun99.github.io/blog/搭建一个优秀的Android项目.html">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -412,8 +449,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/13/加密/"
-           data-title="加密" data-url="http://yoursite.com/2016/06/13/加密/">
+      <div class="ds-thread" data-thread-key="/blog/搭建一个优秀的Android项目.html"
+           data-title="搭建一个优秀的Android项目" data-url="http://shun99.github.io/blog/搭建一个优秀的Android项目.html">
       </div>
     
   </div>
@@ -515,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5"><span class="nav-number">1.</span> <span class="nav-text">MD5</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主题"><span class="nav-number">2.</span> <span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖库与SDK"><span class="nav-number">3.</span> <span class="nav-text">依赖库与SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制定开发规范"><span class="nav-number">4.</span> <span class="nav-text">制定开发规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">5.</span> <span class="nav-text">感谢</span></a></li></ol></div>
             
           </div>
         </section>

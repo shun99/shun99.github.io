@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="工具,API," />
+  <meta name="keywords" content="Android,Utils," />
 
 
 
@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="收集一些开发中可能用到的API
-
-
-百度API市场 包含很多常见的API">
+<meta name="description" content="加密可以保证数的安全性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="API收集">
-<meta property="og:url" content="http://yoursite.com/2016/08/09/API收集/index.html">
+<meta property="og:title" content="加密">
+<meta property="og:url" content="http://shun99.github.io/blog/加密.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="收集一些开发中可能用到的API
-
-
-百度API市场 包含很多常见的API">
-<meta property="og:updated_time" content="2016-08-09T08:46:47.839Z">
+<meta property="og:description" content="加密可以保证数的安全性">
+<meta property="og:updated_time" content="2016-06-13T11:28:54.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="API收集">
-<meta name="twitter:description" content="收集一些开发中可能用到的API
-
-
-百度API市场 包含很多常见的API">
+<meta name="twitter:title" content="加密">
+<meta name="twitter:description" content="加密可以保证数的安全性">
 
 
 
@@ -120,7 +111,7 @@
   };
 </script>
 
-  <title> API收集 | 一个很严肃的人 </title>
+  <title> 加密 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -283,7 +274,7 @@
             
             
               
-                API收集
+                加密
               
             
           </h1>
@@ -295,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-09T16:42:11+08:00" content="2016-08-09">
-              2016-08-09
+            <time itemprop="dateCreated" datetime="2016-06-13T19:26:26+08:00" content="2016-06-13">
+              2016-06-13
             </time>
           </span>
 
@@ -306,8 +297,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/09/API收集/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/API收集/" itemprop="commentsCount"></span>
+                <a href="/blog/加密.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/加密.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,12 +322,10 @@
 
       
         <blockquote>
-<p>收集一些开发中可能用到的API</p>
+<p>加密可以保证数的安全性</p>
 </blockquote>
-<ul>
-<li><a href="http://apistore.baidu.com/astore/classificationservicelist.html?isFree=1" target="_blank" rel="external">百度API市场</a> 包含很多常见的API</li>
-</ul>
-
+<a id="more"></a>
+<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line">public class MD5Encoder &#123;</span><br><span class="line"></span><br><span class="line">	public static String encode(String string) throws Exception &#123;</span><br><span class="line">		byte[] hash = MessageDigest.getInstance(&quot;MD5&quot;).digest(</span><br><span class="line">				string.getBytes(&quot;UTF-8&quot;));</span><br><span class="line">		StringBuilder hex = new StringBuilder(hash.length * 2);</span><br><span class="line">		for (byte b : hash) &#123;</span><br><span class="line">			if ((b &amp; 0xFF) &lt; 0x10) &#123;</span><br><span class="line">				hex.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			hex.append(Integer.toHexString(b &amp; 0xFF));</span><br><span class="line">		&#125;</span><br><span class="line">		return hex.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -357,9 +346,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工具/" rel="tag">#工具</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/API/" rel="tag">#API</a>
+            <a href="/tags/Utils/" rel="tag">#Utils</a>
           
         </div>
       
@@ -368,13 +357,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/09/Android系统控件一些很有用的属性/" rel="next" title="Android系统控件一些很有用的属性">
-                <i class="fa fa-chevron-left"></i> Android系统控件一些很有用的属性
+              <a href="/blog/图片的三级缓存.html" rel="next" title="图片的三级缓存">
+                <i class="fa fa-chevron-left"></i> 图片的三级缓存
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/常用工具类.html" rel="prev" title="常用工具类">
+                常用工具类 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -389,10 +382,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/08/09/API收集/"
-     data-title="API收集"
+        <div class="ds-share flat" data-thread-key="/blog/加密.html"
+     data-title="加密"
      data-content=""
-     data-url="http://yoursite.com/2016/08/09/API收集/">
+     data-url="http://shun99.github.io/blog/加密.html">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -419,8 +412,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/09/API收集/"
-           data-title="API收集" data-url="http://yoursite.com/2016/08/09/API收集/">
+      <div class="ds-thread" data-thread-key="/blog/加密.html"
+           data-title="加密" data-url="http://shun99.github.io/blog/加密.html">
       </div>
     
   </div>
@@ -522,7 +515,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5"><span class="nav-number">1.</span> <span class="nav-text">MD5</span></a></li></ol></div>
             
           </div>
         </section>
