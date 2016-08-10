@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,自定义,shape," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Shape的通常用在自定义Drawable，主要用在画一些矩形、椭圆形（圆形）、直线和圆环，可以设置边框，圆角.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义的Drawable">
+<meta property="og:url" content="http://shun99.github.io/blog/自定义的Drawable.html">
+<meta property="og:site_name" content="一个很严肃的人">
+<meta property="og:description" content="Shape的通常用在自定义Drawable，主要用在画一些矩形、椭圆形（圆形）、直线和圆环，可以设置边框，圆角.">
+<meta property="og:image" content="http://shun99.github.io/uploads/shape_2.png">
+<meta property="og:image" content="http://shun99.github.io/uploads/shape_1.png">
+<meta property="og:image" content="http://shun99.github.io/uploads/shape_3.png">
+<meta property="og:updated_time" content="2016-08-10T13:04:45.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义的Drawable">
+<meta name="twitter:description" content="Shape的通常用在自定义Drawable，主要用在画一些矩形、椭圆形（圆形）、直线和圆环，可以设置边框，圆角.">
+<meta name="twitter:image" content="http://shun99.github.io/uploads/shape_2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 自定义的Drawable | 一个很严肃的人 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0cda8550d7be1aafe73c058a81eebaf6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个很严肃的人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                自定义的Drawable
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T17:28:28+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/自定义的Drawable.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/自定义的Drawable.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		 
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Shape的通常用在自定义Drawable，主要用在画一些矩形、椭圆形（圆形）、直线和圆环，可以设置边框，圆角.<br><a id="more"></a></p>
+</blockquote>
+<h1 id="shape"><a href="#shape" class="headerlink" title="shape"></a>shape</h1><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style=&quot;font-size:18px&quot;&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line"> &lt;!--</span><br><span class="line"> 	android:shape=[&quot;rectangle&quot; | &quot;oval&quot; | &quot;line&quot; | &quot;ring&quot;]</span><br><span class="line"> 	shape的形状，默认为矩形，可以设置为矩形（rectangle）、椭圆形(oval)、线性形状(line)、环形(ring)</span><br><span class="line">  	下面的属性只有在android:shape=&quot;ring时可用：</span><br><span class="line">  	android:innerRadius 		尺寸，内环的半径。</span><br><span class="line">  	android:innerRadiusRatio	浮点型，以环的宽度比率来表示内环的半径，</span><br><span class="line">  	例如，如果android:innerRadiusRatio，表示内环半径等于环的宽度除以5，这个值是可以被覆盖的，默认为9.</span><br><span class="line">  	android:thickness			尺寸，环的厚度</span><br><span class="line">  	android:thicknessRatio		浮点型，以环的宽度比率来表示环的厚度，例如，如果android:thicknessRatio=&quot;2&quot;，</span><br><span class="line">  	那么环的厚度就等于环的宽度除以2。这个值是可以被android:thickness覆盖的，默认值是3.</span><br><span class="line">  	android:useLevel			boolean值，如果当做是LevelListDrawable使用时值为true，否则为false.</span><br><span class="line">  --&gt;</span><br><span class="line">&lt;shape</span><br><span class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">     	圆角</span><br><span class="line">     	android:radius  			整型 半径</span><br><span class="line">    	android:topLeftRadius  		整型 左上角半径</span><br><span class="line">    	android:topRightRadius  	整型 右上角半径</span><br><span class="line">    	android:bottomLeftRadius 	整型 左下角半径</span><br><span class="line">    	android:bottomRightRadius 	整型 右下角半径</span><br><span class="line">     --&gt;</span><br><span class="line">     &lt;corners  </span><br><span class="line">        android:radius=&quot;8dp&quot;</span><br><span class="line">        android:topLeftRadius=&quot;5dp&quot;</span><br><span class="line">        android:topRightRadius=&quot;15dp&quot;</span><br><span class="line">        android:bottomLeftRadius=&quot;20dp&quot;</span><br><span class="line">        android:bottomRightRadius=&quot;25dp&quot;  </span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">     &lt;!--</span><br><span class="line">     	渐变色</span><br><span class="line">     	android:startColor  颜色值 							起始颜色</span><br><span class="line">        android:endColor    颜色值 							结束颜色</span><br><span class="line">        android:centerColor 整型   							渐变中间颜色，即开始颜色与结束颜色之间的颜色</span><br><span class="line">        android:angle       整型   							渐变角度(PS：当angle=0时，渐变色是从左向右。 然后逆时针方向转，当angle=90时为从下往上。angle必须为45的整数倍)</span><br><span class="line">        android:type        [&quot;linear&quot; | &quot;radial&quot; | &quot;sweep&quot;] 渐变类型(取值：linear、radial、sweep)</span><br><span class="line">                            linear 线性渐变，这是默认设置</span><br><span class="line">                            radial 放射性渐变，以开始色为中心。</span><br><span class="line">                            sweep 扫描线式的渐变。</span><br><span class="line">       android:useLevel   	[&quot;true&quot; | &quot;false&quot;] 				如果要使用LevelListDrawable对象，就要设置为true。设置为true无渐变。false有渐变色</span><br><span class="line">       android:gradientRadius 整型 							渐变色半径.当 android:type=&quot;radial&quot; 时才使用。单独使用 android:type=&quot;radial&quot;会报错。</span><br><span class="line">       android:centerX    	整型   							渐变中心X点坐标的相对位置</span><br><span class="line">       android:centerY   	整型   							渐变中心Y点坐标的相对位置</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;gradient</span><br><span class="line">        android:startColor=&quot;#FFFF0000&quot;</span><br><span class="line">        android:endColor=&quot;#80FF00FF&quot;</span><br><span class="line">        android:angle=&quot;45&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">     	内边距，即内容与边的距离</span><br><span class="line">     	android:left  	整型 左内边距</span><br><span class="line">	    android:top   	整型 上内边距</span><br><span class="line">	    android:right  	整型 右内边距</span><br><span class="line">	    android:bottom 	整型 下内边距</span><br><span class="line">      --&gt;</span><br><span class="line">     &lt;padding</span><br><span class="line">         android:left=&quot;10dp&quot;</span><br><span class="line">         android:top=&quot;10dp&quot;</span><br><span class="line">         android:right=&quot;10dp&quot;</span><br><span class="line">         android:bottom=&quot;10dp&quot;</span><br><span class="line">         /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">    	size 大小</span><br><span class="line">    	android:width 	整型 宽度</span><br><span class="line">    	android:height 	整型 高度</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;size</span><br><span class="line">        android:width=&quot;600dp&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">    	内部填充</span><br><span class="line">    	android:color 	颜色值 填充颜色</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;solid</span><br><span class="line">        android:color=&quot;#ffff9d77&quot;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">     &lt;!--</span><br><span class="line">     	描边</span><br><span class="line">     	android:width 		整型 	描边的宽度</span><br><span class="line">    	android:color 		颜色值 	描边的颜色</span><br><span class="line">    	android:dashWidth 	整型 	表示描边的样式是虚线的宽度， 值为0时，表示为实线。值大于0则为虚线。</span><br><span class="line">    	android:dashGap  	整型 	表示描边为虚线时，虚线之间的间隔 即“ - - - - ”</span><br><span class="line">     --&gt;</span><br><span class="line">     &lt;stroke</span><br><span class="line">        android:width=&quot;2dp&quot;</span><br><span class="line">        android:color=&quot;#dcdcdc&quot;  </span><br><span class="line">        /&gt;</span><br><span class="line">&lt;/shape&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><p>res/drawable/文件的名称.xml</p>
+<h2 id="使用的方法："><a href="#使用的方法：" class="headerlink" title="使用的方法："></a>使用的方法：</h2><p>Java代码中：R.drawable.文件的名称<br>XML中：Android:background=”@drawable/文件的名称”</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h3><p><img src="/uploads/shape_2.png" width="100"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:shape=&quot;oval&quot;&gt;</span><br><span class="line">    &lt;solid android:color=&quot;#8c8c8c&quot; /&gt;</span><br><span class="line">    &lt;size</span><br><span class="line">        android:width=&quot;@dimen/dimen_10_dip&quot;</span><br><span class="line">        android:height=&quot;@dimen/dimen_10_dip&quot; /&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="圆环"><a href="#圆环" class="headerlink" title="圆环"></a>圆环</h2><p><img src="/uploads/shape_1.png" width="100"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:innerRadius=&quot;0dp&quot;</span><br><span class="line">    android:shape=&quot;ring&quot;</span><br><span class="line">    android:thicknessRatio=&quot;2&quot;</span><br><span class="line">    android:useLevel=&quot;false&quot;&gt;</span><br><span class="line">    &lt;!--innerRadius内圆半径--&gt;</span><br><span class="line">    &lt;!--innerRadiusRatio-浮点型  默认值9,   表示 内环半径 =环的宽度除以5，这个值是可以被innerRadius覆盖的 --&gt;</span><br><span class="line">    &lt;!--thickness-指定圆环的宽窄，也就是内圆与外圆的距离--&gt;</span><br><span class="line">    &lt;!--thicknessRatio  -浮点型，默认值3,   表示 环的厚度 =环的宽度除以3。这个值是可以被thickness覆盖的，--&gt;</span><br><span class="line">    &lt;!--【常用上面的】--&gt;</span><br><span class="line">    &lt;!--useLevel-当我们要画一个圆环是，应当而且必须将该值设为false，否则会看不到画面--&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--内部实体--&gt;</span><br><span class="line">    &lt;solid android:color=&quot;@android:color/transparent&quot; /&gt;</span><br><span class="line">    &lt;!--外部边线--&gt;</span><br><span class="line">    &lt;stroke</span><br><span class="line">        android:width=&quot;2dp&quot;</span><br><span class="line">        android:color=&quot;#add77d&quot; /&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><p>圆角，描边，内部填充。<br><img src="/uploads/shape_3.png" width="100"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">    &lt;corners android:radius=&quot;@dimen/dimen_40_dip&quot;/&gt;</span><br><span class="line">    &lt;solid android:color=&quot;#ed7861&quot;/&gt;</span><br><span class="line">    &lt;stroke android:width=&quot;3px&quot;</span><br><span class="line">        android:color=&quot;#00C1C3&quot;/&gt;</span><br><span class="line">    &lt;padding android:bottom=&quot;@dimen/dimen_20_dip&quot;</span><br><span class="line">        android:top=&quot;@dimen/dimen_20_dip&quot;</span><br><span class="line">        android:left=&quot;@dimen/dimen_20_dip&quot;</span><br><span class="line">        android:right=&quot;@dimen/dimen_20_dip&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###</p>
+<h1 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h1><p>根据不同的选定状态来定义不同的现实效果</p>
+<h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android:state_selected 是选中</span><br><span class="line">android:state_focused 是获得焦点</span><br><span class="line">android:state_pressed 是点击</span><br><span class="line">android:state_enabled 是设置是否响应事件,指所有事件</span><br><span class="line">另：</span><br><span class="line">android:state_window_focused 默认时的背景图片</span><br></pre></td></tr></table></figure>
+<h2 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;     </span><br><span class="line">&lt;selector xmlns:Android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;   </span><br><span class="line">&lt;!-- 默认时的背景图片--&gt;    </span><br><span class="line">&lt;item Android:drawable=&quot;@drawable/pic1&quot; /&gt;      </span><br><span class="line">&lt;!-- 没有焦点时的背景图片 --&gt;    </span><br><span class="line">&lt;item</span><br><span class="line">   Android:state_window_focused=&quot;false&quot;      </span><br><span class="line">   android:drawable=&quot;@drawable/pic_blue&quot;</span><br><span class="line">   /&gt;     </span><br><span class="line">&lt;!-- 非触摸模式下获得焦点并单击时的背景图片 --&gt;    </span><br><span class="line">&lt;item</span><br><span class="line">   Android:state_focused=&quot;true&quot;</span><br><span class="line">   android:state_pressed=&quot;true&quot;   </span><br><span class="line">   android:drawable= &quot;@drawable/pic_red&quot;</span><br><span class="line">   /&gt;   </span><br><span class="line">&lt;!-- 触摸模式下单击时的背景图片--&gt;    </span><br><span class="line">&lt;item</span><br><span class="line">   Android:state_focused=&quot;false&quot;</span><br><span class="line">   Android:state_pressed=&quot;true&quot;   </span><br><span class="line">   Android:drawable=&quot;@drawable/pic_pink&quot;</span><br><span class="line">   /&gt;    </span><br><span class="line">&lt;!--选中时的图片背景--&gt;    </span><br><span class="line">&lt;item</span><br><span class="line">   Android:state_selected=&quot;true&quot;</span><br><span class="line">   android:drawable=&quot;@drawable/pic_orange&quot;</span><br><span class="line">   /&gt;     </span><br><span class="line">&lt;!--获得焦点时的图片背景--&gt;    </span><br><span class="line">&lt;item</span><br><span class="line">   Android:state_focused=&quot;true&quot;</span><br><span class="line">   Android:drawable=&quot;@drawable/pic_green&quot;</span><br><span class="line">   /&gt;     </span><br><span class="line">&lt;/selector&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="layer-list"><a href="#layer-list" class="headerlink" title="layer-list"></a>layer-list</h1><p>将多个图片或上面两种效果按照顺序层叠起来</p>
+<h2 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;item&gt;</span><br><span class="line">      &lt;bitmap android:src=&quot;@drawable/android_red&quot;</span><br><span class="line">        android:gravity=&quot;center&quot; /&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">    &lt;item android:top=&quot;10dp&quot; android:left=&quot;10dp&quot;&gt;</span><br><span class="line">      &lt;bitmap android:src=&quot;@drawable/android_green&quot;</span><br><span class="line">        android:gravity=&quot;center&quot; /&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">    &lt;item android:top=&quot;20dp&quot; android:left=&quot;20dp&quot;&gt;</span><br><span class="line">      &lt;bitmap android:src=&quot;@drawable/android_blue&quot;</span><br><span class="line">        android:gravity=&quot;center&quot; /&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">&lt;/layer-list&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><ul>
+<li><a href="http://blog.csdn.net/ekeuy/article/details/12349853" target="_blank" rel="external">Android中shape的使用</a></li>
+<li><a href="http://blog.csdn.net/pingchuanyang/article/details/9230349" target="_blank" rel="external">Shape Drawable的学习</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/自定义/" rel="tag">#自定义</a>
+          
+            <a href="/tags/shape/" rel="tag">#shape</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/Android开源项目-视图.html" rel="next" title="Android开源项目(视图)">
+                <i class="fa fa-chevron-left"></i> Android开源项目(视图)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="/blog/自定义的Drawable.html"
+     data-title="自定义的Drawable"
+     data-content=""
+     data-url="http://shun99.github.io/blog/自定义的Drawable.html">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/自定义的Drawable.html"
+           data-title="自定义的Drawable" data-url="http://shun99.github.io/blog/自定义的Drawable.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="一个很严肃的人" />
+          <p class="site-author-name" itemprop="name">一个很严肃的人</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shun99" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shape"><span class="nav-number">1.</span> <span class="nav-text">shape</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置"><span class="nav-number">1.2.</span> <span class="nav-text">位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用的方法："><span class="nav-number">1.3.</span> <span class="nav-text">使用的方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例"><span class="nav-number">1.4.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆形"><span class="nav-number">1.4.1.</span> <span class="nav-text">圆形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆环"><span class="nav-number">1.5.</span> <span class="nav-text">圆环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩形"><span class="nav-number">1.5.1.</span> <span class="nav-text">矩形</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selector"><span class="nav-number">2.</span> <span class="nav-text">Selector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-1"><span class="nav-number">2.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例-1"><span class="nav-number">2.2.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#layer-list"><span class="nav-number">3.</span> <span class="nav-text">layer-list</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#案例-2"><span class="nav-number">3.1.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">3.2.</span> <span class="nav-text">感谢</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个很严肃的人</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yghysdr"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
