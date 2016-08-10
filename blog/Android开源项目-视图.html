@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,开源," />
 
 
 
@@ -84,15 +84,30 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://shun99.github.io/page/2/index.html">
+<meta name="description" content="总结一些Android常见的布局，视图框架
+
+Android开发一些不错的资料这里总结了一些常用的资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开源项目(视图)">
+<meta property="og:url" content="http://shun99.github.io/blog/Android开源项目-视图.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="总结一些Android常见的布局，视图框架
+
+Android开发一些不错的资料这里总结了一些常用的资料">
+<meta property="og:image" content="http://shun99.github.io/uploads/kfyxbcdzl1.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kyxm_v_1.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kykj_v_2.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kykj_v_3.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kykj_v_4.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kyxm_v_5.gif">
+<meta property="og:image" content="http://shun99.github.io/uploads/kyxm_v_6.gif">
+<meta property="og:updated_time" content="2016-08-10T08:44:04.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Android开源项目(视图)">
+<meta name="twitter:description" content="总结一些Android常见的布局，视图框架
+
+Android开发一些不错的资料这里总结了一些常用的资料">
+<meta name="twitter:image" content="http://shun99.github.io/uploads/kfyxbcdzl1.gif">
 
 
 
@@ -110,7 +125,7 @@
   };
 </script>
 
-  <title> 一个很严肃的人 </title>
+  <title> Android开源项目(视图) | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,9 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,9 +266,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -275,10 +288,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/关于MVP的一点事.html" itemprop="url">
-                  关于MVP的一点事
-                </a>
+                Android开源项目(视图)
               
             
           </h1>
@@ -290,8 +300,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-12T15:45:02+08:00" content="2016-06-12">
-              2016-06-12
+            <time itemprop="dateCreated" datetime="2016-08-10T15:54:40+08:00" content="2016-08-10">
+              2016-08-10
             </time>
           </span>
 
@@ -301,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/关于MVP的一点事.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/关于MVP的一点事.html" itemprop="commentsCount"></span>
+                <a href="/blog/Android开源项目-视图.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android开源项目-视图.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,476 +337,108 @@
       
 
       
-        
-          <blockquote>
-<p>Android MVP模式对我们来说已经不陌生了，看到论坛和一些博客都在吹他，我就google了一下，然后试着试用一下，结合资料分享一下心得。</p>
+        <blockquote>
+<p>总结一些Android常见的布局，视图框架</p>
+<ul>
+<li><a href="http://shun99.github.io/blog/Android%E5%BC%80%E5%8F%91%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E8%B5%84%E6%96%99.html">Android开发一些不错的资料</a>这里总结了一些常用的资料</li>
+</ul>
 </blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/关于MVP的一点事.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<a id="more"></a>
+<h1 id="布局框架"><a href="#布局框架" class="headerlink" title="布局框架"></a>布局框架</h1><ul>
+<li><a href="https://github.com/chenupt/DragTopLayout" target="_blank" rel="external">DragTopLayout</a> 很不错的 <img src="/uploads/kfyxbcdzl1.gif" width="180"></li>
+<li><a href="https://github.com/cnbleu/SlideDetailsLayout" target="_blank" rel="external">SlideDetailsLayout</a> 高仿淘宝、京东商品详情页面的上拉加载图文详情功能</li>
+</ul>
+<h1 id="button"><a href="#button" class="headerlink" title="button"></a>button</h1><ul>
+<li><a href="https://github.com/zcweng/ToggleButton" target="_blank" rel="external">ToggleButton</a> 选择开关 <img src="/uploads/kyxm_v_1.gif" width="100"></li>
+<li><a href="https://github.com/Leaking/SlideSwitch" target="_blank" rel="external">SlideSwitch</a> 选择开关(和上面类似)</li>
+</ul>
+<h1 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h1><ul>
+<li><a href="https://github.com/robinhood/ticker" target="_blank" rel="external">ticker</a> 数字大小上下滚动 <img src="/uploads/kykj_v_2.gif" width="100"></li>
+<li><a href="https://github.com/jaredrummler/AndroidAnimations" target="_blank" rel="external">AndroidAnimations</a> 文字动画 <img src="/uploads/kykj_v_3.gif" width="180"></li>
+</ul>
+<h1 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h1><ul>
+<li><a href="https://github.com/daimajia/NumberProgressBar" target="_blank" rel="external">NumberProgressBar</a> 横向，百分比 <img src="/uploads/kykj_v_4.gif" width="180"></li>
+</ul>
+<h1 id="加载中"><a href="#加载中" class="headerlink" title="加载中"></a>加载中</h1><ul>
+<li><a href="https://github.com/81813780/AVLoadingIndicatorView" target="_blank" rel="external">AVLoadingIndicatorView</a> 加载中 <img src="/uploads/kyxm_v_5.gif" width="180"></li>
+</ul>
+<h1 id="弹窗"><a href="#弹窗" class="headerlink" title="弹窗"></a>弹窗</h1><ul>
+<li><a href="https://github.com/canyinghao/CanDialog" target="_blank" rel="external">CanDialog</a> 动画dialog <img src="/uploads/kyxm_v_6.gif" width="180"></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android网络请求.html" itemprop="url">
-                  Android网络请求
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-06T12:36:38+08:00" content="2016-06-06">
-              2016-06-06
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android网络请求.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android网络请求.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/开源/" rel="tag">#开源</a>
           
-
-          
-
-          
-          
-
-          
-		 
-		  
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>安卓开发中网络请求是无法避免。不管你是加载图片，请求API数据还是从因特网上获得一个字节，你都是在使用网络。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android网络请求.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/API收集.html" rel="next" title="API收集">
+                <i class="fa fa-chevron-left"></i> API收集
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/blog/搭建一个优秀的Android项目.html" itemprop="url">
-                  搭建一个优秀的Android项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T11:37:13+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/搭建一个优秀的Android项目.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/搭建一个优秀的Android项目.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>很多时候，尤其是经验不足开发者，通常会不重视项目搭建前的准备工作，随着项目越来越大，我们会碰到很多需要修改前期代码，甚至整个架构，这给我们带来了很大的不便。本文主要价绍一些项目开发前的准备工作。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/搭建一个优秀的Android项目.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="/blog/Android开源项目-视图.html"
+     data-title="Android开源项目(视图)"
+     data-content=""
+     data-url="http://shun99.github.io/blog/Android开源项目-视图.html">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android自定义组合控件.html" itemprop="url">
-                  Android自定义组合控件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T10:35:25+08:00" content="2016-06-05">
-              2016-06-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android自定义组合控件.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android自定义组合控件.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>项目开发中，通过会遇到很多控件复用的情况，如果每次都重写一遍显然是不理智的，这样不仅造成代码冗余，而且修改起来也很麻烦</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android自定义组合控件.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Hexo使用心得.html" itemprop="url">
-                  Hexo使用心得
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T15:25:27+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Hexo使用心得.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Hexo使用心得.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>这篇文章主要是总结自己在使用hexo创建博客时的一些使用心得。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Hexo使用心得.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -804,6 +446,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/Android开源项目-视图.html"
+           data-title="Android开源项目(视图)" data-url="http://shun99.github.io/blog/Android开源项目-视图.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -823,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -885,6 +544,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#布局框架"><span class="nav-number">1.</span> <span class="nav-text">布局框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#button"><span class="nav-number">2.</span> <span class="nav-text">button</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文字"><span class="nav-number">3.</span> <span class="nav-text">文字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进度条"><span class="nav-number">4.</span> <span class="nav-text">进度条</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加载中"><span class="nav-number">5.</span> <span class="nav-text">加载中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弹窗"><span class="nav-number">6.</span> <span class="nav-text">弹窗</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -990,6 +660,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
