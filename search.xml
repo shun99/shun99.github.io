@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[状态栏，toolbar总结]]></title>
+      <url>http://shun99.github.io/blog/%E7%8A%B6%E6%80%81%E6%A0%8F%EF%BC%8Ctoolbar%E6%80%BB%E7%BB%93.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li><a href="http://www.jianshu.com/p/79604c3ddcae" target="_blank" rel="external">Android开发：最详细的 Toolbar 开发实践总结</a></li>
+<li><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a> 自定义Toolbar的宝典啊</li>
+<li><a href="http://www.jianshu.com/p/34a8b40b9308#" target="_blank" rel="external">Android 系统状态栏沉浸式/透明化完整解决方案</a> 有点汇总的感觉</li>
+<li><a href="http://niorgai.github.io/2016/03/20/Android-transulcent-status-bar/" target="_blank" rel="external">Android-transulcent-status-bar</a> 也是总结</li>
+<li><a href="http://www.jianshu.com/p/0acc12c29c1b" target="_blank" rel="external">Android开发：Translucent System Bar 的最佳实践</a> 最喜欢的方式</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[自定义的Drawable]]></title>
       <url>http://shun99.github.io/blog/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84Drawable.html</url>
       <content type="html"><![CDATA[<blockquote>
@@ -237,6 +254,9 @@
 <li><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">RxJava与Retrofit结合的最佳实践</a> 对RxJava讲解最好的文章，没有之一</li>
 <li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给Android开发者的RxJava详解</a> 作者抛物线</li>
 </ul>
+<h1 id="开源结构"><a href="#开源结构" class="headerlink" title="开源结构"></a>开源结构</h1><ul>
+<li><a href="">开源结构</a></li>
+</ul>
 <h1 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h1><ul>
 <li><a href="http://www.jianshu.com/p/b2ca52337fe5" target="_blank" rel="external">Android即时通讯和sns开源项目汇总</a></li>
 </ul>
@@ -252,6 +272,7 @@
 <li><a href="http://my.csdn.net/lmj623565791" target="_blank" rel="external">鸿洋</a> 不用多解释</li>
 <li><a href="http://blog.csdn.net/guolin_blog" target="_blank" rel="external">guolin</a> 每天都会看他的公众号</li>
 <li><a href="http://mrfu.me/" target="_blank" rel="external">mrfu</a></li>
+<li><a href="http://www.jianshu.com/users/ec95b5891948/latest_articles" target="_blank" rel="external">D_clock爱吃葱花</a></li>
 </ul>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
 <li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">git</a> 看了你就忘不了</li>
