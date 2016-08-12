@@ -6,16 +6,32 @@
     <entry>
       <title><![CDATA[状态栏，toolbar总结]]></title>
       <url>http://shun99.github.io/blog/%E7%8A%B6%E6%80%81%E6%A0%8F%EF%BC%8Ctoolbar%E6%80%BB%E7%BB%93.html</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</p>
-</blockquote>
-<a id="more"></a>
+      <content type="html"><![CDATA[<p>&gt;</p>
 <ul>
-<li><a href="http://www.jianshu.com/p/79604c3ddcae" target="_blank" rel="external">Android开发：最详细的 Toolbar 开发实践总结</a></li>
-<li><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a> 自定义Toolbar的宝典啊</li>
+<li>首先要说的是，透明，沉浸式状态栏必须在sdk&gt;=19之上</li>
+<li>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</li>
+</ul>
+<a id="more"></a>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>先介绍一些基本概念</p>
+<ul>
+<li>google官方在4.4之后引入了透明状态栏，在5.0之后引入了沉浸式全屏，所以不论是什么方式都是只能适配到4.4</li>
+<li>沉浸式全屏模式：切记不是沉浸式状态栏。是隐藏status bar（状态栏）使屏幕全屏，让Activity接收所有的（整个屏幕的）触摸事件。</li>
+<li>透明化系统栏：使得布局侵入系统栏的后面，必须启用fitsSystemWindows属性来调整布局才不至于被系统栏覆盖。</li>
+<li>navigation bar 是导航栏，在最底部（国内多说都隐藏掉了）。</li>
+<li>status bar 是状态栏，在最顶部。</li>
+<li>fitsSystemWindows作用：就是哪个view设置了这个属性为true，系统就会调整该view的padding值来留出空间给系统窗体。表现为，padding出status bar的高度给status bar使用，不至于我们定义layout跟status bar重叠！<br><img src="/uploads/cjs.png" width="180"></li>
+<li>无论是使用沉浸式全屏，还是使用透明状态栏都建议隐藏标题栏，如果是继承AppCompatActivity则用supportRequestWindowFeature(Window.FEATURE_NO_TITLE);</li>
+</ul>
+<p>还是配置在代码中设置</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ul>
+<li><a href="https://github.com/laobie/StatusBarUtil" target="_blank" rel="external">StatusBarUtil</a> 这是最好的状态栏开源库，本来想写一个的，结看到之后我就。。我的想法全在里面。这里还处理了包含DrawerLayout时的情况。demo的布局写的也不错。<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2></li>
 <li><a href="http://www.jianshu.com/p/34a8b40b9308#" target="_blank" rel="external">Android 系统状态栏沉浸式/透明化完整解决方案</a> 有点汇总的感觉</li>
 <li><a href="http://niorgai.github.io/2016/03/20/Android-transulcent-status-bar/" target="_blank" rel="external">Android-transulcent-status-bar</a> 也是总结</li>
-<li><a href="http://www.jianshu.com/p/0acc12c29c1b" target="_blank" rel="external">Android开发：Translucent System Bar 的最佳实践</a> 最喜欢的方式</li>
+<li><a href="http://www.jianshu.com/p/0acc12c29c1b" target="_blank" rel="external">Android开发：Translucent System Bar 的最佳实践</a> 很喜欢，因为觉得能学好到好多。</li>
+</ul>
+<h1 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h1><ul>
+<li><a href="http://www.jianshu.com/p/79604c3ddcae" target="_blank" rel="external">Android开发：最详细的 Toolbar 开发实践总结</a></li>
+<li><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a> 自定义Toolbar的宝典啊</li>
 </ul>
 ]]></content>
     </entry>
@@ -110,7 +126,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Android开发缓存文件，下载文件]]></title>
+      <title><![CDATA[Android配置缓存，下载路径]]></title>
       <url>http://shun99.github.io/blog/Android%E5%BC%80%E5%8F%91%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>开发中缓存，下载是避免不了的，优秀，负责的码农一定会统一设置缓存，下载路径，便于管理，例如清除缓存。Android手机里面，缓存的位置分为两类，一类是Internal Storage，即内部存储，另外一类是External Storage，即外部存储。比较老的手机，有一个手机内部存储，还有一个SD卡存储，就是分别对应这两种存储位置，因为以前的SD卡是可以扩展的，即可拆卸的，所以可以用是否可拆卸作为内外存储的分类标准。</p>
@@ -661,7 +677,7 @@
 </li>
 <li><p>存放图片<br>放在主题下的sources下<br><img src="/uploads/hexo_syxd_2.png" alt=""><br>这里的uploads文件夹是自己创建的，方便统一管理图片</p>
 </li>
-<li><p>使用图片<br>/uploads/图片名 即可</p>
+<li><p>使用图片<br>1 /uploads/图片名 即可<br>2 <img src="uploads/图片名" width="100"> 通过html标签，可设置大小（只设置宽时，高自适应）<br>（图片名包后缀）</p>
 </li>
 </ul>
 <ul>

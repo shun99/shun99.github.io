@@ -84,16 +84,27 @@
 
 
 
-<meta name="description" content="开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
+<meta name="description" content="&amp;gt;
+
+首先要说的是，透明，沉浸式状态栏必须在sdk&amp;gt;=19之上
+开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="状态栏，toolbar总结">
 <meta property="og:url" content="http://shun99.github.io/blog/状态栏，toolbar总结.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
-<meta property="og:updated_time" content="2016-08-11T03:18:06.947Z">
+<meta property="og:description" content="&amp;gt;
+
+首先要说的是，透明，沉浸式状态栏必须在sdk&amp;gt;=19之上
+开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
+<meta property="og:image" content="http://shun99.github.io/uploads/cjs.png">
+<meta property="og:updated_time" content="2016-08-12T12:27:01.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="状态栏，toolbar总结">
-<meta name="twitter:description" content="开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
+<meta name="twitter:description" content="&amp;gt;
+
+首先要说的是，透明，沉浸式状态栏必须在sdk&amp;gt;=19之上
+开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。">
+<meta name="twitter:image" content="http://shun99.github.io/uploads/cjs.png">
 
 
 
@@ -323,16 +334,32 @@
       
 
       
-        <blockquote>
-<p>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</p>
-</blockquote>
-<a id="more"></a>
+        <p>&gt;</p>
 <ul>
-<li><a href="http://www.jianshu.com/p/79604c3ddcae" target="_blank" rel="external">Android开发：最详细的 Toolbar 开发实践总结</a></li>
-<li><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a> 自定义Toolbar的宝典啊</li>
+<li>首先要说的是，透明，沉浸式状态栏必须在sdk&gt;=19之上</li>
+<li>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</li>
+</ul>
+<a id="more"></a>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>先介绍一些基本概念</p>
+<ul>
+<li>google官方在4.4之后引入了透明状态栏，在5.0之后引入了沉浸式全屏，所以不论是什么方式都是只能适配到4.4</li>
+<li>沉浸式全屏模式：切记不是沉浸式状态栏。是隐藏status bar（状态栏）使屏幕全屏，让Activity接收所有的（整个屏幕的）触摸事件。</li>
+<li>透明化系统栏：使得布局侵入系统栏的后面，必须启用fitsSystemWindows属性来调整布局才不至于被系统栏覆盖。</li>
+<li>navigation bar 是导航栏，在最底部（国内多说都隐藏掉了）。</li>
+<li>status bar 是状态栏，在最顶部。</li>
+<li>fitsSystemWindows作用：就是哪个view设置了这个属性为true，系统就会调整该view的padding值来留出空间给系统窗体。表现为，padding出status bar的高度给status bar使用，不至于我们定义layout跟status bar重叠！<br><img src="/uploads/cjs.png" width="180"></li>
+<li>无论是使用沉浸式全屏，还是使用透明状态栏都建议隐藏标题栏，如果是继承AppCompatActivity则用supportRequestWindowFeature(Window.FEATURE_NO_TITLE);</li>
+</ul>
+<p>还是配置在代码中设置</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ul>
+<li><a href="https://github.com/laobie/StatusBarUtil" target="_blank" rel="external">StatusBarUtil</a> 这是最好的状态栏开源库，本来想写一个的，结看到之后我就。。我的想法全在里面。这里还处理了包含DrawerLayout时的情况。demo的布局写的也不错。<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2></li>
 <li><a href="http://www.jianshu.com/p/34a8b40b9308#" target="_blank" rel="external">Android 系统状态栏沉浸式/透明化完整解决方案</a> 有点汇总的感觉</li>
 <li><a href="http://niorgai.github.io/2016/03/20/Android-transulcent-status-bar/" target="_blank" rel="external">Android-transulcent-status-bar</a> 也是总结</li>
-<li><a href="http://www.jianshu.com/p/0acc12c29c1b" target="_blank" rel="external">Android开发：Translucent System Bar 的最佳实践</a> 最喜欢的方式</li>
+<li><a href="http://www.jianshu.com/p/0acc12c29c1b" target="_blank" rel="external">Android开发：Translucent System Bar 的最佳实践</a> 很喜欢，因为觉得能学好到好多。</li>
+</ul>
+<h1 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h1><ul>
+<li><a href="http://www.jianshu.com/p/79604c3ddcae" target="_blank" rel="external">Android开发：最详细的 Toolbar 开发实践总结</a></li>
+<li><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a> 自定义Toolbar的宝典啊</li>
 </ul>
 
       
@@ -522,7 +549,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐"><span class="nav-number">1.1.</span> <span class="nav-text">推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料"><span class="nav-number">1.2.</span> <span class="nav-text">资料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Toolbar"><span class="nav-number">2.</span> <span class="nav-text">Toolbar</span></a></li></ol></div>
             
           </div>
         </section>
