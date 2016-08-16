@@ -9,6 +9,7 @@
       <content type="html"><![CDATA[<blockquote>
 <p>通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h1><ul>
 <li>即时通讯中必不可少 （如QQ, 短信)。</li>
 <li>接受推送消息（如有新版本发布，消息推送）</li>
