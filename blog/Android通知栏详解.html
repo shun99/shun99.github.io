@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,通知栏,PendingIntent," />
 
 
 
@@ -84,15 +84,37 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://shun99.github.io/index.html">
+<meta name="description" content="通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。
+
+作用：
+即时通讯中必不可少 （如QQ, 短信)。
+接受推送消息（如有新版本发布，消息推送）
+显示正在进行的事物（例如：后台运行的程序）（如音乐播放器、版本更新时候的下载进度等）通常会有对应的点击事件，点击后处理相应逻辑，如qq中，跳转到相应的聊天界面
+
+使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android通知栏详解">
+<meta property="og:url" content="http://shun99.github.io/blog/Android通知栏详解.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。
+
+作用：
+即时通讯中必不可少 （如QQ, 短信)。
+接受推送消息（如有新版本发布，消息推送）
+显示正在进行的事物（例如：后台运行的程序）（如音乐播放器、版本更新时候的下载进度等）通常会有对应的点击事件，点击后处理相应逻辑，如qq中，跳转到相应的聊天界面
+
+使">
+<meta property="og:updated_time" content="2016-08-16T09:41:33.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Android通知栏详解">
+<meta name="twitter:description" content="通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。
+
+作用：
+即时通讯中必不可少 （如QQ, 短信)。
+接受推送消息（如有新版本发布，消息推送）
+显示正在进行的事物（例如：后台运行的程序）（如音乐播放器、版本更新时候的下载进度等）通常会有对应的点击事件，点击后处理相应逻辑，如qq中，跳转到相应的聊天界面
+
+使">
 
 
 
@@ -110,7 +132,7 @@
   };
 </script>
 
-  <title> 一个很严肃的人 </title>
+  <title> Android通知栏详解 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,9 +163,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,9 +273,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -275,10 +295,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/Android通知栏详解.html" itemprop="url">
-                  Android通知栏详解
-                </a>
+                Android通知栏详解
               
             
           </h1>
@@ -327,9 +344,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。</p>
 </blockquote>
 <h1 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h1><ul>
@@ -371,813 +386,81 @@
 <h3 id="PendingIntent发送广播"><a href="#PendingIntent发送广播" class="headerlink" title="PendingIntent发送广播"></a>PendingIntent发送广播</h3><p>getBroadcast(Context context, int requestCode, Intent intent, int flags) 点击消息会发送广播。<br>我在开发中遇到过一个问题，当requestCode写成固定的时候，当从不同来源出发来的消息（如不同聊天室），<br>点击消息，广播中收到的intent会被固定为第一次消息来源的Intent，如下<br>public void onReceive(Context context, Intent intent) {}<br>我的解决方法是，不同来源的消息设置不同的requestCode。<br>（与发送广播有关，具体问题还不确定）</p>
 <h1 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h1><p><a href="http://blog.csdn.net/vipzjyno1/article/details/25248021" target="_blank" rel="external">Android 通知栏Notification的整合</a><br><a href="http://www.cnblogs.com/wjjair/p/3392031.html" target="_blank" rel="external">Android中pendingIntent的深入理解</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/状态栏，toolbar总结.html" itemprop="url">
-                  状态栏，toolbar总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-11T10:45:32+08:00" content="2016-08-11">
-              2016-08-11
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/状态栏，toolbar总结.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/状态栏，toolbar总结.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/通知栏/" rel="tag">#通知栏</a>
           
-
+            <a href="/tags/PendingIntent/" rel="tag">#PendingIntent</a>
           
-
-          
-          
-
-          
-		 
-		  
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>&gt;</p>
-<ul>
-<li>首先要说的是，透明，沉浸式状态栏必须在sdk&gt;=19之上</li>
-<li>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/状态栏，toolbar总结.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/状态栏，toolbar总结.html" rel="next" title="状态栏，toolbar总结">
+                <i class="fa fa-chevron-left"></i> 状态栏，toolbar总结
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/blog/自定义的Drawable.html" itemprop="url">
-                  自定义的Drawable
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-10T17:28:28+08:00" content="2016-08-10">
-              2016-08-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/自定义的Drawable.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/自定义的Drawable.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Shape的通常用在自定义Drawable，主要用在画一些矩形、椭圆形（圆形）、直线和圆环，可以设置边框，圆角.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/自定义的Drawable.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android开源项目-视图.html" itemprop="url">
-                  Android开源项目(视图)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-10T15:54:40+08:00" content="2016-08-10">
-              2016-08-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android开源项目-视图.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android开源项目-视图.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>总结一些Android常见的布局，视图框架</p>
-<ul>
-<li><a href="http://shun99.github.io/blog/Android%E5%BC%80%E5%8F%91%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E8%B5%84%E6%96%99.html">Android开发一些不错的资料</a>这里总结了一些常用的资料</li>
-</ul>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android开源项目-视图.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="/blog/Android通知栏详解.html"
+     data-title="Android通知栏详解"
+     data-content=""
+     data-url="http://shun99.github.io/blog/Android通知栏详解.html">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/API收集.html" itemprop="url">
-                  API收集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-09T16:42:11+08:00" content="2016-08-09">
-              2016-08-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/API收集.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/API收集.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>收集一些开发中可能用到的API</p>
-</blockquote>
-<ul>
-<li><a href="http://apistore.baidu.com/astore/classificationservicelist.html?isFree=1" target="_blank" rel="external">百度API市场</a> 包含很多常见的API</li>
-</ul>
-
-          
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android系统控件一些很有用的属性.html" itemprop="url">
-                  Android系统控件一些很有用的属性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-09T10:03:42+08:00" content="2016-08-09">
-              2016-08-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android系统控件一些很有用的属性.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android系统控件一些很有用的属性.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>总结一些系统控件中不常见，但是特别有用的属性。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android系统控件一些很有用的属性.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android开发缓存文件，下载文件.html" itemprop="url">
-                  Android配置缓存，下载路径
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T15:19:10+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android开发缓存文件，下载文件.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android开发缓存文件，下载文件.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>开发中缓存，下载是避免不了的，优秀，负责的码农一定会统一设置缓存，下载路径，便于管理，例如清除缓存。Android手机里面，缓存的位置分为两类，一类是Internal Storage，即内部存储，另外一类是External Storage，即外部存储。比较老的手机，有一个手机内部存储，还有一个SD卡存储，就是分别对应这两种存储位置，因为以前的SD卡是可以扩展的，即可拆卸的，所以可以用是否可拆卸作为内外存储的分类标准。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android开发缓存文件，下载文件.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android开发一些不错的资料.html" itemprop="url">
-                  Android开发一些不错的资料
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T14:48:33+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android开发一些不错的资料.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android开发一些不错的资料.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>最近查资料发现了很多不错的网站，习惯性的放在浏览器的书签中，可是慢慢当收集的较多时，想对每个网站做点介绍方便以后查看，杯具了。。。。所以还是建个页面吧，也方便分享。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android开发一些不错的资料.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -1185,6 +468,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/Android通知栏详解.html"
+           data-title="Android通知栏详解" data-url="http://shun99.github.io/blog/Android通知栏详解.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1204,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -1266,6 +566,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#作用："><span class="nav-number">1.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用："><span class="nav-number">2.</span> <span class="nav-text">使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述："><span class="nav-number">2.1.</span> <span class="nav-text">概述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现："><span class="nav-number">2.2.</span> <span class="nav-text">实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本配置"><span class="nav-number">2.2.1.</span> <span class="nav-text">1:基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-设置点击事件"><span class="nav-number">2.2.2.</span> <span class="nav-text">2:设置点击事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实例化通知栏之后，设置notification-详细设置请看补充"><span class="nav-number">2.3.</span> <span class="nav-text">3:实例化通知栏之后，设置notification(详细设置请看补充)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-发送通知"><span class="nav-number">2.4.</span> <span class="nav-text">4:发送通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消通知栏的消息"><span class="nav-number">2.5.</span> <span class="nav-text">取消通知栏的消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点击通知栏取消被点击的消息"><span class="nav-number">2.5.1.</span> <span class="nav-text">点击通知栏取消被点击的消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过手动消除某项或则全部通知-如进入界面时，需要清除某条消息"><span class="nav-number">2.5.2.</span> <span class="nav-text">通过手动消除某项或则全部通知(如进入界面时，需要清除某条消息)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">2.6.</span> <span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#你应该注意的："><span class="nav-number">3.</span> <span class="nav-text">你应该注意的：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PendingIntent："><span class="nav-number">3.1.</span> <span class="nav-text">PendingIntent：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">3.1.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获得"><span class="nav-number">3.1.2.</span> <span class="nav-text">获得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PendingIntent的位标识符（上一步获得PendingIntent方法的第四个参数）"><span class="nav-number">3.1.3.</span> <span class="nav-text">PendingIntent的位标识符（上一步获得PendingIntent方法的第四个参数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低版本中的部分方法已经被弃用的"><span class="nav-number">3.1.4.</span> <span class="nav-text">低版本中的部分方法已经被弃用的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PendingIntent发送广播"><span class="nav-number">3.1.5.</span> <span class="nav-text">PendingIntent发送广播</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感谢"><span class="nav-number">4.</span> <span class="nav-text">感谢</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1371,6 +682,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
