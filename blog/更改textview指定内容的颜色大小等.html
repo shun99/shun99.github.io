@@ -84,29 +84,20 @@
 
 
 
-<meta name="description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类
-
-1文本是：#问# 这是一个答案\n&amp;lt;script&amp;gt;  www.baidu.com  空格
-要实现的效果:">
+<meta name="description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更改textview指定内容的颜色大小等">
 <meta property="og:url" content="http://shun99.github.io/blog/更改textview指定内容的颜色大小等.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类
-
-1文本是：#问# 这是一个答案\n&amp;lt;script&amp;gt;  www.baidu.com  空格
-要实现的效果:">
+<meta property="og:description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类">
 <meta property="og:image" content="http://shun99.github.io/uploads/gg_tv_zdnr_1.png">
 <meta property="og:image" content="http://shun99.github.io/uploads/gg_tv_zdnr_1.png">
 <meta property="og:image" content="http://shun99.github.io/uploads/gg_tv_zdnr_2.png">
 <meta property="og:image" content="http://shun99.github.io/uploads/gg_tv_zdnr_1.png">
-<meta property="og:updated_time" content="2016-09-23T10:17:34.658Z">
+<meta property="og:updated_time" content="2016-09-23T10:19:17.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="更改textview指定内容的颜色大小等">
-<meta name="twitter:description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类
-
-1文本是：#问# 这是一个答案\n&amp;lt;script&amp;gt;  www.baidu.com  空格
-要实现的效果:">
+<meta name="twitter:description" content="一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类">
 <meta name="twitter:image" content="http://shun99.github.io/uploads/gg_tv_zdnr_1.png">
 
 
@@ -340,9 +331,9 @@
         <blockquote>
 <p>一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类</p>
 </blockquote>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文本是：#问# 这是一个答案\n&lt;script&gt;  www.baidu.com  空格</span><br></pre></td></tr></table></figure>
 <p>要实现的效果:<img src="/uploads/gg_tv_zdnr_1.png" width="300"></p>
-<a id="more"></a>
 <h1 id="SpannableString"><a href="#SpannableString" class="headerlink" title="SpannableString"></a>SpannableString</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String ask = &quot;#问# 这是一个答案\n&lt;script&gt;  www.baidu.com  空格&quot;;</span><br><span class="line">int color = content.getInstance().getResources().getColor(R.color.color_ff3660);</span><br><span class="line">SpannableString string = new SpannableString(ask);</span><br><span class="line">string.setSpan(new ForegroundColorSpan(color), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">textview.setText(string);</span><br></pre></td></tr></table></figure>
 <p>setSpan的参数是：第一个参数为字体颜色，第二个和第三个参数为要变色的字体的起始和结尾位置，第四个参数没搞懂。。。，不过都是这么写。<br>实现效果：<img src="/uploads/gg_tv_zdnr_1.png" width="300"></p>
 <h1 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h1><ul>
