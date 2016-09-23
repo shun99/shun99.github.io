@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title><![CDATA[更改textview指定内容的颜色大小等]]></title>
+      <url>http://shun99.github.io/blog/%E6%9B%B4%E6%94%B9textview%E6%8C%87%E5%AE%9A%E5%86%85%E5%AE%B9%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%B0%8F%E7%AD%89.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>一般情况下，TextView中的文本都是一个样式,如果需要指定内容设置不同的效果，常用的有两种方式。一是通过SpannableString，二是使用Html类<br><a id="more"></a></p>
+</blockquote>
+<p>文本是：#问# 这是一个答案\n<script>  www.baidu.com  空格<br>要实现的效果:<br><img src="/uploads/gg_tv_zdnr_1.png" width="100"/></p>
+<h1 id="SpannableString"><a href="#SpannableString" class="headerlink" title="SpannableString"></a>SpannableString</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String ask = &quot;#问# 这是一个答案\n&lt;script&gt;  www.baidu.com  空格&quot;;</span><br><span class="line">int color = content.getInstance().getResources().getColor(R.color.color_ff3660);</span><br><span class="line">SpannableString string = new SpannableString(ask);</span><br><span class="line">string.setSpan(new ForegroundColorSpan(color), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">textview.setText(string);</span><br></pre></td></tr></table></figure>
+<p>setSpan的参数是：第一个参数为字体颜色，第二个和第三个参数为要变色的字体的起始和结尾位置，第四个参数没搞懂。。。，不过都是这么写。<br>实现效果：<img src="/uploads/gg_tv_zdnr_1.png" width="100"/></p>
+<h1 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h1><ul>
+<li>特殊字符未转义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String ask = &quot;这是一个答案\n&lt;script&gt;  www.baidu.com  空格&quot;;</span><br><span class="line">CharSequence string = Html.fromHtml(&quot;&lt;font color= \&quot;#ff3660\&quot;&gt;&quot; + &quot;#问#&quot; + &quot;&lt;/font&gt;&quot; + &quot;\t&quot; + ask);</span><br><span class="line">textview.setText(string);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果是<img src="/uploads/gg_tv_zdnr_2.png" width="100"/></p>
+<ul>
+<li>特殊字符转义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String ask = &quot;这是一个答案\n&lt;script&gt;  www.baidu.com  空格&quot;;</span><br><span class="line">ask = ask.replaceAll(&quot;&lt;&quot;, &quot;&amp;lt;&quot;);</span><br><span class="line">ask = ask.replaceAll(&quot;&gt;&quot;, &quot;&amp;gt;&quot;);</span><br><span class="line">ask = ask.replaceAll(&quot;\\n&quot;, &quot;&lt;br/&gt;&quot;);</span><br><span class="line">CharSequence string = Html.fromHtml(&quot;&lt;font color= \&quot;#ff3660\&quot;&gt;&quot; + &quot;#问#&quot; + &quot;&lt;/font&gt;&quot; + &quot;\t&quot; + ask);</span><br><span class="line">textview.setText(string);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果是<img src="/uploads/gg_tv_zdnr_1.png" width="100"/></p>
+</script></p>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Dagger2学习之路]]></title>
+      <url>http://shun99.github.io/blog/Dagger2%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[android屏幕适配]]></title>
+      <url>http://shun99.github.io/blog/android%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>总结一些屏幕适配的必要概念以及屏幕适配的celue。</p>
+</blockquote>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
+<li>像素，英寸。<br>一像素多大与分辨率有关。<br>1 厘米＝0.3937 英寸<br>1 英寸＝2.54 厘米<br>72像素/英寸=28.346像素/厘米<br>300像素/英寸=118.11像素/厘米</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android通知栏详解]]></title>
       <url>http://shun99.github.io/blog/Android%E9%80%9A%E7%9F%A5%E6%A0%8F%E8%AF%A6%E8%A7%A3.html</url>
       <content type="html"><![CDATA[<blockquote>
@@ -138,6 +178,9 @@
 </ul>
 <h1 id="弹窗"><a href="#弹窗" class="headerlink" title="弹窗"></a>弹窗</h1><ul>
 <li><a href="https://github.com/canyinghao/CanDialog" target="_blank" rel="external">CanDialog</a> 动画dialog <img src="/uploads/kyxm_v_6.gif" width="180"></li>
+</ul>
+<h1 id="视频录制"><a href="#视频录制" class="headerlink" title="视频录制"></a>视频录制</h1><ul>
+<li><a href="https://github.com/motianhuo/VCameraDemo" target="_blank" rel="external">VCameraDemo</a> 微信小视频+秒拍,FFmpeg库封装</li>
 </ul>
 ]]></content>
     </entry>

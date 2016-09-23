@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,Utils," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,16 +84,15 @@
 
 
 
-<meta name="description" content="加密可以保证数的安全性">
-<meta property="og:type" content="article">
-<meta property="og:title" content="加密">
-<meta property="og:url" content="http://shun99.github.io/blog/加密.html">
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一个很严肃的人">
+<meta property="og:url" content="http://shun99.github.io/tags/屏幕适配/index.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description" content="加密可以保证数的安全性">
-<meta property="og:updated_time" content="2016-06-13T11:28:54.870Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="加密">
-<meta name="twitter:description" content="加密可以保证数的安全性">
+<meta name="twitter:title" content="一个很严肃的人">
+<meta name="twitter:description">
 
 
 
@@ -111,7 +110,7 @@
   };
 </script>
 
-  <title> 加密 | 一个很严肃的人 </title>
+  <title> 标签: 屏幕适配 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -142,7 +141,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,158 +252,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        屏幕适配
+        <small>标签</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/blog/android屏幕适配.html" itemprop="url">
               
-                加密
+                <span itemprop="name">android屏幕适配</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-13T19:26:26+08:00" content="2016-06-13">
-              2016-06-13
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-08-30T12:00:02+08:00"
+              content="2016-08-30" >
+          08-30
+        </time>
+      </div>
 
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/加密.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/加密.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <blockquote>
-<p>加密可以保证数的安全性</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line">public class MD5Encoder &#123;</span><br><span class="line"></span><br><span class="line">	public static String encode(String string) throws Exception &#123;</span><br><span class="line">		byte[] hash = MessageDigest.getInstance(&quot;MD5&quot;).digest(</span><br><span class="line">				string.getBytes(&quot;UTF-8&quot;));</span><br><span class="line">		StringBuilder hex = new StringBuilder(hash.length * 2);</span><br><span class="line">		for (byte b : hash) &#123;</span><br><span class="line">			if ((b &amp; 0xFF) &lt; 0x10) &#123;</span><br><span class="line">				hex.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			hex.append(Integer.toHexString(b &amp; 0xFF));</span><br><span class="line">		&#125;</span><br><span class="line">		return hex.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-            <a href="/tags/Utils/" rel="tag">#Utils</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/blog/图片的三级缓存.html" rel="next" title="图片的三级缓存">
-                <i class="fa fa-chevron-left"></i> 图片的三级缓存
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/常用工具类.html" rel="prev" title="常用工具类">
-                常用工具类 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="/blog/加密.html"
-     data-title="加密"
-     data-content=""
-     data-url="http://shun99.github.io/blog/加密.html">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
+    
   </div>
-</div>
-      
-    </div>
-  </div>
+
+  
 
 
           </div>
@@ -412,14 +299,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="/blog/加密.html"
-           data-title="加密" data-url="http://shun99.github.io/blog/加密.html">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -439,17 +318,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -510,17 +380,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5"><span class="nav-number">1.</span> <span class="nav-text">MD5</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -626,10 +485,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
