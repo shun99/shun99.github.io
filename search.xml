@@ -4,6 +4,356 @@
   
     
     <entry>
+      <title><![CDATA[android 动画]]></title>
+      <url>http://shun99.github.io/blog/android-%E5%8A%A8%E7%94%BB.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>Android中的动画分为帧动画Drawable Animation,补间动画View Animation，属性动画Property Animation。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="帧动画-Drawable-Animation"><a href="#帧动画-Drawable-Animation" class="headerlink" title="帧动画 Drawable Animation"></a>帧动画 Drawable Animation</h1><blockquote>
+<p>像播放幻灯片一样,依次播放每张每张动画。也就是每个效果都是一张图片。</p>
+</blockquote>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
+<li>节点：animation-list 必须是根节点</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:oneshot</td>
+<td>true代表只执行一次，false循环执行</td>
+</tr>
+<tr>
+<td>item</td>
+<td>一个item是一个图片</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>节点：item</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:drawable</td>
+<td>Drawable资源</td>
+</tr>
+<tr>
+<td>android:duration</td>
+<td>显示多长时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>1.配置xml文件：res/drawable/frame_voice<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:oneshot=&quot;false&quot;&gt;</span><br><span class="line">    &lt;item</span><br><span class="line">        android:drawable=&quot;@drawable/chat_left_voice_1&quot;</span><br><span class="line">        android:duration=&quot;200&quot; /&gt;</span><br><span class="line">    &lt;item</span><br><span class="line">        android:drawable=&quot;@drawable/chat_left_voice_2&quot;</span><br><span class="line">        android:duration=&quot;200&quot; /&gt;</span><br><span class="line">    &lt;item</span><br><span class="line">        android:drawable=&quot;@drawable/chat_left_voice_3&quot;</span><br><span class="line">        android:duration=&quot;200&quot; /&gt;</span><br><span class="line">&lt;/animation-list&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">view.setBackgroundResource(R.drawable.frame_voice);</span><br><span class="line">AnimationDrawable mAnimationDrawable = (AnimationDrawable)view.getBackground();</span><br><span class="line">mAnimationDrawable.start();</span><br></pre></td></tr></table></figure></p>
+<h1 id="补间动画-View-Animation"><a href="#补间动画-View-Animation" class="headerlink" title="补间动画 View Animation"></a>补间动画 View Animation</h1><blockquote>
+<p>特别特别注意：补间动画执行之后并未改变View的真实布局属性值。切记这一点，譬如我们在Activity中有一个Button在屏幕上方，<br>我们设置了平移动画移动到屏幕下方然后保持动画最后执行状态呆在屏幕下方，这时如果点击屏幕下方动画执行之后的Button是<br>没有任何反应的，而点击原来屏幕上方没有Button的地方却响应的是点击Button的事件</p>
+<h2 id="动画分类"><a href="#动画分类" class="headerlink" title="动画分类"></a>动画分类</h2></blockquote>
+<table>
+<thead>
+<tr>
+<th>java类名</th>
+<th>xml标签</th>
+<th>位置</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlphaAnimation</td>
+<td><alpha></alpha></td>
+<td>放置在res/anim/目录下</td>
+<td>渐变透明度动画效果</td>
+</tr>
+<tr>
+<td>RotateAnimation</td>
+<td><rotate></rotate></td>
+<td>放置在res/anim/目录下</td>
+<td>画面转移旋转动画效果</td>
+</tr>
+<tr>
+<td>ScaleAnimation</td>
+<td><scale></scale></td>
+<td>放置在res/anim/目录下</td>
+<td>渐变尺寸伸缩动画效果</td>
+</tr>
+<tr>
+<td>TranslateAnimation</td>
+<td><translate></translate></td>
+<td>放置在res/anim/目录下</td>
+<td>画面转换位置移动动画效果</td>
+</tr>
+<tr>
+<td>AnimationSet</td>
+<td><set></set></td>
+<td>放置在res/anim/目录下</td>
+<td>一个持有其它动画元素alpha、scale、translate、rotate或者其它set元素的容器</td>
+</tr>
+</tbody>
+</table>
+<h2 id="通用属性详情"><a href="#通用属性详情" class="headerlink" title="通用属性详情"></a>通用属性详情</h2><table>
+<thead>
+<tr>
+<th>xml属性</th>
+<th>java方法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:detachWallpaper</td>
+<td>setDetachWallpaper(boolean)</td>
+<td>是否在壁纸上运行</td>
+</tr>
+<tr>
+<td>android:duration</td>
+<td>setDuration(long)</td>
+<td>动画持续时间，毫秒为单位</td>
+</tr>
+<tr>
+<td>android:fillAfter</td>
+<td>setFillAfter(boolean)</td>
+<td>控件动画结束时是否保持动画最后的状态</td>
+</tr>
+<tr>
+<td>android:fillBefore</td>
+<td>setFillBefore(boolean)</td>
+<td>控件动画结束时是否还原到开始动画前的状态</td>
+</tr>
+<tr>
+<td>android:fillEnabled</td>
+<td>setFillEnabled(boolean)</td>
+<td>与android:fillBefore效果相同</td>
+</tr>
+<tr>
+<td>android:interpolator</td>
+<td>setInterpolator(Interpolator)</td>
+<td>设定插值器（指定的动画效果，譬如回弹等）</td>
+</tr>
+<tr>
+<td>android:repeatCount</td>
+<td>setRepeatCount(int)</td>
+<td>重复播放次数n，（即播放n+1次）</td>
+</tr>
+<tr>
+<td>android:repeatMode</td>
+<td>setRepeatMode(int)</td>
+<td>重复类型有两个值，reverse表示倒序回放，restart表示从头播放</td>
+</tr>
+<tr>
+<td>android:startOffset</td>
+<td>setStartOffset(long)</td>
+<td>调用start函数之后等待开始运行的时间，单位为毫秒</td>
+</tr>
+<tr>
+<td>android:zAdjustment</td>
+<td>setZAdjustment(int)</td>
+<td>表示被设置动画的内容运行时在Z轴上的位置（top/bottom/normal），默认为normal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="每种动画详情"><a href="#每种动画详情" class="headerlink" title="每种动画详情"></a>每种动画详情</h2><table>
+<thead>
+<tr>
+<th>xml属性</th>
+<th>java方法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Alpha属性详解</td>
+<td></td>
+</tr>
+<tr>
+<td>android:fromAlpha</td>
+<td>AlphaAnimation(float fromAlpha, …)</td>
+<td>动画开始的透明度（0.0到1.0，0.0是全透明，1.0是不透明）</td>
+</tr>
+<tr>
+<td>android:toAlpha</td>
+<td>AlphaAnimation(…, float toAlpha)</td>
+<td>动画结束的透明度，同上</td>
+</tr>
+<tr>
+<td></td>
+<td>Rotate属性详解</td>
+<td></td>
+</tr>
+<tr>
+<td>android:fromDegrees</td>
+<td>RotateAnimation(float fromDegrees, …)</td>
+<td>旋转开始角度，正代表顺时针度数，负代表逆时针度数</td>
+</tr>
+<tr>
+<td>android:toDegrees</td>
+<td>RotateAnimation(…, float toDegrees, …)</td>
+<td>旋转结束角度，正代表顺时针度数，负代表逆时针度数</td>
+</tr>
+<tr>
+<td>android:pivotX</td>
+<td>RotateAnimation(…, float pivotX, …)</td>
+<td>缩放起点X坐标（数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、50%表示以前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td>android:pivotY</td>
+<td>RotateAnimation(…, float pivotY)</td>
+<td>缩放起点Y坐标，同上规律</td>
+</tr>
+<tr>
+<td></td>
+<td>Scale属性详解</td>
+<td></td>
+</tr>
+<tr>
+<td>android:fromXScale</td>
+<td>ScaleAnimation(float fromX, …)</td>
+<td>初始X轴缩放比例，1.0表示无变化</td>
+</tr>
+<tr>
+<td>android:toXScale</td>
+<td>ScaleAnimation(…, float toX, …)</td>
+<td>结束X轴缩放比例</td>
+</tr>
+<tr>
+<td>android:fromYScale</td>
+<td>ScaleAnimation(…, float fromY, …)</td>
+<td>初始Y轴缩放比例</td>
+</tr>
+<tr>
+<td>android:toYScale</td>
+<td>ScaleAnimation(…, float toY, …)</td>
+<td>结束Y轴缩放比例</td>
+</tr>
+<tr>
+<td>android:pivotX</td>
+<td>ScaleAnimation(…, float pivotX, …)</td>
+<td>缩放起点X轴坐标（数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、50%表示以当前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td>android:pivotY</td>
+<td>ScaleAnimation(…, float pivotY)</td>
+<td>缩放起点Y轴坐标，同上规律</td>
+</tr>
+<tr>
+<td></td>
+<td>Translate属性详解</td>
+<td></td>
+</tr>
+<tr>
+<td>android:fromXDelta</td>
+<td>TranslateAnimation(float fromXDelta, …)</td>
+<td>起始点X轴坐标（数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、50%表示以当前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td>android:fromYDelta</td>
+<td>TranslateAnimation(…, float fromYDelta, …)</td>
+<td>起始点Y轴从标，同上规律</td>
+</tr>
+<tr>
+<td>android:toXDelta</td>
+<td>TranslateAnimation(…, float toXDelta, …)</td>
+<td>结束点X轴坐标，同上规律</td>
+</tr>
+<tr>
+<td>android:toYDelta</td>
+<td>TranslateAnimation(…, float toYDelta)</td>
+<td>结束点Y轴坐标，同上规律</td>
+</tr>
+</tbody>
+</table>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><ul>
+<li><p>通过java实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Animation mAlpha;</span><br><span class="line">mAlpha = new AlphaAnimation(1.0f, 0.0f);</span><br><span class="line">mAlpha.setDuration(1);</span><br><span class="line">mAlpha.setFillAfter(true);</span><br><span class="line">mAlpha.setRepeatMode(Animation.REVERSE);</span><br><span class="line">mAlpha.setRepeatCount(1);</span><br><span class="line">view.startAnimation(mAlpha);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过java+xml实现<br>1.xml资源文件配置  res/anim_alpha</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;alpha</span><br><span class="line">        android:duration=&quot;2000&quot;</span><br><span class="line">        android:fillAfter=&quot;true&quot;</span><br><span class="line">        android:fromAlpha=&quot;1.0&quot;</span><br><span class="line">        android:repeatCount=&quot;1&quot;</span><br><span class="line">        android:repeatMode=&quot;reverse&quot;</span><br><span class="line">        android:toAlpha=&quot;0.0&quot; /&gt;</span><br><span class="line">&lt;/set&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2.通过java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Animation mAlpha;</span><br><span class="line">mAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);</span><br><span class="line">view.startAnimation(mAlpha);</span><br></pre></td></tr></table></figure></p>
+<h1 id="属性动画-Property-Animation"><a href="#属性动画-Property-Animation" class="headerlink" title="属性动画 Property Animation"></a>属性动画 Property Animation</h1><blockquote>
+<p>属性动画是，动画的执行类来（）设置动画操作的对象的属性、持续时间，开始和结束的属性值，时间差值等，<br>然后系统会根据设置的参数动态的变化对象的属性。</p>
+<ul>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/43536355" target="_blank" rel="external">Android属性动画完全解析</a> 共三篇<h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duration动画的持续时间</td>
+<td>默认300ms</td>
+</tr>
+<tr>
+<td>TimeInterpolator</td>
+<td>时间插值，有LinearInterpolator、AccelerateDecelerateInterpolator，定义动画的变化率。</td>
+</tr>
+<tr>
+<td>Repeat count and behavior</td>
+<td>重复次数、以及重复模式；可以定义重复多少次；重复时从头开始，还是反向。</td>
+</tr>
+<tr>
+<td>Animator sets</td>
+<td>动画集合，你可以定义一组动画，一起执行或者顺序执行。</td>
+</tr>
+<tr>
+<td>Frame refresh delay</td>
+<td>帧刷新延迟，对于你的动画，多久刷新一次帧；默认为10ms，但最终依赖系统的当前状态；基本不用管。相关的类</td>
+</tr>
+<tr>
+<td>ObjectAnimator</td>
+<td>动画的执行类，后面详细介绍</td>
+</tr>
+<tr>
+<td>ValueAnimator</td>
+<td>动画的执行类，后面详细介绍</td>
+</tr>
+<tr>
+<td>AnimatorSet</td>
+<td>用于控制一组动画的执行：线性，一起，每个动画的先后执行等。</td>
+</tr>
+<tr>
+<td>AnimatorInflater</td>
+<td>用户加载属性动画的xml文件</td>
+</tr>
+<tr>
+<td>TypeEvaluator</td>
+<td>类型估值，主要用于设置动画操作属性的值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="几个重要的概念"><a href="#几个重要的概念" class="headerlink" title="几个重要的概念"></a>几个重要的概念</h2><ul>
+<li>ValueAnimator<br>ValueAnimator是整个属性动画机制当中最核心的一个类，前面我们已经提到了，属性动画的运行机制是通过不断地对值进行操作来实现的，而初始值和结束值之间的动画过渡就是由ValueAnimator这个类来负责计算的。它的内部使用一种时间循环的机制来计算值与值之间的动画过渡，我们只需要将初始值和结束值提供给ValueAnimator，并且告诉它动画所需运行的时长，那么ValueAnimator就会自动帮我们完成从初始值平滑地过渡到结束值这样的效果。除此之外，ValueAnimator还负责管理动画的播放次数、播放模式、以及对动画设置监听器等，确实是一个非常重要的类。</li>
+<li>TypeEvaluator<br>通过初始值过和结束值计算过渡值，就是计算某一时刻某一属性的状态值。</li>
+<li>ObjectAnimator内部的工作机制<br>是通过寻找特定属性的get和set方法.例如属性是color（当然可以是任意值），则在对应view中应该有getColor,setColor方法</li>
+<li><p>ValueAnimator与ObjectAnimator<br>ObjectAnimator继承ValueAnimator，ObjectAnimator可能才是我们最常接触到的类，因为ValueAnimator只不过是对值进行了一个平滑的动画过渡，不能针对具体对象，只是计算相关过渡值的入口。但我们实际使用到这种功能的场景好像并不多。而ObjectAnimator则就不同了，它是可以直接对任意对象的任意属性进行动画操作。</p>
+<h2 id="自定义view设置属性动画"><a href="#自定义view设置属性动画" class="headerlink" title="自定义view设置属性动画"></a>自定义view设置属性动画</h2></li>
+<li><p>1.重写onDraw,进行界面绘制</p>
+</li>
+<li>2.定义个startAnimation，在开启动画时调用</li>
+<li>3.给动画设置addUpdateListener，通过onAnimationUpdate的返回值，修改对应属性，调用invalidate重绘</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[更改textview指定内容的颜色大小等]]></title>
       <url>http://shun99.github.io/blog/%E6%9B%B4%E6%94%B9textview%E6%8C%87%E5%AE%9A%E5%86%85%E5%AE%B9%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%B0%8F%E7%AD%89.html</url>
       <content type="html"><![CDATA[<blockquote>
@@ -195,6 +545,7 @@
 </blockquote>
 <ul>
 <li><a href="http://apistore.baidu.com/astore/classificationservicelist.html?isFree=1" target="_blank" rel="external">百度API市场</a> 包含很多常见的API</li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect" target="_blank" rel="external">API总结</a></li>
 </ul>
 ]]></content>
     </entry>
