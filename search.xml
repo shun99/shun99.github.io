@@ -4,6 +4,89 @@
   
     
     <entry>
+      <title><![CDATA[开源项目汇总]]></title>
+      <url>http://shun99.github.io/blog/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>都是一些完整的项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="AndroidFire"><a href="#AndroidFire" class="headerlink" title="AndroidFire"></a><a href="https://github.com/jaydenxiao2016/AndroidFire" target="_blank" rel="external">AndroidFire</a></h1><blockquote>
+<p>AndroidFire，一款新闻阅读 App框架，基于 Material Design + MVP + RxJava + Retrofit + Glide，基本涵盖了当前 Android 端开发最常用的主流框架，基于此框架可以快速开发一个app。</p>
+</blockquote>
+<ul>
+<li>mvp模式：解耦model和view层，契约类管理mvp，一目了然，实现纵向解耦，基类完美封装，避免频繁new对象</li>
+<li>RxJava:包括Rx处理服务器请求、缓存、线程调度的完美封装</li>
+<li>复杂列表处理，充分解决滑动卡顿问题，具体方法看关注模块里面的“朋友圈”例子</li>
+<li>组件化开发，横向解耦</li>
+<li>封装各种工具类，比如压缩图片、轮播器、查看大图、缓存工具、图片选择器，以common的module形式依赖</li>
+<li>各种封装好的依赖库，比如Irecyclerview：包含万能适配器、recyclerview的下拉刷新上拉加载更多、自定义刷新头和加载更多头；selectordialog：经常使用到的几种Dialog；oneKeyShareSDK：社交分享；微信和支付宝封装等等</li>
+<li>无关业务内容封装成model，基于此框架可以快速开发一个app</li>
+</ul>
+<h1 id="FreeBook"><a href="#FreeBook" class="headerlink" title="FreeBook"></a><a href="https://github.com/80945540/FreeBook" target="_blank" rel="external">FreeBook</a></h1><blockquote>
+<p>基于MVP模式开发的带缓存网络爬虫,采用最流行框架搭建,干货多多</p>
+</blockquote>
+<ul>
+<li>RxJava+Retrofit2+Okhttp+RxCache 实现API数据请求以及缓存(缓存不区分GET&amp;POST 缓存策略可根据自己要求修改)</li>
+<li>RxJava+jsoup+RxCache 实现HTMl页面爬虫数据的请求以及缓存 缓存实现与API一致 不需要另写逻辑</li>
+<li>glide加载图片</li>
+<li>LCRapidDevelop 下拉刷新 状态页 RecyclerView适配器 RecyclerView加载动画 等等感兴趣的自行了解 传送门</li>
+<li>bga-banner 首页的Banner实现无限循环 还不错 集成简单</li>
+</ul>
+<h1 id="LCRapidDevelop"><a href="#LCRapidDevelop" class="headerlink" title="LCRapidDevelop"></a><a href="https://github.com/80945540/LCRapidDevelop" target="_blank" rel="external">LCRapidDevelop</a></h1><ul>
+<li>retrofit rxjava okhttp rxcache——————————网络请求以及网络缓存</li>
+<li>Demo采用MVP模式开发————————————数据逻辑复用,便于维护升级</li>
+<li>下拉刷新 上拉加载 及自动加载—————————实现监听方便快捷</li>
+<li>RecyclerView设配器——————————————再也不需要写ViewHolder</li>
+<li>RecyclerView item加载动画——————————–多种动画效果一行代码解决</li>
+<li>页面状态统一管理 加载中 无数据 无网络————-所有页面均可添加</li>
+<li>图片显示与缓存 GIF图片显示</li>
+<li>Tab+Fragment快速实现</li>
+<li>视频播放(仿QQ空间,秒拍等List播放)</li>
+</ul>
+<h1 id="GeekNews"><a href="#GeekNews" class="headerlink" title="GeekNews"></a><a href="https://github.com/codeestX/GeekNews" target="_blank" rel="external">GeekNews</a></h1><blockquote>
+<p>出于学习的目的做了这款Material Design风格的简洁的阅读应用，基本涵盖了当前Android端开发最常用的主流框架，阅读内容目前包括知乎日报、微信精选、干货集中营，知识、新闻、福利一网打尽，后期会持续更新，坚持在这个项目上实践最新的技术，也会争取拓展更多的阅读内容</p>
+</blockquote>
+<ul>
+<li>使用RxJava配合Retrofit2做网络请求</li>
+<li>使用RxUtil对线程操作和网络请求结果处理做了封装</li>
+<li>使用RxPresenter对订阅的生命周期做管理</li>
+<li>使用RxBus来方便组件间的通信</li>
+<li>使用RxJava其他操作符来做延时、轮询、转化、筛选等操作</li>
+<li>使用okhttp3对网络返回内容做缓存，还有日志、超时重连、头部消息的配置</li>
+<li>使用Material Design控件和动画</li>
+<li>使用MVP架构整个项目，对应于model、ui、presenter三个包</li>
+<li>使用Dagger2将M层注入P层，将P层注入V层，无需new，直接调用对象</li>
+<li>使用Realm做阅读记录和收藏记录的增、删、查、改</li>
+<li>使用Glide做图片的处理和加载</li>
+<li>使用Fragmentation简化Fragment的操作和懒加载</li>
+<li>使用RecyclerView实现下拉刷新、上拉加载、侧滑删除、长按拖曳</li>
+<li>使用x5WebView做阅览页，比原生WebView体验更佳</li>
+<li>使用原生的夜间模式、分享、反馈</li>
+<li>包含搜索、收藏、检测更新（尚未实现）等功能</li>
+<li>所有踩到的坑都在项目里做了注释</li>
+</ul>
+<h1 id="Dagger2Sample"><a href="#Dagger2Sample" class="headerlink" title="Dagger2Sample"></a><a href="https://github.com/niuxiaowei/Dagger2Sample" target="_blank" rel="external">Dagger2Sample</a></h1><blockquote>
+<p>一个简单的Dagger2 demo</p>
+</blockquote>
+<h1 id="android-mvp-pattern"><a href="#android-mvp-pattern" class="headerlink" title="android-mvp-pattern"></a><a href="https://github.com/kaedea/android-mvp-pattern" target="_blank" rel="external">android-mvp-pattern</a></h1><blockquote>
+<p>一个简单的mvp demo</p>
+<h1 id="bilibili"><a href="#bilibili" class="headerlink" title="bilibili"></a><a href="https://github.com/HotBitmapGG/bilibili" target="_blank" rel="external">bilibili</a></h1></blockquote>
+<ul>
+<li>1.首页六大模块，推荐，番剧，直播，关注，分区，发现的实现。</li>
+<li>2.热门视频排行榜，全区视频排行榜。</li>
+<li>3.视频详情界面，视频评论，使用ijkplayer完成的视频播放，烈焰弹幕库实现的弹幕功能。</li>
+<li>4.番剧，专题详情界面，番剧放送表，番剧索引。</li>
+<li>5.使用ijkplayer实现的直播视频的播放。(直播的弹幕没有实现，暂时还抓不到弹幕的数据)</li>
+<li>6.分区视频查看功能，目前只有基本的9大分区的实现，但是该接口需要Appkey才能获取到。</li>
+<li>7.游戏中心，离线缓存的界面实现。</li>
+<li>8.全区搜索的实现，目前支持综合视频，番剧，话题的搜索。</li>
+<li>9.仿B站登录的小彩蛋。(登录只是假登录，随意输入帐号密码即可)</li>
+<li>10.其他的一些仿官方的实现细节等，请自行发现。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[杂碎]]></title>
       <url>http://shun99.github.io/blog/%E6%9D%82%E7%A2%8E.html</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -432,6 +515,7 @@
 <h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
 <li>属性注入的局限性是我们不能使用private</li>
 </ul>
+<p><a href="http://gold.xitu.io/entry/572232fc1532bc00624b5c8e" target="_blank" rel="external">使用Dagger 2依赖注入 - API</a></p>
 ]]></content>
     </entry>
     
