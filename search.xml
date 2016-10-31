@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title><![CDATA[RxJava+Retrofit使用]]></title>
+      <url>http://shun99.github.io/blog/RxJava-Retrofit%E4%BD%BF%E7%94%A8.html</url>
+      <content type="html"><![CDATA[<h1 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h1><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>filter</li>
+</ul>
+<p>过滤一些不合适的，call结果返回true保留。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//过滤掉appInfo==null</span><br><span class="line">.filter(new Func1&lt;AppInfo,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(AppInfo appInfo)&#123;</span><br><span class="line">        return appInfo != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>distinct与distinctUntilChanged()</li>
+</ul>
+<p>distinct过滤整个序列中的重复的数据<br>distinctUntilChanged()过滤连续重复的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;() ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;3&quot; ) ;</span><br><span class="line">        list.add( &quot;4&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line"></span><br><span class="line">        Observable.from( list )</span><br><span class="line">                .distinct()//或者distinctUntilChanged()</span><br><span class="line">                .subscribe(new Action1&lt;String&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(String s) &#123;</span><br><span class="line">                        System.out.println( &quot;distinct--&quot; + s );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>最终输出 distinct()             —&gt;  1 2 3 4<br>最终输出 distinctUntilChanged() —&gt;  1 2 1 3 4 2 1</p>
+<ul>
+<li>throttleFirst</li>
+</ul>
+<p>在一段时间内，只取第一个事件，然后其他事件都丢弃。<br>使用场景：1、button按钮防抖操作，防连续点击   2、百度关键词联想，在一段时间内只联想一次，防止频繁请求服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Observable.interval( 1 , TimeUnit.SECONDS)</span><br><span class="line">                .throttleFirst( 3 , TimeUnit.SECONDS )</span><br><span class="line">                .subscribe(new Action1&lt;Long&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(Long aLong) &#123;</span><br><span class="line">                        System.out.println( &quot;throttleFirst--&quot; + aLong );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码，是循环发送数据，每秒发送一个。throttleFirst( 3 , TimeUnit.SECONDS )   在3秒内只取第一个事件，其他的事件丢弃</p>
+<ul>
+<li>take和takeLast</li>
+</ul>
+<p>只想取开头或结尾的几个元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//取前n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .take(n)</span><br><span class="line">//取后n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .takeLast(n)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>skip()和skipLast()</p>
+<p>不取开头或结尾的几个元素。</p>
+</li>
+<li><p>delay与Timer</p>
+</li>
+</ul>
+<p>相同点：delay 、 timer 都是延时操作符。<br>不同点：delay  延时一次，延时完成后，可以连续发射这个序列。timer延时一次，只发射整个序列的一条数据。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[客户端开发角度理解http]]></title>
+      <url>http://shun99.github.io/blog/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3http.html</url>
+      <content type="html"><![CDATA[<h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h2 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h2><blockquote>
+<p>OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http协议里面缓存通常只适用于idempotent request，也就是Get请求，为什么只适应Get请求？我们都知道Get请求url结合提交参数是唯一标示，而Post请求的参数是在http的body体里面，是可变的，无法成为唯一的标示。但是，我们在项目中基本上每一个接口都要提交基本参数，一般用的都是Post请求</p>
+</blockquote>
+<p>Cache-Control的配置在请求头和响应头中都有且一样。<br>max-stale在请求头设置有效，在响应头设置无效。<br>max-stale和max-age同时设置的时候，缓存失效的时间按最长的算。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[开源项目汇总]]></title>
       <url>http://shun99.github.io/blog/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB.html</url>
       <content type="html"><![CDATA[<blockquote>
@@ -82,6 +124,23 @@
 <li>8.全区搜索的实现，目前支持综合视频，番剧，话题的搜索。</li>
 <li>9.仿B站登录的小彩蛋。(登录只是假登录，随意输入帐号密码即可)</li>
 <li>10.其他的一些仿官方的实现细节等，请自行发现。</li>
+</ul>
+<h1 id="NiceRead"><a href="#NiceRead" class="headerlink" title="NiceRead"></a><a href="https://github.com/Othershe/NiceRead" target="_blank" rel="external">NiceRead</a></h1><p>一个练习项目，目前主要涉及的知识点如下：</p>
+<ul>
+<li>MVP + RxJava + Retrofit</li>
+<li>Activity、Fragment基类的写法</li>
+<li>Fragment懒加载</li>
+<li>RecyclerView刷新、加载更多</li>
+<li>网页数据抓取</li>
+<li>PreferenceFragment</li>
+<li>retrof:it2.1.0</li>
+<li>rxjava:1.1.6</li>
+<li>Jsoup:1.9.2</li>
+<li>glide:3.7.0</li>
+<li>PhotoView:1.3.0</li>
+<li>butterknife:8.2.1</li>
+<li>eventbus:3.0.0</li>
+<li>AVLoadingIndicatorView:2.1.2</li>
 </ul>
 ]]></content>
     </entry>
@@ -646,6 +705,12 @@
 </ul>
 </blockquote>
 <a id="more"></a>
+<h1 id="RecyleView"><a href="#RecyleView" class="headerlink" title="RecyleView"></a>RecyleView</h1><ul>
+<li><p><a href="https://github.com/Aspsine/IRecyclerView" target="_blank" rel="external">IRecyclerView</a> 添加头部顶部，包含一些可以拖拽布局的适配器<a href="https://github.com/jaydenxiao2016/AndroidFire" target="_blank" rel="external">AndroidFire</a></p>
+</li>
+<li><p><a href="https://github.com/jdsjlzx/LRecyclerView" target="_blank" rel="external">LRecyclerView</a> 推荐。功能很全 <a href="https://raw.githubusercontent.com/jdsjlzx/LRecyclerView/master/app/app-release.apk" target="_blank" rel="external">demo</a></p>
+</li>
+</ul>
 <h1 id="布局框架"><a href="#布局框架" class="headerlink" title="布局框架"></a>布局框架</h1><ul>
 <li><a href="https://github.com/chenupt/DragTopLayout" target="_blank" rel="external">DragTopLayout</a> 很不错的 <img src="/uploads/kfyxbcdzl1.gif" width="180"></li>
 <li><a href="https://github.com/cnbleu/SlideDetailsLayout" target="_blank" rel="external">SlideDetailsLayout</a> 高仿淘宝、京东商品详情页面的上拉加载图文详情功能</li>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="http," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://shun99.github.io/tags/系统控件/index.html">
+<meta name="description" content="请求头cache-control
+OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客户端开发角度理解http">
+<meta property="og:url" content="http://shun99.github.io/blog/客户端开发角度理解http.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="请求头cache-control
+OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http">
+<meta property="og:updated_time" content="2016-10-26T03:32:15.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="客户端开发角度理解http">
+<meta name="twitter:description" content="请求头cache-control
+OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http">
 
 
 
@@ -110,7 +114,7 @@
   };
 </script>
 
-  <title> 标签: 系统控件 | 一个很严肃的人 </title>
+  <title> 客户端开发角度理解http | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,7 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,46 +256,156 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        系统控件
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                客户端开发角度理解http
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T10:45:25+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/客户端开发角度理解http.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/客户端开发角度理解http.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		 
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h2 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h2><blockquote>
+<p>OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http协议里面缓存通常只适用于idempotent request，也就是Get请求，为什么只适应Get请求？我们都知道Get请求url结合提交参数是唯一标示，而Post请求的参数是在http的body体里面，是可变的，无法成为唯一的标示。但是，我们在项目中基本上每一个接口都要提交基本参数，一般用的都是Post请求</p>
+</blockquote>
+<p>Cache-Control的配置在请求头和响应头中都有且一样。<br>max-stale在请求头设置有效，在响应头设置无效。<br>max-stale和max-age同时设置的时候，缓存失效的时间按最长的算。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/blog/Android系统控件一些很有用的属性.html" itemprop="url">
-              
-                <span itemprop="name">Android系统控件一些很有用的属性</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-09T10:03:42+08:00"
-              content="2016-08-09" >
-          08-09
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/http/" rel="tag">#http</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/开源项目汇总.html" rel="next" title="开源项目汇总">
+                <i class="fa fa-chevron-left"></i> 开源项目汇总
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/RxJava-Retrofit使用.html" rel="prev" title="RxJava+Retrofit使用">
+                RxJava+Retrofit使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="/blog/客户端开发角度理解http.html"
+     data-title="客户端开发角度理解http"
+     data-content=""
+     data-url="http://shun99.github.io/blog/客户端开发角度理解http.html">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -299,6 +413,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/客户端开发角度理解http.html"
+           data-title="客户端开发角度理解http" data-url="http://shun99.github.io/blog/客户端开发角度理解http.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -318,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -380,6 +511,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#请求头"><span class="nav-number">1.</span> <span class="nav-text">请求头</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cache-control"><span class="nav-number">1.1.</span> <span class="nav-text">cache-control</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -485,6 +627,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

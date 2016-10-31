@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="RxJava,Retrofit," />
 
 
 
@@ -84,15 +84,25 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个很严肃的人">
-<meta property="og:url" content="http://shun99.github.io/tags/系统控件/index.html">
+<meta name="description" content="RxJava操作符
+filter
+
+过滤一些不合适的，call结果返回true保留。1234567//过滤掉appInfo==null.filter(new Func1&amp;lt;AppInfo,Boolean&amp;gt;()&amp;#123;    @Override    public Boolean call(AppInfo appInfo)&amp;#123;        return appInfo !=">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxJava+Retrofit使用">
+<meta property="og:url" content="http://shun99.github.io/blog/RxJava-Retrofit使用.html">
 <meta property="og:site_name" content="一个很严肃的人">
-<meta property="og:description">
+<meta property="og:description" content="RxJava操作符
+filter
+
+过滤一些不合适的，call结果返回true保留。1234567//过滤掉appInfo==null.filter(new Func1&amp;lt;AppInfo,Boolean&amp;gt;()&amp;#123;    @Override    public Boolean call(AppInfo appInfo)&amp;#123;        return appInfo !=">
+<meta property="og:updated_time" content="2016-10-26T10:11:00.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个很严肃的人">
-<meta name="twitter:description">
+<meta name="twitter:title" content="RxJava+Retrofit使用">
+<meta name="twitter:description" content="RxJava操作符
+filter
+
+过滤一些不合适的，call结果返回true保留。1234567//过滤掉appInfo==null.filter(new Func1&amp;lt;AppInfo,Boolean&amp;gt;()&amp;#123;    @Override    public Boolean call(AppInfo appInfo)&amp;#123;        return appInfo !=">
 
 
 
@@ -110,7 +120,7 @@
   };
 </script>
 
-  <title> 标签: 系统控件 | 一个很严肃的人 </title>
+  <title> RxJava+Retrofit使用 | 一个很严肃的人 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,7 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,46 +262,176 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        系统控件
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RxJava+Retrofit使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T16:20:52+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/RxJava-Retrofit使用.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/RxJava-Retrofit使用.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		 
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h1><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>filter</li>
+</ul>
+<p>过滤一些不合适的，call结果返回true保留。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//过滤掉appInfo==null</span><br><span class="line">.filter(new Func1&lt;AppInfo,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(AppInfo appInfo)&#123;</span><br><span class="line">        return appInfo != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>distinct与distinctUntilChanged()</li>
+</ul>
+<p>distinct过滤整个序列中的重复的数据<br>distinctUntilChanged()过滤连续重复的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;() ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;3&quot; ) ;</span><br><span class="line">        list.add( &quot;4&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line"></span><br><span class="line">        Observable.from( list )</span><br><span class="line">                .distinct()//或者distinctUntilChanged()</span><br><span class="line">                .subscribe(new Action1&lt;String&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(String s) &#123;</span><br><span class="line">                        System.out.println( &quot;distinct--&quot; + s );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>最终输出 distinct()             —&gt;  1 2 3 4<br>最终输出 distinctUntilChanged() —&gt;  1 2 1 3 4 2 1</p>
+<ul>
+<li>throttleFirst</li>
+</ul>
+<p>在一段时间内，只取第一个事件，然后其他事件都丢弃。<br>使用场景：1、button按钮防抖操作，防连续点击   2、百度关键词联想，在一段时间内只联想一次，防止频繁请求服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Observable.interval( 1 , TimeUnit.SECONDS)</span><br><span class="line">                .throttleFirst( 3 , TimeUnit.SECONDS )</span><br><span class="line">                .subscribe(new Action1&lt;Long&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(Long aLong) &#123;</span><br><span class="line">                        System.out.println( &quot;throttleFirst--&quot; + aLong );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码，是循环发送数据，每秒发送一个。throttleFirst( 3 , TimeUnit.SECONDS )   在3秒内只取第一个事件，其他的事件丢弃</p>
+<ul>
+<li>take和takeLast</li>
+</ul>
+<p>只想取开头或结尾的几个元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//取前n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .take(n)</span><br><span class="line">//取后n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .takeLast(n)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>skip()和skipLast()</p>
+<p>不取开头或结尾的几个元素。</p>
+</li>
+<li><p>delay与Timer</p>
+</li>
+</ul>
+<p>相同点：delay 、 timer 都是延时操作符。<br>不同点：delay  延时一次，延时完成后，可以连续发射这个序列。timer延时一次，只发射整个序列的一条数据。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/blog/Android系统控件一些很有用的属性.html" itemprop="url">
-              
-                <span itemprop="name">Android系统控件一些很有用的属性</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-09T10:03:42+08:00"
-              content="2016-08-09" >
-          08-09
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RxJava/" rel="tag">#RxJava</a>
+          
+            <a href="/tags/Retrofit/" rel="tag">#Retrofit</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/客户端开发角度理解http.html" rel="next" title="客户端开发角度理解http">
+                <i class="fa fa-chevron-left"></i> 客户端开发角度理解http
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="/blog/RxJava-Retrofit使用.html"
+     data-title="RxJava+Retrofit使用"
+     data-content=""
+     data-url="http://shun99.github.io/blog/RxJava-Retrofit使用.html">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -299,6 +439,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/RxJava-Retrofit使用.html"
+           data-title="RxJava+Retrofit使用" data-url="http://shun99.github.io/blog/RxJava-Retrofit使用.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -318,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -380,6 +537,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RxJava"><span class="nav-number">1.</span> <span class="nav-text">RxJava</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">1.1.</span> <span class="nav-text">操作符</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -485,6 +653,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

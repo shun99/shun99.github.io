@@ -276,6 +276,240 @@
             
               
                 
+                <a class="post-title-link" href="/blog/RxJava-Retrofit使用.html" itemprop="url">
+                  RxJava+Retrofit使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T16:20:52+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/RxJava-Retrofit使用.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/RxJava-Retrofit使用.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		 
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h1><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>filter</li>
+</ul>
+<p>过滤一些不合适的，call结果返回true保留。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//过滤掉appInfo==null</span><br><span class="line">.filter(new Func1&lt;AppInfo,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(AppInfo appInfo)&#123;</span><br><span class="line">        return appInfo != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>distinct与distinctUntilChanged()</li>
+</ul>
+<p>distinct过滤整个序列中的重复的数据<br>distinctUntilChanged()过滤连续重复的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;() ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;3&quot; ) ;</span><br><span class="line">        list.add( &quot;4&quot; ) ;</span><br><span class="line">        list.add( &quot;2&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line">        list.add( &quot;1&quot; ) ;</span><br><span class="line"></span><br><span class="line">        Observable.from( list )</span><br><span class="line">                .distinct()//或者distinctUntilChanged()</span><br><span class="line">                .subscribe(new Action1&lt;String&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(String s) &#123;</span><br><span class="line">                        System.out.println( &quot;distinct--&quot; + s );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>最终输出 distinct()             —&gt;  1 2 3 4<br>最终输出 distinctUntilChanged() —&gt;  1 2 1 3 4 2 1</p>
+<ul>
+<li>throttleFirst</li>
+</ul>
+<p>在一段时间内，只取第一个事件，然后其他事件都丢弃。<br>使用场景：1、button按钮防抖操作，防连续点击   2、百度关键词联想，在一段时间内只联想一次，防止频繁请求服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Observable.interval( 1 , TimeUnit.SECONDS)</span><br><span class="line">                .throttleFirst( 3 , TimeUnit.SECONDS )</span><br><span class="line">                .subscribe(new Action1&lt;Long&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void call(Long aLong) &#123;</span><br><span class="line">                        System.out.println( &quot;throttleFirst--&quot; + aLong );</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;) ;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码，是循环发送数据，每秒发送一个。throttleFirst( 3 , TimeUnit.SECONDS )   在3秒内只取第一个事件，其他的事件丢弃</p>
+<ul>
+<li>take和takeLast</li>
+</ul>
+<p>只想取开头或结尾的几个元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//取前n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .take(n)</span><br><span class="line">//取后n个</span><br><span class="line">Observable.from(...)</span><br><span class="line">           .takeLast(n)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>skip()和skipLast()</p>
+<p>不取开头或结尾的几个元素。</p>
+</li>
+<li><p>delay与Timer</p>
+</li>
+</ul>
+<p>相同点：delay 、 timer 都是延时操作符。<br>不同点：delay  延时一次，延时完成后，可以连续发射这个序列。timer延时一次，只发射整个序列的一条数据。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/客户端开发角度理解http.html" itemprop="url">
+                  客户端开发角度理解http
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T10:45:25+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/客户端开发角度理解http.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/客户端开发角度理解http.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+		 
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><h2 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h2><blockquote>
+<p>OkHttp的缓存问题，主要是通过http协议里面的control-cache控制缓存，而且是仅仅只能是Get请求才能缓存，如果Post请求OkHttp会让response返回null，同时报504错误，也就是没缓存。okhttp为什么要这样做呢？通过查看缓存的文件，我们可以发现，OkHttp缓存的是整个http请求的信息，所以这就和http协议有关系了。http协议里面缓存通常只适用于idempotent request，也就是Get请求，为什么只适应Get请求？我们都知道Get请求url结合提交参数是唯一标示，而Post请求的参数是在http的body体里面，是可变的，无法成为唯一的标示。但是，我们在项目中基本上每一个接口都要提交基本参数，一般用的都是Post请求</p>
+</blockquote>
+<p>Cache-Control的配置在请求头和响应头中都有且一样。<br>max-stale在请求头设置有效，在响应头设置无效。<br>max-stale和max-age同时设置的时候，缓存失效的时间按最长的算。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/开源项目汇总.html" itemprop="url">
                   开源项目汇总
                 </a>
@@ -895,222 +1129,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/Android通知栏详解.html" itemprop="url">
-                  Android通知栏详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T11:49:58+08:00" content="2016-08-16">
-              2016-08-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/Android通知栏详解.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/Android通知栏详解.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>通知栏消息在开发中很常见到，这里详细的介绍了实现方式，并且都给出了相应解释。此外还说明了解释了一些概念。关于通知栏的其他之时我还在学习中。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/Android通知栏详解.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/状态栏，toolbar总结.html" itemprop="url">
-                  状态栏，toolbar总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-11T10:45:32+08:00" content="2016-08-11">
-              2016-08-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/状态栏，toolbar总结.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/状态栏，toolbar总结.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-		 
-		  
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&gt;</p>
-<ul>
-<li>首先要说的是，透明，沉浸式状态栏必须在sdk&gt;=19之上</li>
-<li>开发中状态栏这一关是无法跳过状态栏，现在很流行透明状态栏，沉浸式状态栏。Toolbar 是在 Android 5.0 开始推出的一个 Material Design 风格的导航控件 ，作为Google推荐的用来替换Actionbar的，Toolbar 明显要灵活的多。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/状态栏，toolbar总结.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1156,7 +1174,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1173,7 +1191,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
